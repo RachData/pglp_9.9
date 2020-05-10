@@ -41,11 +41,11 @@ public class Cercle2D {
 	@Override
 	public String toString() {
 		StringBuilder str = new StringBuilder();
-		str.append('[');
+		str.append("Cercle(centre=");
 		str.append(center.toString());
-		str.append(", ");
+		str.append(", rayon=");
 		str.append(rayon);
-		str.append(']');
+		str.append(')');
 		return str.toString();
 	}
 
