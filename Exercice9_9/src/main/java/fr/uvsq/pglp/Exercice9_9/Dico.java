@@ -6,18 +6,63 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Verifie si la syntaxe saisie par l'utilisateur respect la norme
- * Nom_figure = figure ( centre
+ * Verifie le format de syntaxe ecris par l'user
+ * et effectue au le split des formats valide
  * @author root
  *
  */
 public class Dico {
-	private static final String regex = "^([a-zA-Z0-9_-]+)\\s*=\\s*([a-zA-Z]+)\\s*\\(\\s*\\(\\s*\\d*.?\\d+?\\s*,\\s*\\d*.?\\d+\\s*\\)\\s*,\\s*\\d*.?\\d+?\\s*\\)";
+	/**
+	 * format generale pour la creation de figure nom = commande
+	 */
+	private static final String regex = ".+=.+";
 	private static final Pattern pattern = Pattern.compile(regex);
 	
+	/**
+	 * format generale cercle nom = commande((nombre,nombre),nombre)
+	 */
+	private static final String regexcercle = "^([a-zA-Z0-9_-]+)\\s*=\\s*([a-zA-Z]+)\\s*\\(\\s*\\(\\s*\\d*\\.?\\d+?\\s*"
+											+ ",\\s*\\d*\\.?\\d+\\s*\\)\\s*,\\s*\\d*\\.?\\d+?\\s*\\)";
+	private static final Pattern patterncercle = Pattern.compile(regexcercle);
+	
+	/**
+	 * format generale rectangle et carre nom = commande((nombre,nombre),(nombre,nombre))
+	 */
+	private static final String regexrectcarre = "^([a-zA-Z0-9_-]+)\\s*=\\s*([a-zA-Z]+)\\s*\\(\\s*\\(\\s*\\d*.?\\d+?\\s*"
+			                                   + ",\\s*\\d*.?\\d+\\s*\\)\\s*,\\s*\\(\\s*\\d*?\\.?\\d+?\\s*\\,\\s*\\d*?\\."
+			                                   + "?\\d+?\\s*\\)\\s*\\)";
+	private static final Pattern patternrectcarre = Pattern.compile(regexrectcarre);
+	
+	/**
+	 * format generale triangle nom = commande((nombre,nombre),(nombre,nombre),(nombre,nombre))
+	 */
+	private static final String regextriangle = "^([a-zA-Z0-9_-]+)\\s*=\\s*([a-zA-Z]+)\\s*\\(\\s*\\(\\s*\\d*.?\\d+?\\s*,"
+											  + "\\s*\\d*.?\\d+\\s*\\)\\s*,\\s*\\(\\s*\\d*?\\.?\\d+?\\s*\\,\\s*\\d*?\\.?\\"
+											  + "d+?\\s*\\)\\s*,\\s*\\(\\s*\\d*?\\.?\\d+?\\s*\\,\\s*\\d*?\\.?\\d+?\\s*\\)\\s*\\)";
+	private static final Pattern patterntriangle = Pattern.compile(regextriangle);
+	
+	/**
+	 * Verifie le format du text entrer par l'user
+	 * @param text format enter par l'user
+	 * @return true or false
+	 */
 	public static boolean isMatching(String text)  {
-	    Matcher matcher = pattern.matcher(text);
-		return matcher.matches();
+		Matcher matcher = pattern.matcher(text);
+		if(matcher.matches())
+			matcher = patterncercle.matcher(text);
+	    	if(matcher.matches())
+	    		return true;
+	    	else {
+	    		matcher = patternrectcarre.matcher(text);
+	    		if(matcher.matches())
+	    			return true;
+	    		else {
+	    			matcher = patterntriangle.matcher(text);
+	    			if(matcher.matches())
+	    				return true;
+		    }
+	    }
+		return false;
 	}
 	
 	
