@@ -6,7 +6,7 @@ package fr.uvsq.pglp.Exercice9_9.Allfigure;
  *
  */
 
-public class Cercle2D {
+public class Cercle2D implements allfigure{
 	
 	private Point2D center;
 	private double rayon;
@@ -31,6 +31,16 @@ public class Cercle2D {
 	public double getRadius() {
 		return rayon;
 	}
+	
+	/**
+	 * deplace le centee du cercle
+	 */
+
+	@Override
+	public void move(double dx, double dy) {
+		
+		center.move(dx, dy);
+	}
 
 
 	/**
@@ -47,5 +57,7 @@ public class Cercle2D {
 		str.append(')');
 		return str.toString();
 	}
+
+
 
 }
