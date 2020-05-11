@@ -12,8 +12,8 @@ public class Cercle2D {
 	private double rayon;
 
 	/**
-	 * Initialisation du cerle et de son centre.
-	 * 
+	 * Initialisation du cerle 
+	 * son centre et son rayon.
 	 * @param center the center
 	 * @param radius the radius
 	 */
@@ -35,7 +35,6 @@ public class Cercle2D {
 
 	/**
 	 * donne la description d'un cercle.
-	 * 
 	 * @return en chaine de caractere la description
 	 */
 	@Override

@@ -13,9 +13,9 @@ public class dicoTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		Strcercle = new String("c1 = Cercle( (5.5 , 11.00) , 55)");
-		Strrectcarre = new String("c1 = Rectangle( (5.5 , 11.00) , (55 , 66))");
-		Strtriangle = new String("c1 = Triangle( (5.5  ,11.00), (2 , 3) , (55 , 66))");
+		Strcercle = new String("c1 = Cercle( (1 , 2) , 3)");
+		Strrectcarre = new String("r1 = Rectangle( (4 , 5) , (6 , 7))");
+		Strtriangle = new String("t1 = Triangle( (8  , 9), (1.0 , 1.1) , (1.2 , 1.3))");
 	}
 
 	@Test

@@ -2,6 +2,7 @@ package fr.uvsq.pglp.Exercice9_9;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -72,17 +73,22 @@ public class Dico {
 	 * @param Str
 	 */
 	public static void Stringsplit(String Str) {
-		List<String> lst = new ArrayList<String>(5);
+		List<String> lst = new ArrayList<String>();
 		Str = Str.replaceAll("\\s","");
 		Str = Str.replaceAll("=","#");
 		Str = Str.replaceAll("\\(","#");
 		Str = Str.replaceAll("\\)","#");
 		Str = Str.replaceAll(",","#");
+		
+		
         for (String val: Str.split("#"))
             	if(!val.equals("")) {
-            		System.out.println(val);
             		lst.add(val);
             	}
+        ListIterator<String> iterator = lst.listIterator(); 
+        while (iterator.hasNext()) { 
+            System.out.println(iterator.next()); 
+        }
 	}
 
 }
