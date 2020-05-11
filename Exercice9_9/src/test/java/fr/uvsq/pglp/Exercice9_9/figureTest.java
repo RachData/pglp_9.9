@@ -5,6 +5,9 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import fr.uvsq.pglp.Exercice9_9.Allfigure.Cercle2D;
+import fr.uvsq.pglp.Exercice9_9.Allfigure.Point2D;
+
 public class figureTest {
 	
 	Cercle2D c1;

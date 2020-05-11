@@ -1,4 +1,4 @@
-package fr.uvsq.pglp.Exercice9_9;
+package fr.uvsq.pglp.Exercice9_9.Allfigure;
 
 /**
  * un cercle
