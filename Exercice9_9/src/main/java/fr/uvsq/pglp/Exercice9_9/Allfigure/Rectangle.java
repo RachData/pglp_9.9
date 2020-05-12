@@ -2,22 +2,25 @@ package fr.uvsq.pglp.Exercice9_9.Allfigure;
 
 public class Rectangle implements allfigure{
 	
+	private String name;
 	private Point2D upLeft;
 	private Point2D downRight;
 
 	/**
 	 * Initilise un rectangle.
-	 * 
+	 * @param name le nom du rectangle
 	 * @param upLeft Angle gauche du rectangle
 	 * @param downRight Angle droite du rectangle
 	 */
-	public Rectangle(Point2D upLeft, Point2D downRight) {
-		
+	public Rectangle(String name, Point2D upLeft, Point2D downRight) {
+		/*
 		assert upLeft.getX() <= downRight.getX()
-				&& upLeft.getY() >= downRight.getY();
+				&& upLeft.getY() >= downRight.getY();*/
+		this.name = name;
 		this.upLeft = upLeft;
 		this.downRight = downRight;
 	}
+
 
 	/**
 	 * deplace le rectangle.
@@ -38,11 +41,25 @@ public class Rectangle implements allfigure{
 	@Override
 	public String toString() {
 		StringBuilder str = new StringBuilder();
-		str.append("[");
+		str.append(name);
+		str.append("(rectangle=");
 		str.append(upLeft.toString());
 		str.append(", ");
 		str.append(downRight.toString());
-		str.append("]");
+		str.append(")");
 		return str.toString();
 	}
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Point2D getUpLeft() {
+		return upLeft;
+	}
+
 }

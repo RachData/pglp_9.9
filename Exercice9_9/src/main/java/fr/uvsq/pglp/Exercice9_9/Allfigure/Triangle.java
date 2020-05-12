@@ -8,21 +8,25 @@ package fr.uvsq.pglp.Exercice9_9.Allfigure;
 
 public class Triangle implements allfigure{
 	
+	private String name;
 	private Point2D downLeft;
 	private Point2D downRight;
 	private Point2D sommet;
 
 	/**
 	 * Initailise un triangle
+	 * @param name
 	 * @param sommet
 	 * @param downLeft
 	 * @param downRight
 	 */
-	public Triangle(Point2D sommet, Point2D downLeft, Point2D downRight) {
+	public Triangle(String name, Point2D sommet, Point2D downLeft, Point2D downRight) {
+		this.name = name;
 		this.sommet=sommet;
 		this.downLeft = downLeft;
 		this.downRight = downRight;
 	}
+
 
 	/**
 	 * deplace le rectangle.
@@ -44,11 +48,29 @@ public class Triangle implements allfigure{
 	@Override
 	public String toString() {
 		StringBuilder str = new StringBuilder();
-		str.append("[");
+		str.append(name);
+		str.append("(triangle=");
 		str.append(downLeft.toString());
 		str.append(", ");
 		str.append(downRight.toString());
-		str.append("]");
+		str.append(")");
 		return str.toString();
+	}
+	
+	public String getName() {
+		return name;
+	}
+
+
+	public Point2D getDownLeft() {
+		return downLeft;
+	}
+
+	public Point2D getDownRight() {
+		return downRight;
+	}
+
+	public Point2D getSommet() {
+		return sommet;
 	}
 }
