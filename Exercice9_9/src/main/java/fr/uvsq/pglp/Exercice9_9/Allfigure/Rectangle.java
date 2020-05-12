@@ -1,4 +1,5 @@
 package fr.uvsq.pglp.Exercice9_9.Allfigure;
+import fr.uvsq.pglp.Exercice9_9.exceptions.*;
 
 public class Rectangle implements allfigure{
 	
@@ -12,13 +13,19 @@ public class Rectangle implements allfigure{
 	 * @param upLeft Angle gauche du rectangle
 	 * @param downRight Angle droite du rectangle
 	 */
-	public Rectangle(String name, Point2D upLeft, Point2D downRight) {
-		/*
-		assert upLeft.getX() <= downRight.getX()
-				&& upLeft.getY() >= downRight.getY();*/
-		this.name = name;
-		this.upLeft = upLeft;
-		this.downRight = downRight;
+	public Rectangle(String name, Point2D upLeft, Point2D downRight) throws  RectangleException
+	 {  
+		boolean test = upLeft.getX() <= downRight.getX() && upLeft.getY() >= downRight.getY();
+		if(test==false ) {
+			throw new RectangleException();
+		}else {
+			this.name = name;
+			this.upLeft = upLeft;
+			this.downRight = downRight;
+			
+		}
+		    
+		
 	}
 
 
