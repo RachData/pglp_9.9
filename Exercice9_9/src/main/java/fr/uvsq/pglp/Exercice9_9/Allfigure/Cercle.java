@@ -6,7 +6,7 @@ package fr.uvsq.pglp.Exercice9_9.Allfigure;
  *
  */
 
-public class Cercle2D implements allfigure{
+public class Cercle implements allfigure{
 	private String name;
 	private Point2D center;
 	private double rayon;
@@ -17,7 +17,7 @@ public class Cercle2D implements allfigure{
 	 * @param center the center
 	 * @param radius the radius
 	 */
-	public Cercle2D(String name, Point2D center, double radius) {
+	public Cercle(String name, Point2D center, double radius) {
 		this.name = name;
 		this.center = center;
 		this.rayon = radius;

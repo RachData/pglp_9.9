@@ -14,7 +14,7 @@ import fr.uvsq.pglp.Exercice9_9.Allfigure.*;
 
 public class figureTest {
 	
-	Cercle2D c1;
+	Cercle c1;
 	Point2D centre;
 	Rectangle r1;
 	Point2D ul;
@@ -28,7 +28,7 @@ public class figureTest {
 	@Before
 	public void setUp() throws Exception {
 		centre = new Point2D(0, 5);
-		c1 = new Cercle2D("C1",centre, 5);
+		c1 = new Cercle("C1",centre, 5);
 		ul = new Point2D(3, 2);
 		dr = new Point2D(5, 1);
 		r1 = new Rectangle("R1", ul, dr);
