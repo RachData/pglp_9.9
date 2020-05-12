@@ -9,12 +9,8 @@ import java.util.ListIterator;
 import org.junit.Before;
 import org.junit.Test;
 
-import fr.uvsq.pglp.Exercice9_9.Allfigure.Cercle2D;
-import fr.uvsq.pglp.Exercice9_9.Allfigure.GroupFig;
-import fr.uvsq.pglp.Exercice9_9.Allfigure.Point2D;
-import fr.uvsq.pglp.Exercice9_9.Allfigure.Rectangle;
-import fr.uvsq.pglp.Exercice9_9.Allfigure.Triangle;
-import fr.uvsq.pglp.Exercice9_9.Allfigure.allfigure;
+import fr.uvsq.pglp.Exercice9_9.Allfigure.*;
+
 
 public class figureTest {
 	
@@ -67,17 +63,12 @@ public class figureTest {
 		
 		System.out.println("affiche les elements du groupe");
 		
-		List<allfigure> arrlist = grp1.gettab(); 
-		  
-		
-		ListIterator<allfigure> iterator = arrlist.listIterator(); 
-
-    // Printing the iterated value 
-    System.out.println("\nUsing ListIterator:\n"); 
-    while (iterator.hasNext()) { 
-        System.out.println("Value is : " + iterator.next()); 
-    } 
-		
+		ItteratorFigure affich = new ItteratorFigure(grp1);
+		Iterator grouptIter = affich.getIterator();
+		while (grouptIter.HasNext()) {
+			allfigure nextValue=grouptIter.Next();
+            System.out.println("The next value with Iterator is: " + nextValue.toString());
+        }
 		
 	}
 
