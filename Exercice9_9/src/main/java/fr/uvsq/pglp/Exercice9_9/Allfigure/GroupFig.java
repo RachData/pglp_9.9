@@ -67,7 +67,9 @@ public class GroupFig implements allfigure{
 
 	@Override
 	public void move(double dx, double dy) {
-		// TODO Auto-generated method stub
+		for (int i=0 ; i< figures.size();i++) {
+			figures.get(i).move(dx, dy);
+		}
 		
 	}
 

@@ -63,6 +63,8 @@ public class figureTest {
 		
 		System.out.println("affiche les elements du groupe");
 		
+		grp1.move(-2, -2);
+		
 		ItteratorFigure affich = new ItteratorFigure(grp1);
 		Iterator grouptIter = affich.getIterator();
 		while (grouptIter.HasNext()) {

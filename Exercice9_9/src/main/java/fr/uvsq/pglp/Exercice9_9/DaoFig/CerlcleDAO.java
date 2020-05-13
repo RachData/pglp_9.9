@@ -27,7 +27,7 @@ public class CerlcleDAO extends DAO<Cercle> {
 			} catch (Exception e) {
 
 			}
-			PreparedStatement prepare = connect.prepareStatement("INSERT INTO Cercle (name, CordX, Cordy) VALUES (?,?,?,?) ");
+			PreparedStatement prepare = connect.prepareStatement("INSERT INTO Cercle (name, CordX, Cordy, Rayon) VALUES (?,?,?,?) ");
 			prepare.setString(1, obj.getName());
 			prepare.setDouble(2, obj.getCenter().getX());
 			prepare.setDouble(3, obj.getCenter().getY());
@@ -46,15 +46,13 @@ public class CerlcleDAO extends DAO<Cercle> {
 		Cercle fig=null;
 		Point2D centre=null;
 		try {
-			PreparedStatement prepare = this.connect.prepareStatement("SELECT * FROM Cercle WHERE name = ?");
+			PreparedStatement prepare = this.connect.prepareStatement("SELECT * FROM CERCLE WHERE NAME = ?");
 			prepare.setString(1, name);
 			ResultSet result= prepare.executeQuery();
-			if(result.next()) {
-				centre = new Point2D(result.getDouble("CordX"), result.getDouble("CordY"));
-				fig = new Cercle(result.getString("name"), centre, result.getDouble("name"));
+			if(result.next()==true) {
+				fig = new Cercle(result.getString("NAME"), new Point2D(result.getDouble("CORDX"), result.getDouble("CORDY")), result.getDouble("RAYON"));
 			}
-		
-			
+
 		}catch (Exception e) {
 			
 		}
@@ -87,7 +85,7 @@ public class CerlcleDAO extends DAO<Cercle> {
 	public boolean delete(Cercle obj) {
 		try
 		{
-			PreparedStatement prepare =this.connect.prepareStatement("delete from Cercle where name=?");
+			PreparedStatement prepare =this.connect.prepareStatement("delete from Cercle where NAME=?");
 			prepare.setString(1, obj.getName());
 			prepare.executeUpdate();
 			return true;
