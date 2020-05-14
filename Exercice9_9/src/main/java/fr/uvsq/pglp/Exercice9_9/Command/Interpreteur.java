@@ -20,7 +20,7 @@ public class Interpreteur {
 	public void register(String commandName, Commands command) {
 		commandMap.put(commandName, command);
 	}
-	
+
 	/**
 	 * execute une commande
 	 * @param commandName le nom de la commande

@@ -8,24 +8,24 @@ import java.util.List;
  *
  */
 public class Quit implements GenericCommands {
-	
-private final Generic quit; 
+
+	private final Generic quit; 
 	/**
 	 * initialise le receiver pour la command quit
-	 * @param quit
+	 * @param quit la commande quit
 	 */
 	public Quit(Generic quit) {
 		this.quit=quit;
-		
+
 	}
-	
+
 	/**
 	 * excecution de la commande Quit
 	 */
 	@Override
 	public void apply(List<String> arg) {
 		quit.quit();
-		
+
 	}
 
 }

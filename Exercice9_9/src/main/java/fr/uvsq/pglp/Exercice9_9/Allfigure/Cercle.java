@@ -50,7 +50,7 @@ public class Cercle implements allfigure{
 		str.append(')');
 		return str.toString();
 	}
-	
+
 	public String getName() {
 		return name;
 	}

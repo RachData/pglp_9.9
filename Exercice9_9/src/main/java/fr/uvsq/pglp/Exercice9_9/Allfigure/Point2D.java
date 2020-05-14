@@ -5,7 +5,7 @@ package fr.uvsq.pglp.Exercice9_9.Allfigure;
  */
 
 public class Point2D  implements allfigure{
-	
+
 	private double x;
 	private double y;
 
@@ -37,18 +37,18 @@ public class Point2D  implements allfigure{
 	public double getY() {
 		return y;
 	}
-	
-	 /**
-     * deplace le point
-     * @param dx
-     * @param dy
-     */
+
+	/**
+	 * deplace le point
+	 * @param dx
+	 * @param dy
+	 */
 	@Override
 	public void move(double dx, double dy) {
-		
+
 		x += dx;
 		y += dy;
-		
+
 	}
 
 
@@ -57,7 +57,7 @@ public class Point2D  implements allfigure{
 	 * 
 	 * @return en chaine de caractere la description
 	 */
-    @Override
+	@Override
 	public String toString() {
 		StringBuilder str = new StringBuilder();
 		str.append('(');
@@ -68,6 +68,6 @@ public class Point2D  implements allfigure{
 		return str.toString();
 	}
 
-   
+
 
 }

@@ -2,6 +2,7 @@ package fr.uvsq.pglp.Exercice9_9.CreationFigure;
 
 import java.util.List;
 import fr.uvsq.pglp.Exercice9_9.Allfigure.*;
+import fr.uvsq.pglp.Exercice9_9.exceptions.RectangleException;
 
 /**
  * la fabrique de figure
@@ -20,7 +21,7 @@ public class FigFactory {
 	 * @param args les arguments qui servent a instancier une figure
 	 * @return la figure
 	 */
-	public static allfigure getCercle(List<String> args) {
+	public static allfigure getFigure(List<String> args) {
 
 		allfigure fig = null;
 		String typeFigure = args.get(1).toUpperCase();
@@ -30,13 +31,25 @@ public class FigFactory {
 			fig = new Cercle(args.get(0),centre , Double.parseDouble(args.get(4)));
 			break;
 		case RECTANGLE:
-			//produitA = new ProduitA2();
+			centre = new Point2D(Double.parseDouble(args.get(2)), Double.parseDouble(args.get(2)));
+			Point2D anglebasgauche = new Point2D(Double.parseDouble(args.get(2)), Double.parseDouble(args.get(2)));
+			try {
+				fig = new RectCarre(args.get(0), centre, anglebasgauche);
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+
 			break;
 		case CARRE:
-			//produitA = new ProduitA2();
+			centre = new Point2D(Double.parseDouble(args.get(2)), Double.parseDouble(args.get(2)));
+			anglebasgauche = new Point2D(Double.parseDouble(args.get(2)), Double.parseDouble(args.get(2)));
+			fig = new Cercle(args.get(0),centre , Double.parseDouble(args.get(4)));
 			break;
 		case TRIANGLE:
-			//produitA = new ProduitA2();
+			Point2D anglebasdroit = new Point2D(Double.parseDouble(args.get(2)), Double.parseDouble(args.get(2)));
+			anglebasgauche = new Point2D(Double.parseDouble(args.get(2)), Double.parseDouble(args.get(2)));
+			centre = new Point2D(Double.parseDouble(args.get(2)), Double.parseDouble(args.get(2)));
+			fig = new Cercle(args.get(0),centre , Double.parseDouble(args.get(4)));
 			break;
 		}
 

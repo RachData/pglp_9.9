@@ -8,10 +8,13 @@ import java.sql.Connection;
  *
  */
 public class DaoFactory {
-	
+
 	private static final Connection conn=GetConnection.getInstanceConnexion();
-	
-	
+
+	/**
+	 * Retourne le DAO des cercles
+	 * @return DAOCercle
+	 */
 	public static CerlcleDAO getCerlcleDAO(){
 		return new CerlcleDAO(conn);
 	}

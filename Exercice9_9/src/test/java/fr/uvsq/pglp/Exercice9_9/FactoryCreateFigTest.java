@@ -10,12 +10,13 @@ import org.junit.Test;
 
 import fr.uvsq.pglp.Exercice9_9.Allfigure.*;
 import fr.uvsq.pglp.Exercice9_9.CreationFigure.*;
+import fr.uvsq.pglp.Exercice9_9.exceptions.RectangleException;
 
 public class FactoryCreateFigTest {
 
 	Cercle c1;
 	Point2D centre;
-	Rectangle r1;
+	RectCarre r1;
 	Point2D ul;
 	Point2D dr;
 	Triangle t1;
@@ -30,7 +31,7 @@ public class FactoryCreateFigTest {
 		c1 = new Cercle("C1",centre, 5);
 		ul = new Point2D(3, 2);
 		dr = new Point2D(5, 1);
-		r1 = new Rectangle("R1", ul, dr);
+		r1 = new RectCarre("R1", ul, dr);
 		som = new Point2D(4, 3);
 		dlt = new Point2D(3, 1);
 		drt = new Point2D(5, 2);
@@ -60,7 +61,7 @@ public class FactoryCreateFigTest {
 	}
 
 	@Test
-	public void FigFactoryTest() {
+	public void FigFactoryTest() throws RectangleException {
 		FigFactory figureFactory = new FigFactory();
 
 		allfigure cercle = null;
@@ -72,15 +73,15 @@ public class FactoryCreateFigTest {
 		arg.add("5.0");
 		arg.add("6");
 
-		cercle = figureFactory.getCercle(arg);
+		cercle = figureFactory.getFigure(arg);
 
 		assertTrue(cercle instanceof Cercle);
 
 
 	}
-	
+
 	@Test
-	public void FigFactoryAndContAllFigTest() {
+	public void FigFactoryAndContAllFigTest() throws RectangleException {
 		FigFactory figureFactory = new FigFactory();
 
 		allfigure cercle = null;
@@ -92,7 +93,7 @@ public class FactoryCreateFigTest {
 		arg.add("5.0");
 		arg.add("6");
 
-		ContAllFig.add(arg.get(0), figureFactory.getCercle(arg));
+		ContAllFig.add(arg.get(0), figureFactory.getFigure(arg));
 
 		assertTrue(ContAllFig.get("C1") instanceof Cercle);
 

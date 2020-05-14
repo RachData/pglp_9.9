@@ -22,7 +22,7 @@ public class ContAllFig {
 	 */
 	public static void add(String name, allfigure fig)
 	{	
-		figures.put(name, fig);;
+		figures.put(name, fig);
 	}
 
 	/**

@@ -7,7 +7,7 @@ package fr.uvsq.pglp.Exercice9_9.Allfigure;
  */
 
 public interface allfigure {
-	
+
 	/**
 	 * deplace une figure
 	 * 

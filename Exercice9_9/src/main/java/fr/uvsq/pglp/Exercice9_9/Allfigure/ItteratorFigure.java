@@ -9,9 +9,9 @@ import java.util.List;
  *
  */
 public class ItteratorFigure {
-	
+
 	private ArrayList<allfigure> grpfig=new ArrayList<allfigure>();
-	
+
 	/**
 	 * initialise ItteratorFigure
 	 * @param root
@@ -19,7 +19,7 @@ public class ItteratorFigure {
 	public ItteratorFigure (allfigure root) {
 		this.grpfig.add(root);
 	}
-	
+
 	/**
 	 * creer la liste d'un groupe
 	 * @author root
@@ -27,7 +27,7 @@ public class ItteratorFigure {
 	 */
 	private class groupIterator implements Iterator{
 		int index=0;
-		
+
 		/**
 		 * initialise la liste
 		 */
@@ -42,13 +42,13 @@ public class ItteratorFigure {
 						grpfig.add(arrlist.get(i));
 						i++;
 					}
-					
-				
+
+
 				}
 				verifier++;
 			}
 		}
-		
+
 		/**
 		 * verifirie s'il y'a des elements dans la liste
 		 */
@@ -59,7 +59,7 @@ public class ItteratorFigure {
 			// TODO Auto-generated method stub
 			return false;
 		}
-		
+
 		/**
 		 * retourne la figure dans la liste
 		 */
@@ -69,19 +69,19 @@ public class ItteratorFigure {
 				index++;
 				return grpfig.get(index-1);
 			}
-				
+
 			return null;
 		}
-		
+
 	}
-	
+
 	/**
 	 * retourne l'instance de l'itteration
 	 * @return
 	 */
 	public Iterator getIterator() {
 		return new groupIterator();
-		
+
 	}
 
 }

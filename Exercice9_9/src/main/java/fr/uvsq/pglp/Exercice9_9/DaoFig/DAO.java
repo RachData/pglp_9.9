@@ -3,10 +3,20 @@ package fr.uvsq.pglp.Exercice9_9.DaoFig;
 import java.io.Serializable;
 import java.sql.Connection;
 
+/**
+ * Un DAO
+ * @author root
+ *
+ * @param <T> le type du DAO
+ */
 public abstract class DAO<T> implements Serializable {
 	
 	protected Connection connect;
-	   
+	
+	/**
+	 * initialise la connection avec la base de données
+	 * @param conn
+	 */
 	public DAO(Connection conn){
 	    this.connect = conn;
 	}

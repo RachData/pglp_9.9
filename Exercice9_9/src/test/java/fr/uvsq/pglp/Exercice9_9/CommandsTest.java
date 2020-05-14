@@ -15,13 +15,13 @@ import fr.uvsq.pglp.Exercice9_9.CreationFigure.ContAllFig;
 public class CommandsTest {
 	Generic genericProg;
 	GenericCommands quitprog;
-	
+
 	SpecificCommands createCercle;
 	InstanceFig instfig;
-	
+
 	Interpreteur interprete;
 	List<String> arg;
-	
+
 	@Before
 	public void setUp() throws Exception {
 		arg = new ArrayList<String>();
@@ -29,7 +29,7 @@ public class CommandsTest {
 		genericProg=new Generic();
 		quitprog = new Quit(genericProg);
 		instfig = new InstanceFig();
-		createCercle = new CreateCercle(instfig);
+		createCercle = new CommandeCreateFig(instfig);
 		interprete.register("quit", quitprog);
 		interprete.register("cercle", createCercle);
 	}
@@ -38,9 +38,9 @@ public class CommandsTest {
 	public void quitTest() {
 		arg.add("quit");
 		interprete.execute("quit",arg);
-		
+
 	}*/
-	
+
 	@Test
 	public void createCercleTest() {
 		arg.add("C1");
@@ -50,7 +50,7 @@ public class CommandsTest {
 		arg.add("6");
 		interprete.execute(arg.get(1),arg);
 		assertTrue(ContAllFig.get("C1") instanceof Cercle);
-		
+
 	}
 
 }

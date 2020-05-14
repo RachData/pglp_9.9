@@ -1,8 +1,13 @@
 package fr.uvsq.pglp.Exercice9_9.Allfigure;
 import fr.uvsq.pglp.Exercice9_9.exceptions.*;
 
-public class Rectangle implements allfigure{
-	
+/**
+ * Un rectangle 
+ * @author root
+ *
+ */
+public class RectCarre implements allfigure{
+
 	private String name;
 	private Point2D upLeft;
 	private Point2D downRight;
@@ -13,8 +18,8 @@ public class Rectangle implements allfigure{
 	 * @param upLeft Angle gauche du rectangle
 	 * @param downRight Angle droite du rectangle
 	 */
-	public Rectangle(String name, Point2D upLeft, Point2D downRight) throws  RectangleException
-	 {  
+	public RectCarre(String name, Point2D upLeft, Point2D downRight) throws  RectangleException
+	{  
 		boolean test = upLeft.getX() <= downRight.getX() && upLeft.getY() >= downRight.getY();
 		if(test==false ) {
 			throw new RectangleException();
@@ -22,10 +27,10 @@ public class Rectangle implements allfigure{
 			this.name = name;
 			this.upLeft = upLeft;
 			this.downRight = downRight;
-			
+
 		}
-		    
-		
+
+
 	}
 
 
@@ -56,17 +61,37 @@ public class Rectangle implements allfigure{
 		str.append(")");
 		return str.toString();
 	}
-	
+
+	/***
+	 * Rerourne le nom du rectangle
+	 * @return nom
+	 */
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * modifie le nom de la figure
+	 * @param name
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	/**
+	 * retourne le point a l'angle haut gauche du rectangle
+	 * @return Point
+	 */
 	public Point2D getUpLeft() {
 		return upLeft;
+	}
+
+	/**
+	 * retourne le point a l'angle bas droite du rectangle
+	 * @return
+	 */
+	public Point2D getDownRight() {
+		return downRight;
 	}
 
 }

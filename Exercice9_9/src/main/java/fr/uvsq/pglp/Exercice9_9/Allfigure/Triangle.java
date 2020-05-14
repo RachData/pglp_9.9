@@ -7,7 +7,7 @@ package fr.uvsq.pglp.Exercice9_9.Allfigure;
  */
 
 public class Triangle implements allfigure{
-	
+
 	private String name;
 	private Point2D downLeft;
 	private Point2D downRight;
@@ -15,10 +15,10 @@ public class Triangle implements allfigure{
 
 	/**
 	 * Initailise un triangle
-	 * @param name
-	 * @param sommet
-	 * @param downLeft
-	 * @param downRight
+	 * @param name Le nom du Triangle
+	 * @param sommet Le sommet du triaangle
+	 * @param downLeft le point a l'angle bas gauche du triangle
+	 * @param downRight le point a l'angle bas droit du triangle
 	 */
 	public Triangle(String name, Point2D sommet, Point2D downLeft, Point2D downRight) {
 		this.name = name;
@@ -29,7 +29,7 @@ public class Triangle implements allfigure{
 
 
 	/**
-	 * deplace le rectangle.
+	 * deplace le triangle
 	 * 
 	 * @param dx deplacer a x
 	 * @param dy deplacer en y
@@ -56,20 +56,35 @@ public class Triangle implements allfigure{
 		str.append(")");
 		return str.toString();
 	}
-	
+
+	/**
+	 * Retourne le nom du triangle
+	 * @return le Nom
+	 */
 	public String getName() {
 		return name;
 	}
 
-
+	/**
+	 * retourne le point bas gauche du triangle
+	 * @return Un point
+	 */
 	public Point2D getDownLeft() {
 		return downLeft;
 	}
 
+	/**
+	 * retourne le point bas droite du triangle
+	 * @return Un point
+	 */
 	public Point2D getDownRight() {
 		return downRight;
 	}
 
+	/**
+	 * retourne le sommet du triangle
+	 * @return Un point
+	 */
 	public Point2D getSommet() {
 		return sommet;
 	}

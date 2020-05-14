@@ -6,11 +6,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class dicoTest {
-	
+
 	String Strcercle;
 	String Strrectcarre;
 	String Strtriangle;
-	
+
 	@Before
 	public void setUp() throws Exception {
 		Strcercle = new String("c1= Cercle((1,2),3)");
@@ -27,7 +27,7 @@ public class dicoTest {
 			System.out.println("Erreur de syntaxe ....");
 		}
 	}
-	
+
 	@Test
 	public void testrectcarre() {
 		System.out.println("testrectcarre ...");
@@ -37,7 +37,7 @@ public class dicoTest {
 			System.out.println("Erreur de syntaxe ....");
 		}
 	}
-	
+
 	@Test
 	public void testtrinagle() {
 		System.out.println("testtrinagle ...");
