@@ -22,7 +22,7 @@ public class CerlcleDAO extends DAO<Cercle> {
 			Statement s;
 	        s = connect.createStatement();
 			try {
-		        s.execute("create table Cercle(name varchar(40), CordX double, CordY double, Rayon double, PRIMARY KEY (name))");
+		        s.execute("create table Cercle(Id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,name varchar(40) NOT NULL UNIQUE, CordX double, CordY double, Rayon double)");
 		        System.out.println("Created table derby");
 			} catch (Exception e) {
 

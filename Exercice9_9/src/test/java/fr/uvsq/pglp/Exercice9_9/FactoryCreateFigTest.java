@@ -4,15 +4,14 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ListIterator;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import fr.uvsq.pglp.Exercice9_9.Allfigure.*;
+import fr.uvsq.pglp.Exercice9_9.CreationFigure.*;
 
-
-public class figureTest {
+public class FactoryCreateFigTest {
 
 	Cercle c1;
 	Point2D centre;
@@ -46,32 +45,37 @@ public class figureTest {
 	}
 
 	@Test
-	public void test() {
-		System.out.println(c1.toString());
-		System.out.println(r1.toString());
-		System.out.println(t1.toString());
+	public void ContAllFigTest() {
+		ContAllFig.add("C1", c1);
+		ContAllFig.add("R1", r1);
+		ContAllFig.add("T1", t1);
+		ContAllFig.add("Grp1", grp1);
 
-		c1.move(2, 2);
-		r1.move(2, 2);
-		t1.move(2, 2);
+		List<allfigure> fig = ContAllFig.getAll();
 
-		System.out.println("After move");
-		System.out.println(c1.toString());
-		System.out.println(r1.toString());
-		System.out.println(t1.toString());
-		System.out.println(grp1.toString());
-
-		System.out.println("affiche les elements du groupe");
-
-		grp1.move(-2, -2);
-
-		ItteratorFigure affich = new ItteratorFigure(grp1);
-		Iterator grouptIter = affich.getIterator();
-
-		while (grouptIter.HasNext()) {
-			allfigure nextValue=grouptIter.Next();
-			System.out.println("The next value with Iterator is: " + nextValue.toString());
+		for(int i=0;i<fig.size();i++) {
+			assertTrue(fig.get(i) instanceof allfigure);
 		}
+
+	}
+
+	@Test
+	public void FigFactoryTest() {
+		FigFactory figureFactory = new FigFactory();
+
+		allfigure cercle = null;
+
+		List<String> arg = new ArrayList<String>();
+		arg.add("C1");
+		arg.add("cercle");
+		arg.add("3.2");
+		arg.add("5.0");
+		arg.add("6");
+
+		cercle = figureFactory.getCercle(arg);
+
+		assertTrue(cercle instanceof Cercle);
+
 
 	}
 
