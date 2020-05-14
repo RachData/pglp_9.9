@@ -2,20 +2,15 @@ package fr.uvsq.pglp.Exercice9_9.Command;
 
 import java.util.List;
 
-/**
- * La commande concrete quit
- * @author root
- *
- */
-public class Quit implements GenericCommands {
+public class CreateCercle implements SpecificCommands{
 	
-private final Generic quit; 
+	private final InstanceFig inst; 
 	/**
 	 * initialise le receiver pour la command quit
 	 * @param quit
 	 */
-	public Quit(Generic quit) {
-		this.quit=quit;
+	public CreateCercle(InstanceFig inst) {
+		this.inst=inst;
 		
 	}
 	
@@ -24,7 +19,7 @@ private final Generic quit;
 	 */
 	@Override
 	public void apply(List<String> arg) {
-		quit.quit();
+		inst.getCercle(arg);
 		
 	}
 

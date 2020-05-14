@@ -10,17 +10,17 @@ import fr.uvsq.pglp.Exercice9_9.Allfigure.*;
  */
 public class FigFactory {
 
-	private final String CERCLE = "CERCLE";
-	private final String RECTANGLE = "RECTANGLE";
-	private final String CARRE = "CARRE";
-	private final String TRIANGLE = "TRIANGLE";
+	private static final String CERCLE = "CERCLE";
+	private static final String RECTANGLE = "RECTANGLE";
+	private static final String CARRE = "CARRE";
+	private static final String TRIANGLE = "TRIANGLE";
 
 	/**
 	 * retourne une instance de la figure
 	 * @param args les arguments qui servent a instancier une figure
 	 * @return la figure
 	 */
-	public allfigure getCercle(List<String> args) {
+	public static allfigure getCercle(List<String> args) {
 
 		allfigure fig = null;
 		String typeFigure = args.get(1).toUpperCase();

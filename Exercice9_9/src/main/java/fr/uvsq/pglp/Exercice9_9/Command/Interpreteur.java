@@ -1,6 +1,7 @@
 package fr.uvsq.pglp.Exercice9_9.Command;
 
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * L'interpreteur de command
@@ -24,14 +25,14 @@ public class Interpreteur {
 	 * execute une commande
 	 * @param commandName le nom de la commande
 	 */
-	public void execute(String commandName) {
-		Commands command = commandMap.get(commandName);
+	public void execute(String Name,List<String> arg) {
+		Commands command = commandMap.get(Name);
 		try {
 			if (command == null) {
 				System.out.println("erreur de commande ...");
-				throw new IllegalStateException("no command registered for " + commandName);
+				throw new IllegalStateException("no command registered for " + Name);
 			}
-			command.apply();
+			command.apply(arg);
 
 		} catch (IllegalStateException e) {
 

@@ -41,7 +41,6 @@ public class figureTest {
 		grp1.add(r1);
 		grp1.add(t1);
 
-		//List<allfigure> figures = grp1.gettab();
 
 	}
 

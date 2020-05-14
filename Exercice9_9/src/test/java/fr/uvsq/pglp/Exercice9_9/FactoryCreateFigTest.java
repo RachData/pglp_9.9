@@ -78,5 +78,25 @@ public class FactoryCreateFigTest {
 
 
 	}
+	
+	@Test
+	public void FigFactoryAndContAllFigTest() {
+		FigFactory figureFactory = new FigFactory();
+
+		allfigure cercle = null;
+
+		List<String> arg = new ArrayList<String>();
+		arg.add("C1");
+		arg.add("cercle");
+		arg.add("3.2");
+		arg.add("5.0");
+		arg.add("6");
+
+		ContAllFig.add(arg.get(0), figureFactory.getCercle(arg));
+
+		assertTrue(ContAllFig.get("C1") instanceof Cercle);
+
+
+	}
 
 }
