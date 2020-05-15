@@ -8,10 +8,10 @@ import java.util.List;
  *
  */
 public class CommandMove implements SpecificCommands{
-	
+
 	private final Specific fig; 
 	/**
-	 * initialise le receiver pour la command quit
+	 * initialise le receiver pour la command move
 	 * @param quit
 	 */
 	public CommandMove(Specific fig) {
@@ -20,7 +20,7 @@ public class CommandMove implements SpecificCommands{
 	}
 
 	/**
-	 * excecution de la commande dans la liste
+	 * excecution de la commande move
 	 */
 	@Override
 	public void apply(List<String> arg){
@@ -30,7 +30,6 @@ public class CommandMove implements SpecificCommands{
 		} catch (Exception e) {
 
 		}
-
 
 	}
 

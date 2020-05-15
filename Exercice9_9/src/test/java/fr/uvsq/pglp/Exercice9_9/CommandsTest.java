@@ -18,32 +18,35 @@ public class CommandsTest {
 	GenericCommands quitprog;
 
 	SpecificCommands createCercle;
-	Specific instfig;
+	Specific receiver;
 	CommandMove move;
-	Specific figeMove;
+	CommandAffichage affich;
 
 	Interpreteur interprete;
 	List<String> arg;
-	
+
 	allfigure fig;
 
 	@Before
 	public void setUp() throws Exception {
 		arg = new ArrayList<String>();
 		interprete = new Interpreteur();
-		
+
 		genericProg=new Generic();
 		quitprog = new Quit(genericProg);
+
+		receiver = new Specific();
 		
-		instfig = new Specific();
-		createCercle = new CommandeCreateFig(instfig);
+		createCercle = new CommandeCreateFig(receiver);
+
+		move = new CommandMove(receiver);
 		
-		figeMove = new Specific();
-		move = new CommandMove(figeMove);
-		
+		affich = new CommandAffichage(receiver);
+
 		interprete.register("quit", quitprog);
 		interprete.register("cercle", createCercle);
 		interprete.register("move", move);
+		interprete.register("affiche", affich);
 	}
 	/*
 	@Test
@@ -64,7 +67,7 @@ public class CommandsTest {
 		assertTrue(ContAllFig.get("C1") instanceof Cercle);
 
 	}
-	
+
 	@Test
 	public void moveFigAndGroupTest() {
 		arg.add("C1");
@@ -81,6 +84,21 @@ public class CommandsTest {
 		interprete.execute(arg.get(0),arg);
 		fig = ContAllFig.get("C1");
 		System.out.println(fig);
+
+	}
+
+	@Test
+	public void AfficheFigureTest() {
+		arg.add("C1");
+		arg.add("cercle");
+		arg.add("3.2");
+		arg.add("5.0");
+		arg.add("6");
+		interprete.execute(arg.get(1),arg);
+		arg.removeAll(arg);
+		arg.add("affiche");
+		arg.add("C1");
+		interprete.execute(arg.get(0),arg);
 
 	}
 
