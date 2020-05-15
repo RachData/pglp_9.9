@@ -9,7 +9,7 @@ import java.sql.Connection;
  *
  * @param <T> le type du DAO
  */
-public abstract class DAO<T> implements Serializable {
+public abstract class DAO<T> {//implements Serializable {
 	
 	protected Connection connect;
 	

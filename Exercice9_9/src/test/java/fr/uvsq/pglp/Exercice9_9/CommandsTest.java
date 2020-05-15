@@ -9,6 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import fr.uvsq.pglp.Exercice9_9.Allfigure.Cercle;
+import fr.uvsq.pglp.Exercice9_9.Allfigure.allfigure;
 import fr.uvsq.pglp.Exercice9_9.Command.*;
 import fr.uvsq.pglp.Exercice9_9.CreationFigure.ContAllFig;
 
@@ -17,21 +18,32 @@ public class CommandsTest {
 	GenericCommands quitprog;
 
 	SpecificCommands createCercle;
-	InstanceFig instfig;
+	Specific instfig;
+	CommandMove move;
+	Specific figeMove;
 
 	Interpreteur interprete;
 	List<String> arg;
+	
+	allfigure fig;
 
 	@Before
 	public void setUp() throws Exception {
 		arg = new ArrayList<String>();
 		interprete = new Interpreteur();
+		
 		genericProg=new Generic();
 		quitprog = new Quit(genericProg);
-		instfig = new InstanceFig();
+		
+		instfig = new Specific();
 		createCercle = new CommandeCreateFig(instfig);
+		
+		figeMove = new Specific();
+		move = new CommandMove(figeMove);
+		
 		interprete.register("quit", quitprog);
 		interprete.register("cercle", createCercle);
+		interprete.register("move", move);
 	}
 	/*
 	@Test
@@ -50,6 +62,25 @@ public class CommandsTest {
 		arg.add("6");
 		interprete.execute(arg.get(1),arg);
 		assertTrue(ContAllFig.get("C1") instanceof Cercle);
+
+	}
+	
+	@Test
+	public void moveFigAndGroupTest() {
+		arg.add("C1");
+		arg.add("cercle");
+		arg.add("3.2");
+		arg.add("5.0");
+		arg.add("6");
+		interprete.execute(arg.get(1),arg);
+		arg.removeAll(arg);
+		arg.add("move");
+		arg.add("C1");
+		arg.add("10");
+		arg.add("10");
+		interprete.execute(arg.get(0),arg);
+		fig = ContAllFig.get("C1");
+		System.out.println(fig);
 
 	}
 

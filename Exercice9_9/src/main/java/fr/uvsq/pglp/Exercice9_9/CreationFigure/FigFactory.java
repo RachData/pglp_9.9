@@ -27,7 +27,7 @@ public class FigFactory {
 		String typeFigure = args.get(1).toUpperCase();
 		switch (typeFigure) {
 		case CERCLE:
-			Point2D centre = new Point2D(Double.parseDouble(args.get(2)), Double.parseDouble(args.get(2)));
+			Point2D centre = new Point2D(Double.parseDouble(args.get(2)), Double.parseDouble(args.get(3)));
 			fig = new Cercle(args.get(0),centre , Double.parseDouble(args.get(4)));
 			break;
 		case RECTANGLE:

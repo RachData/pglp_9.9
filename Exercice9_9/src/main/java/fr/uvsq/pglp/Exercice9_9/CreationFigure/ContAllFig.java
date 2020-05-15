@@ -21,8 +21,8 @@ public class ContAllFig {
 	 * @param fig la figure
 	 */
 	public static void add(String name, allfigure fig)
-	{	
-		figures.put(name, fig);
+	{	if(fig != null)
+			figures.put(name, fig);
 	}
 
 	/**

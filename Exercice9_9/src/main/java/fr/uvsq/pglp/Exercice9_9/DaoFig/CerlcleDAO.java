@@ -43,7 +43,7 @@ public class CerlcleDAO extends DAO<Cercle> {
 			prepare.setDouble(2, obj.getCenter().getX());
 			prepare.setDouble(3, obj.getCenter().getY());
 			prepare.setDouble(4, obj.getRayon());
-			int nbrtuple =prepare.executeUpdate();
+			prepare.executeUpdate();
 			return true;
 		} catch (SQLException e) {
 			// TODO: handle exception

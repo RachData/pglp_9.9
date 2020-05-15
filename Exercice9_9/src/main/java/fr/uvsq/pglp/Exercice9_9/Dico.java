@@ -72,7 +72,7 @@ public class Dico {
 	 * ecrite par l'utilisateur dans Str
 	 * @param Str
 	 */
-	public static void Stringsplit(String Str) {
+	public static void stringsplit(String Str) {
 		List<String> lst = new ArrayList<String>();
 		Str = Str.replaceAll("\\s","");
 		Str = Str.replaceAll("=","#");

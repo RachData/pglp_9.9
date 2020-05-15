@@ -22,7 +22,7 @@ public class dicoTest {
 	public void testcercle() {
 		System.out.println("testcercle ...");
 		if(Dico.isMatching(Strcercle)) {
-			Dico.Stringsplit(Strcercle);
+			Dico.stringsplit(Strcercle);
 		}else {
 			System.out.println("Erreur de syntaxe ....");
 		}
@@ -32,7 +32,7 @@ public class dicoTest {
 	public void testrectcarre() {
 		System.out.println("testrectcarre ...");
 		if(Dico.isMatching(Strrectcarre)) {
-			Dico.Stringsplit(Strrectcarre);
+			Dico.stringsplit(Strrectcarre);
 		}else {
 			System.out.println("Erreur de syntaxe ....");
 		}
@@ -42,7 +42,7 @@ public class dicoTest {
 	public void testtrinagle() {
 		System.out.println("testtrinagle ...");
 		if(Dico.isMatching(Strtriangle)) {
-			Dico.Stringsplit(Strtriangle);
+			Dico.stringsplit(Strtriangle);
 		}else {
 			System.out.println("Erreur de syntaxe ....");
 		}

@@ -1,7 +1,9 @@
 package fr.uvsq.pglp.Exercice9_9.Allfigure;
 
-/*
- * un point
+/**
+ * Un point
+ * @author root
+ *
  */
 
 public class Point2D  implements allfigure{

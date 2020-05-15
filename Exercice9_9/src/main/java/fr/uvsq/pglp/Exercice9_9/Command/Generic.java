@@ -12,7 +12,7 @@ public class Generic {
 	 */
 	public void quit() {
 		System.out.println("Commande \"quit\" executer");
-		System.exit(0);
+		//System.exit(0);
 	}
 
 }

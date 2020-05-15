@@ -50,6 +50,8 @@ public class Triangle implements allfigure{
 		StringBuilder str = new StringBuilder();
 		str.append(name);
 		str.append("(triangle=");
+		str.append(sommet.toString());
+		str.append(", ");
 		str.append(downLeft.toString());
 		str.append(", ");
 		str.append(downRight.toString());
