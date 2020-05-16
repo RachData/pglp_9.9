@@ -139,14 +139,14 @@ public class TriangleDAO extends DAO<Triangle>{
 	 * Supprime un cercle de la base de données
 	 */
 	@Override
-	public boolean delete(Triangle obj) {
+	public boolean delete(String name) {
 
 		PreparedStatement prepare = null;
 		try
 		{
 			try {
 				prepare =this.connect.prepareStatement("delete from Cercle where NAME=?");
-				prepare.setString(1, obj.getName());
+				prepare.setString(1, name);
 				prepare.executeUpdate();
 				return true;
 			} finally {

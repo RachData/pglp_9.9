@@ -1,12 +1,16 @@
 package fr.uvsq.pglp.Exercice9_9.Command;
 
+import javax.sound.sampled.ReverbType;
+
 public class Initcommande {
 	
 
 	private static Generic genericProg;
 	private static GenericCommands quitprog;
 
-	private static SpecificCommands createFig;
+	private static CommandeCercle createCercle;
+	private static CommandRectangle createRectangle;
+	private static CommandTriangle createTriangle;
 	private static Specific receiver;
 	private static CommandMove move;
 	private static CommandAffichage affich;
@@ -22,18 +26,22 @@ public class Initcommande {
 
 		receiver = new Specific();
 
-		createFig = new CommandeCreateFig(receiver);
+		createCercle = new CommandeCercle(receiver);
+		
+		createRectangle = new CommandRectangle(receiver);
+		
+		createTriangle = new CommandTriangle(receiver);
 
 		move = new CommandMove(receiver);
 
 		affich = new CommandAffichage(receiver);
 
 		inter.register("quit", quitprog);
-		inter.register("cercle", createFig);
-		inter.register("rectangle", createFig);
-		inter.register("carre", createFig);
-		inter.register("triangle", createFig);
-		inter.register("groupe", createFig);
+		inter.register("cercle", createCercle);
+		inter.register("rectangle", createRectangle);
+		//inter.register("carre", createFig);
+		inter.register("triangle", createTriangle);
+		//inter.register("groupe", createFig);
 		inter.register("move", move);
 		inter.register("affiche", affich);
 

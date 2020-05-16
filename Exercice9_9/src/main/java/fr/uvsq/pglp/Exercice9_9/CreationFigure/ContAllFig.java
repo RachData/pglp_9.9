@@ -15,16 +15,20 @@ import fr.uvsq.pglp.Exercice9_9.Allfigure.*;
  */
 public class ContAllFig {
 
-	private static final Map<String, allfigure> figures = new HashMap<>();
+	private static allfigure figures;
+	private static String name= "";
 
 	/**
 	 * Ajoute une figure
 	 * @param name le nom de la figure
 	 * @param fig la figure
 	 */
-	public static void add(String name, allfigure fig)
-	{	if(fig != null)
-		figures.put(name, fig);
+	public static void add(String namefig, allfigure fig)
+	{	if(fig != null) {
+		figures= fig;
+		name = namefig;
+	}
+
 	}
 
 	/**
@@ -32,22 +36,12 @@ public class ContAllFig {
 	 * @param name le nom de la figure
 	 * @return la figure
 	 */
-	public static allfigure get(String name) {
-		return figures.get(name);
+	public static allfigure get(String namefig) {
+		if(name == namefig)
+			return figures;
+		return null ;
 	}
 
-	/**
-	 * retourne une liste de toute les figures crées
-	 * @return une liste
-	 */
-	public static List<allfigure> getAll() {
-		List<allfigure> fig =new ArrayList<allfigure>();
-		/*for (String name : figures.keySet())  
-			fig.add(figures.get(name));*/
-		for (Entry<String, allfigure> entry : figures.entrySet())
-			fig.add(entry.getValue());
-		return fig;
-	}
 
 
 }

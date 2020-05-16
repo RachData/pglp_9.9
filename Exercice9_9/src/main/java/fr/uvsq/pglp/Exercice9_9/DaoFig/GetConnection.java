@@ -23,7 +23,8 @@ public class GetConnection {
 		try {
 
 			Class.forName(DRIVER);
-
+			
+			System.out.println("get connection");
 			Connection connec =DriverManager.getConnection(JDBC_URL);
 			if (connec!=null)
 			{
@@ -36,6 +37,7 @@ public class GetConnection {
 		}
 		catch (ClassNotFoundException e) 
 		{
+			e.printStackTrace();
 			System.out.println(e.getMessage());
 			System.out.println("ERREUR : charger derby.jdbc.EmbeddedDriver ");
 

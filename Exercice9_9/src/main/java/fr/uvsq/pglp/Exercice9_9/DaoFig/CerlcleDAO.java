@@ -31,7 +31,7 @@ public class CerlcleDAO extends DAO<Cercle> {
 
 
 		try {
-
+			/*
 			Statement s;
 			s = connect.createStatement();
 			try {
@@ -42,7 +42,7 @@ public class CerlcleDAO extends DAO<Cercle> {
 			}finally {
 				s.close();
 
-			}
+			}*/
 
 			PreparedStatement prepare = null;
 			try {
@@ -52,6 +52,8 @@ public class CerlcleDAO extends DAO<Cercle> {
 				prepare.setDouble(3, obj.getCenter().getY());
 				prepare.setDouble(4, obj.getRayon());
 				prepare.executeUpdate();
+				System.out.println("Passer " + obj);
+
 				return true;
 			} finally {
 				prepare.close();
@@ -134,14 +136,14 @@ public class CerlcleDAO extends DAO<Cercle> {
 	 * Supprime un cercle de la base de données
 	 */
 	@Override
-	public boolean delete(Cercle obj) {
+	public boolean delete(String name) {
 
 		PreparedStatement prepare = null;
 		try
 		{
 			try {
 				prepare =this.connect.prepareStatement("delete from Cercle where NAME=?");
-				prepare.setString(1, obj.getName());
+				prepare.setString(1, name);
 				prepare.executeUpdate();
 				return true;
 			} finally {

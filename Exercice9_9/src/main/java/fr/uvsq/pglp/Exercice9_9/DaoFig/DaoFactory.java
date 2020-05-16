@@ -29,7 +29,7 @@ public class DaoFactory {
 	
 	/**
 	 * Retourne le DAO des Triangles
-	 * @return DAOTriangle
+	 * @return DAOTriagle
 	 */
 	public static TriangleDAO getTriangleDAO(){
 		return new TriangleDAO(conn);

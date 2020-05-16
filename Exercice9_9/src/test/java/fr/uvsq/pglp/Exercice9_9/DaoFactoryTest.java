@@ -21,32 +21,33 @@ public class DaoFactoryTest {
 	}
 
 	
-	@Test
+	/*@Test
 	public void Createtest() {
-		cdao = DaoFactory.getCerlcleDAO();
+		cdao = (CerlcleDAO) DaoFactory.getCerlcleDAO();
+		
 		cdao.create(new Cercle("C1", centre, 8));
 		assertTrue(cdao.create(c1));
-	}
+	}*/
 	
 	
 	@Test
 	public void Readtest() {
-		cdao = DaoFactory.getCerlcleDAO();
+		cdao = (CerlcleDAO) DaoFactory.getCerlcleDAO();
 		c2 = cdao.read("C1");
 		System.out.println(c2.toString());
 	}
 
 	@Test
 	public void Updatetest() {
-		cdao = DaoFactory.getCerlcleDAO();
+		cdao = (CerlcleDAO) DaoFactory.getCerlcleDAO();
 		c2 = new Cercle("C2",new Point2D(1, 0), 8);
 		assertTrue(cdao.update(c2));
 	}
 
 	@Test
 	public void Deletetest() {
-		cdao = DaoFactory.getCerlcleDAO();
-		assertTrue(cdao.delete(c1));
+		cdao = (CerlcleDAO) DaoFactory.getCerlcleDAO();
+		assertTrue(cdao.delete("C3"));
 	}
 
 }

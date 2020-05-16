@@ -45,24 +45,10 @@ public class FactoryCreateFigTest {
 
 	}
 
-	@Test
-	public void ContAllFigTest() {
-		ContAllFig.add("C1", c1);
-		ContAllFig.add("R1", r1);
-		ContAllFig.add("T1", t1);
-		ContAllFig.add("Grp1", grp1);
-
-		List<allfigure> fig = ContAllFig.getAll();
-
-		for(int i=0;i<fig.size();i++) {
-			assertTrue(fig.get(i) instanceof allfigure);
-		}
-
-	}
 
 	@Test
 	public void FigFactoryTest() throws RectangleException {
-		FigFactory figureFactory = new FigFactory();
+		//FigFactory figureFactory = new FigFactory();
 
 		allfigure cercle = null;
 
@@ -73,7 +59,7 @@ public class FactoryCreateFigTest {
 		arg.add("5.0");
 		arg.add("6");
 
-		cercle = figureFactory.getFigure(arg);
+		cercle = FigFactory.getFigure(arg);
 
 		assertTrue(cercle instanceof Cercle);
 
@@ -82,7 +68,7 @@ public class FactoryCreateFigTest {
 
 	@Test
 	public void FigFactoryAndContAllFigTest() throws RectangleException {
-		FigFactory figureFactory = new FigFactory();
+		//FigFactory figureFactory = new FigFactory();
 
 		allfigure cercle = null;
 
@@ -93,7 +79,7 @@ public class FactoryCreateFigTest {
 		arg.add("5.0");
 		arg.add("6");
 
-		ContAllFig.add(arg.get(0), figureFactory.getFigure(arg));
+		ContAllFig.add(arg.get(0), FigFactory.getFigure(arg));
 
 		assertTrue(ContAllFig.get("C1") instanceof Cercle);
 
