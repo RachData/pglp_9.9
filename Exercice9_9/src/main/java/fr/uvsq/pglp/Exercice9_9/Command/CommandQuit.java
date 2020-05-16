@@ -7,14 +7,14 @@ import java.util.List;
  * @author root
  *
  */
-public class Quit implements GenericCommands {
+public class CommandQuit implements GenericCommands {
 
 	private final Generic quit; 
 	/**
 	 * initialise le receiver pour la command quit
 	 * @param quit la commande quit
 	 */
-	public Quit(Generic quit) {
+	public CommandQuit(Generic quit) {
 		this.quit=quit;
 
 	}

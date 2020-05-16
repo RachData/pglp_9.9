@@ -13,6 +13,9 @@ import java.util.regex.Pattern;
  *
  */
 public class Dico {
+	
+	private static int TYPE;
+	
 	/**
 	 * format generale pour la creation de figure nom = commande
 	 */
@@ -42,6 +45,10 @@ public class Dico {
 			+ "d+?\\s*\\)\\s*,\\s*\\(\\s*\\d*?\\.?\\d+?\\s*\\,\\s*\\d*?\\.?\\d+?\\s*\\)\\s*\\)";
 	private static final Pattern patterntriangle = Pattern.compile(regextriangle);
 
+	private static final String regexGeneric = "^([a-zA-Z]+)\\s*\\(\\s*([a-zA-Z0-9_-]+)\\s*,\\s*\\(\\s*\\d*?\\.?\\d+?\\s*,"
+			+ "\\s*\\d*?\\.?\\d+?\\s*\\)\\s*\\)";
+	private static final Pattern patternGeneric = Pattern.compile(regexGeneric);
+
 	/**
 	 * Verifie le format du text entrer par l'user
 	 * @param text format enter par l'user
@@ -49,18 +56,27 @@ public class Dico {
 	 */
 	public static boolean isMatching(String text)  {
 		Matcher matcher = pattern.matcher(text);
-		if(matcher.matches())
+		if(matcher.matches()) {//verifie si cest une creation
+			TYPE = 1;
 			matcher = patterncercle.matcher(text);
-		if(matcher.matches())
-			return true;
-		else {
-			matcher = patternrectcarre.matcher(text);
 			if(matcher.matches())
 				return true;
 			else {
-				matcher = patterntriangle.matcher(text);
+				matcher = patternrectcarre.matcher(text);
 				if(matcher.matches())
 					return true;
+				else {
+					matcher = patterntriangle.matcher(text);
+					if(matcher.matches())
+						return true;
+				}
+			}
+
+		}else {
+			matcher = patternGeneric.matcher(text);
+			if(matcher.matches()){
+				TYPE = 0;
+				return true;
 			}
 		}
 		return false;
@@ -72,7 +88,7 @@ public class Dico {
 	 * ecrite par l'utilisateur dans Str
 	 * @param Str
 	 */
-	public static void stringsplit(String Str) {
+	public static List<String> stringsplit(String Str) {
 		List<String> lst = new ArrayList<String>();
 		Str = Str.replaceAll("\\s","");
 		Str = Str.replaceAll("=","#");
@@ -85,10 +101,15 @@ public class Dico {
 			if(!val.equals("")) {
 				lst.add(val);
 			}
-		ListIterator<String> iterator = lst.listIterator(); 
-		while (iterator.hasNext()) { 
-			System.out.println(iterator.next()); 
-		}
+		return lst;
+	}
+	
+	/**
+	 * retourne le type de la commande saisie par l'utilisateur
+	 * @return TYPE
+	 */
+	public static int gettypeString() {
+		return TYPE;
 	}
 
 }

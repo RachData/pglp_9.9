@@ -33,7 +33,7 @@ public class CommandsTest {
 		interprete = new Interpreteur();
 
 		genericProg=new Generic();
-		quitprog = new Quit(genericProg);
+		quitprog = new CommandQuit(genericProg);
 
 		receiver = new Specific();
 		

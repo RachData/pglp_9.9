@@ -17,6 +17,7 @@ public class figureTest {
 	Cercle c1;
 	Point2D centre;
 	RectCarre r1;
+	RectCarre Care;
 	Point2D ul;
 	Point2D dr;
 	Triangle t1;
@@ -29,13 +30,16 @@ public class figureTest {
 	public void setUp() throws Exception {
 		centre = new Point2D(0, 5);
 		c1 = new Cercle("C1",centre, 5);
+		
 		ul = new Point2D(3, 2);
 		dr = new Point2D(5, 1);
 		r1 = new RectCarre("R1", ul, dr);
+		
 		som = new Point2D(4, 3);
 		dlt = new Point2D(3, 1);
 		drt = new Point2D(5, 2);
 		t1 = new Triangle("T1", som, dlt, drt);
+		
 		grp1 = new GroupFig("Grp1");
 		grp1.add(c1);
 		grp1.add(r1);
