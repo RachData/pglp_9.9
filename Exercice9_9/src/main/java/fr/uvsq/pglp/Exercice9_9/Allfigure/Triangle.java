@@ -67,6 +67,7 @@ public class Triangle implements allfigure{
 		return name;
 	}
 
+
 	/**
 	 * retourne le point bas gauche du triangle
 	 * @return Un point

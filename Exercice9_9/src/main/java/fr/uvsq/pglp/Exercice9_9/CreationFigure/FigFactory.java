@@ -2,7 +2,6 @@ package fr.uvsq.pglp.Exercice9_9.CreationFigure;
 
 import java.util.List;
 import fr.uvsq.pglp.Exercice9_9.Allfigure.*;
-import fr.uvsq.pglp.Exercice9_9.exceptions.RectangleException;
 
 /**
  * la fabrique de figure
@@ -74,6 +73,8 @@ public class FigFactory {
 				fig = grp ;
 			}
 			break;
+		default:
+			
 		}
 
 		return fig;

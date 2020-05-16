@@ -10,14 +10,14 @@ ENVIRONNEMENT;
 		Scanner rep = new Scanner(System.in);
 		DrawingTUI saisie = new DrawingTUI();
 		String text;
-		while(true) {
+		while(Continue.isOn()) {
 			
 			text = rep.nextLine();
 			saisie.nextCommand(text);
 			
 		}
 		
-
+		rep.close();
 	}
 	
 	public static void main( String[] args ) {

@@ -2,8 +2,6 @@ package fr.uvsq.pglp.Exercice9_9.Command;
 
 import java.util.List;
 
-import fr.uvsq.pglp.Exercice9_9.exceptions.RectangleException;
-
 /**
  * Commande concrete pour la creation d'une figure
  * @author root

@@ -1,6 +1,6 @@
 package fr.uvsq.pglp.Exercice9_9.DaoFig;
 
-import java.io.Serializable;
+
 import java.sql.Connection;
 
 /**

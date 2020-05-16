@@ -8,6 +8,15 @@ import fr.uvsq.pglp.Exercice9_9.exceptions.*;
  */
 public class RectCarre implements allfigure{
 
+	public void setUpLeft(Point2D upLeft) {
+		this.upLeft = upLeft;
+	}
+
+
+	public void setDownRight(Point2D downRight) {
+		this.downRight = downRight;
+	}
+
 	private String name;
 	private Point2D upLeft;
 	private Point2D downRight;
@@ -68,14 +77,6 @@ public class RectCarre implements allfigure{
 	 */
 	public String getName() {
 		return name;
-	}
-
-	/**
-	 * modifie le nom de la figure
-	 * @param name
-	 */
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	/**

@@ -21,7 +21,7 @@ public class DrawingTUI {
 	 */
 	public void nextCommand(String text) {
 
-		String Commandename = new String();
+		String Commandename = "";
 		if(Dico.isMatching(text)) {
 			this.args = Dico.stringsplit(text);
 			Commandename= this.args.get(Dico.gettypeString());

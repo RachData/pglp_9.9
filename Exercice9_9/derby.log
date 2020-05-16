@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-Fri May 15 16:28:07 CEST 2020:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance a816c00e-0172-18bc-34e8-00000e805048 
+Sat May 16 17:56:04 CEST 2020:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance a816c00e-0172-1e33-1691-00000eb79290 
 on database directory /root/Documents/Java/ProgGL/exo9.9/Exercice9_9/FigureBD with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@b81eda8 
 Loaded from file:/usr/lib/jvm/apache-maven-3.6.3/repository/org/apache/derby/derby/10.12.1.1/derby-10.12.1.1.jar
 java.vendor=Debian

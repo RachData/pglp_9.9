@@ -6,20 +6,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import fr.uvsq.pglp.Exercice9_9.Allfigure.*;
+import fr.uvsq.pglp.Exercice9_9.Allfigure.Point2D;
+import fr.uvsq.pglp.Exercice9_9.Allfigure.Triangle;
 
-/**
- * DAO pour les cercles
- * @author root
- *
- */
-public class CerlcleDAO extends DAO<Cercle> {
-
+public class TriangleDAO extends DAO<Triangle>{
+	
 	/**
 	 * initilise la connection avec la base de donnée
 	 * @param conn la connection
 	 */
-	public CerlcleDAO(Connection conn) {
+	public TriangleDAO(Connection conn) {
 		super(conn);
 	}
 
@@ -27,7 +23,7 @@ public class CerlcleDAO extends DAO<Cercle> {
 	 * Insere un cercle dans la base de données
 	 */
 	@Override
-	public boolean create(Cercle obj) {
+	public boolean create(Triangle obj) {
 
 
 		try {
@@ -35,7 +31,7 @@ public class CerlcleDAO extends DAO<Cercle> {
 			Statement s;
 			s = connect.createStatement();
 			try {
-				s.execute("create table Cercle(Id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,name varchar(40) NOT NULL UNIQUE, CordX double, CordY double, Rayon double)");
+				s.execute("create table Triangle(Id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,name varchar(40) NOT NULL UNIQUE, CordSX double, CordSY double, CordDLX double, CordDLY double, CordDRX double, CordDRY double)");
 				System.out.println("Created table derby");
 			} catch (Exception e) {
 
@@ -46,11 +42,14 @@ public class CerlcleDAO extends DAO<Cercle> {
 
 			PreparedStatement prepare = null;
 			try {
-				prepare = connect.prepareStatement("INSERT INTO Cercle (name, CordX, Cordy, Rayon) VALUES (?,?,?,?) ");
+				prepare = connect.prepareStatement("INSERT INTO Cercle (name, CordUX, CordUy,CordDX, CordDy) VALUES (?,?,?,?,?,?,?) ");
 				prepare.setString(1, obj.getName());
-				prepare.setDouble(2, obj.getCenter().getX());
-				prepare.setDouble(3, obj.getCenter().getY());
-				prepare.setDouble(4, obj.getRayon());
+				prepare.setDouble(2, obj.getSommet().getX());
+				prepare.setDouble(2, obj.getSommet().getY());
+				prepare.setDouble(2, obj.getDownLeft().getX());
+				prepare.setDouble(3, obj.getDownLeft().getY());
+				prepare.setDouble(4, obj.getDownRight().getX());
+				prepare.setDouble(5, obj.getDownRight().getY());
 				prepare.executeUpdate();
 				return true;
 			} finally {
@@ -67,8 +66,8 @@ public class CerlcleDAO extends DAO<Cercle> {
 	 * Retourne le cercle dont le nom est "name" dans la base de données
 	 */
 	@Override
-	public Cercle read(String name) {
-		Cercle fig=null;
+	public Triangle read(String name) {
+		Triangle fig=null;
 
 		PreparedStatement prepare = null;
 		ResultSet result= null;
@@ -82,7 +81,10 @@ public class CerlcleDAO extends DAO<Cercle> {
 				try {
 					result= prepare.executeQuery();
 					if(result.next()==true) {
-						fig = new Cercle(result.getString("NAME"), new Point2D(result.getDouble("CORDX"), result.getDouble("CORDY")), result.getDouble("RAYON"));
+						try {
+							fig = new Triangle(result.getString("NAME"), new Point2D(result.getDouble("CORDSX"), result.getDouble("CORDSY")), new Point2D(result.getDouble("CORDDLX"), result.getDouble("CORDDLY")), new Point2D(result.getDouble("CORDDRX"), result.getDouble("CORDDRY")));
+						} catch (Exception e) {
+						}
 					}
 				}finally {
 					if(result != null)
@@ -104,18 +106,21 @@ public class CerlcleDAO extends DAO<Cercle> {
 	 * Effectue la mise a jour d'un cercle dans la base de données
 	 */
 	@Override
-	public boolean update(Cercle obj) {
+	public boolean update(Triangle obj) {
 
 		PreparedStatement prepare = null;
 		try
 		{
 			try {
-				prepare =this.connect.prepareStatement("update Cercle set name=?,CordX=?,CordY=?,Rayon=? where name=?");
+				prepare =this.connect.prepareStatement("update Cercle set name=?,CordSX=?,CordSY=?,CordDLX=?,CordDRY=?,CordDRX=?,CordDRY=? where name=?");
 				prepare.setString(1, obj.getName());
-				prepare.setDouble(2, obj.getCenter().getX());
-				prepare.setDouble(3, obj.getCenter().getY());
-				prepare.setDouble(4, obj.getRayon());
-				prepare.setString(5, obj.getName());
+				prepare.setDouble(2, obj.getSommet().getX());
+				prepare.setDouble(3, obj.getSommet().getY());
+				prepare.setDouble(4, obj.getDownLeft().getX());
+				prepare.setDouble(5, obj.getDownLeft().getY());
+				prepare.setDouble(6, obj.getDownRight().getX());
+				prepare.setDouble(7, obj.getDownRight().getY());
+				prepare.setString(8, obj.getName());
 				prepare.executeUpdate();
 				return true;
 			} finally {
@@ -134,7 +139,7 @@ public class CerlcleDAO extends DAO<Cercle> {
 	 * Supprime un cercle de la base de données
 	 */
 	@Override
-	public boolean delete(Cercle obj) {
+	public boolean delete(Triangle obj) {
 
 		PreparedStatement prepare = null;
 		try

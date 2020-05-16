@@ -18,6 +18,22 @@ public class DaoFactory {
 	public static CerlcleDAO getCerlcleDAO(){
 		return new CerlcleDAO(conn);
 	}
+	
+	/**
+	 * Retourne le DAO des Rectangles
+	 * @return DAORectangle
+	 */
+	public static RectangleDAO getRectangleDAO(){
+		return new RectangleDAO(conn);
+	}
+	
+	/**
+	 * Retourne le DAO des Triangles
+	 * @return DAOTriangle
+	 */
+	public static TriangleDAO getTriangleDAO(){
+		return new TriangleDAO(conn);
+	}
 	/*
 	public static GroupFigDAO getCompositePerso(){
 		return new GroupFigDAO(conn);

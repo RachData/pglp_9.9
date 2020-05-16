@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+
 import fr.uvsq.pglp.Exercice9_9.Allfigure.*;
 
 /**
@@ -40,8 +42,10 @@ public class ContAllFig {
 	 */
 	public static List<allfigure> getAll() {
 		List<allfigure> fig =new ArrayList<allfigure>();
-		for (String name : figures.keySet())  
-			fig.add(figures.get(name));
+		/*for (String name : figures.keySet())  
+			fig.add(figures.get(name));*/
+		for (Entry<String, allfigure> entry : figures.entrySet())
+			fig.add(entry.getValue());
 		return fig;
 	}
 
