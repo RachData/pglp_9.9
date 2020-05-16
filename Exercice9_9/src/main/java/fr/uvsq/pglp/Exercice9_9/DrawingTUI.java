@@ -16,6 +16,7 @@ public class DrawingTUI {
 
 	/**
 	 * Analyse le texte saisi par l’utilisateur
+	 * et donne la main a l'interpreteur si la syntaxe est bonne
 	 * @param text la saisie de l'utilisateur
 	 */
 	public void nextCommand(String text) {
@@ -24,11 +25,11 @@ public class DrawingTUI {
 		if(Dico.isMatching(text)) {
 			this.args = Dico.stringsplit(text);
 			Commandename= this.args.get(Dico.gettypeString());
-			if(Commandename != "affiche")
-				interprete.execute(Commandename.toLowerCase(),this.args);
-			else
-				this.affich(Commandename);
-
+			interprete.execute(Commandename.toLowerCase(),this.args);
+			if ( Dico.gettypeString() == 1) {
+				this.affich("affiche");
+			}
+			
 		}else {
 			System.out.println("Exceptions a gerer erreur de syntaxe");
 		}
@@ -39,12 +40,9 @@ public class DrawingTUI {
 	 * afficher un dessin.
 	 */
 	public void affich(String name) {
-
-		interprete.execute(name,this.args);
-	}
-
-	public void execute() {
-
+		args = this.args.subList(0, 1);
+		args.add(args.get(0));
+		interprete.execute(name,args);
 	}
 
 }

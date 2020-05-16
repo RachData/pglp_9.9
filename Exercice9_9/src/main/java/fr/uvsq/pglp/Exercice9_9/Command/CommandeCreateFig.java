@@ -30,7 +30,7 @@ public class CommandeCreateFig implements SpecificCommands{
 		try {
 			inst.getFig(arg);
 		} catch (Exception e) {
-
+			System.out.println("exception a gerer dans commandeCreateFig");
 		}
 
 

@@ -78,6 +78,11 @@ public class Dico {
 					matcher = patterntriangle.matcher(text);
 					if(matcher.matches())
 						return true;
+					else {
+						matcher = patterngroup.matcher(text);
+						if(matcher.matches())
+							return true;
+					}
 				}
 			}
 

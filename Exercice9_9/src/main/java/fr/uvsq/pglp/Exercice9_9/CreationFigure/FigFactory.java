@@ -31,7 +31,7 @@ public class FigFactory {
 			Point2D centre = new Point2D(Double.parseDouble(args.get(2)), Double.parseDouble(args.get(3)));
 			fig = new Cercle(args.get(0),centre , Double.parseDouble(args.get(4)));
 			break;
-			
+
 		case RECTANGLE:
 			centre = new Point2D(Double.parseDouble(args.get(2)), Double.parseDouble(args.get(3)));//anglehautdroit
 			Point2D anglebasgauche = new Point2D(Double.parseDouble(args.get(4)), Double.parseDouble(args.get(5)));
@@ -41,7 +41,7 @@ public class FigFactory {
 				// TODO: handle exception
 			}
 			break;
-			
+
 		case CARRE:
 			centre = new Point2D(Double.parseDouble(args.get(2)), Double.parseDouble(args.get(3)));//anglehautdroit
 			anglebasgauche = new Point2D(Double.parseDouble(args.get(4)), Double.parseDouble(args.get(5)));
@@ -51,23 +51,27 @@ public class FigFactory {
 				// TODO: handle exception
 			}
 			break;
-			
+
 		case TRIANGLE:
 			centre = new Point2D(Double.parseDouble(args.get(2)), Double.parseDouble(args.get(3)));//sommet
 			anglebasgauche = new Point2D(Double.parseDouble(args.get(4)), Double.parseDouble(args.get(5)));
 			Point2D anglebasdroit = new Point2D(Double.parseDouble(args.get(6)), Double.parseDouble(args.get(7)));
 			fig = new Triangle(args.get(0), centre, anglebasgauche,anglebasdroit);
 			break;
-		
+
 		case GROUPE:
 			GroupFig grp = new GroupFig(args.get(0));
 			if(args.size() > 1) {
 				int i=2;
 				while(i<args.size()) {
 					fig = ContAllFig.get(args.get(i));
-					grp.add(fig);
+					if(fig != null)
+						grp.add(fig);
+					else
+						System.out.println("exception a gerer dans FigeFactory");
 					i++;
 				}
+				fig = grp ;
 			}
 			break;
 		}
