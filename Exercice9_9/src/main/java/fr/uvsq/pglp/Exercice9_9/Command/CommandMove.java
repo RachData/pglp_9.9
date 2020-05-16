@@ -26,7 +26,7 @@ public class CommandMove implements SpecificCommands{
 	public void apply(List<String> arg){
 
 		try {
-			fig.move(arg);;
+			fig.move(arg);
 		} catch (Exception e) {
 
 		}

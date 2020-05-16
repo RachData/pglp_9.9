@@ -12,59 +12,25 @@ import fr.uvsq.pglp.Exercice9_9.Command.*;
 public class DrawingTUI {
 
 	private List<String> args;
-
-	private Generic genericProg;
-	private GenericCommands quitprog;
-
-	private SpecificCommands createCercle;
-	private Specific receiver;
-	private CommandMove move;
-	private CommandAffichage affich;
-
-	private Interpreteur interprete = this.init();
-
-	/**
-	 * Initialise les commandes
-	 */
-	private Interpreteur init() {
-		Interpreteur inter = new Interpreteur();
-
-		genericProg=new Generic();
-		quitprog = new CommandQuit(genericProg);
-
-		receiver = new Specific();
-
-		createCercle = new CommandeCreateFig(receiver);
-
-		move = new CommandMove(receiver);
-
-		affich = new CommandAffichage(receiver);
-
-		inter.register("quit", quitprog);
-		inter.register("cercle", createCercle);
-		inter.register("move", move);
-		inter.register("affiche", affich);
-
-		return inter;
-	}
-
+	private Interpreteur interprete = Initcommande.init();
 
 	/**
 	 * Analyse le texte saisi par l’utilisateur
 	 * @param text la saisie de l'utilisateur
 	 */
 	public void nextCommand(String text) {
+
 		String Commandename = new String();
 		if(Dico.isMatching(text)) {
 			this.args = Dico.stringsplit(text);
 			Commandename= this.args.get(Dico.gettypeString());
 			if(Commandename != "affiche")
-				interprete.execute(Commandename,this.args);
+				interprete.execute(Commandename.toLowerCase(),this.args);
 			else
 				this.affich(Commandename);
 
 		}else {
-			System.out.println("Exceptions a gerer");
+			System.out.println("Exceptions a gerer erreur de syntaxe");
 		}
 
 	}
@@ -73,7 +39,7 @@ public class DrawingTUI {
 	 * afficher un dessin.
 	 */
 	public void affich(String name) {
-		
+
 		interprete.execute(name,this.args);
 	}
 

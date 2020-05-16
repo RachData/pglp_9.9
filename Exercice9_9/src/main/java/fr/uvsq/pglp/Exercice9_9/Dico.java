@@ -13,9 +13,9 @@ import java.util.regex.Pattern;
  *
  */
 public class Dico {
-	
+
 	private static int TYPE;
-	
+
 	/**
 	 * format generale pour la creation de figure nom = commande
 	 */
@@ -45,12 +45,18 @@ public class Dico {
 			+ "d+?\\s*\\)\\s*,\\s*\\(\\s*\\d*?\\.?\\d+?\\s*\\,\\s*\\d*?\\.?\\d+?\\s*\\)\\s*\\)";
 	private static final Pattern patterntriangle = Pattern.compile(regextriangle);
 
+	/**
+	 * forme general pour deplacer une figure
+	 */
 	private static final String regexmove = "^([a-zA-Z]+)\\s*\\(\\s*([a-zA-Z0-9_-]+)\\s*,\\s*\\(\\s*\\d*?\\.?\\d+?\\s*,"
 			+ "\\s*\\d*?\\.?\\d+?\\s*\\)\\s*\\)";
 	private static final Pattern patternmove = Pattern.compile(regexmove);
-	
+
 	private static final String regexaffiche = "^([a-zA-Z]+)\\s*\\(\\s*([a-zA-Z0-9_-])+\\s*\\)";
 	private static final Pattern patternaffiche = Pattern.compile(regexaffiche);
+	
+	private static final String regexgroup = "^([a-zA-Z0-9_-]+)\\s*=\\s*([a-zA-Z]+)\\s*\\(\\s*(([a-zA-Z0-9_-]*\\s*+),*)+\\)";
+	private static final Pattern patterngroup = Pattern.compile(regexgroup);
 
 	/**
 	 * Verifie le format du text entrer par l'user
@@ -76,12 +82,11 @@ public class Dico {
 			}
 
 		}else {
+			TYPE = 0;
 			matcher = patternmove.matcher(text);
 			if(matcher.matches()){
-				TYPE = 0;
 				return true;
 			}else {
-				TYPE = 0;
 				matcher = patternaffiche.matcher(text);
 				if(matcher.matches())
 					return true;
@@ -111,7 +116,7 @@ public class Dico {
 			}
 		return lst;
 	}
-	
+
 	/**
 	 * retourne le type de la commande saisie par l'utilisateur
 	 * @return TYPE

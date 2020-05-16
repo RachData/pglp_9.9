@@ -17,7 +17,7 @@ public class Specific {
 	 * creer une instance de figure 
 	 * @param arg la liste d'arguments pour l'instanciation
 	 */
-	public void getFig(List<String> arg){
+	public void getFig(List<String> arg) {
 		ContAllFig.add(arg.get(0), FigFactory.getFigure(arg));
 	}
 
@@ -46,6 +46,14 @@ public class Specific {
 		else {
 			System.out.println("Exeception a gerer figure non exixtant");
 		}
+	}
+	
+	/**
+	 * creer un instance de group
+	 * @param arg
+	 */
+	public void getgroup(List<String> arg) {
+		ContAllFig.add(arg.get(0), FigFactory.getFigure(arg));
 	}
 
 }
