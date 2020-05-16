@@ -58,7 +58,10 @@ public class DrawingTUI {
 		if(Dico.isMatching(text)) {
 			this.args = Dico.stringsplit(text);
 			Commandename= this.args.get(Dico.gettypeString());
-			interprete.execute(Commandename,this.args);
+			if(Commandename != "affiche")
+				interprete.execute(Commandename,this.args);
+			else
+				this.affich(Commandename);
 
 		}else {
 			System.out.println("Exceptions a gerer");
@@ -69,8 +72,9 @@ public class DrawingTUI {
 	/**
 	 * afficher un dessin.
 	 */
-	public void affich() {
-
+	public void affich(String name) {
+		
+		interprete.execute(name,this.args);
 	}
 
 	public void execute() {

@@ -29,7 +29,7 @@ public class Interpreteur {
 		Commands command = commandMap.get(Name);
 		try {
 			if (command == null) {
-				System.out.println("erreur de commande ...");
+				System.out.println("erreur de commande ... " + Name);
 				throw new IllegalStateException("no command registered for " + Name);
 			}
 			command.apply(arg);

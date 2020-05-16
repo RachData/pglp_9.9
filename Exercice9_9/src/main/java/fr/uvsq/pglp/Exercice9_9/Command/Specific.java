@@ -44,7 +44,7 @@ public class Specific {
 		if(allfig != null) 
 			AfficheFig.affich(allfig);
 		else {
-			System.out.println("Exeception a gerer");
+			System.out.println("Exeception a gerer figure non exixtant");
 		}
 	}
 

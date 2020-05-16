@@ -16,7 +16,7 @@ public class AfficheFig {
 		Iterator grouptIter = affich.getIterator();
 		while (grouptIter.HasNext()) {
 			allfigure nextValue=grouptIter.Next();
-			System.out.println("The next value with Iterator is: " + nextValue.toString());
+			System.out.println(nextValue);
 		}
 
 	}

@@ -45,9 +45,12 @@ public class Dico {
 			+ "d+?\\s*\\)\\s*,\\s*\\(\\s*\\d*?\\.?\\d+?\\s*\\,\\s*\\d*?\\.?\\d+?\\s*\\)\\s*\\)";
 	private static final Pattern patterntriangle = Pattern.compile(regextriangle);
 
-	private static final String regexGeneric = "^([a-zA-Z]+)\\s*\\(\\s*([a-zA-Z0-9_-]+)\\s*,\\s*\\(\\s*\\d*?\\.?\\d+?\\s*,"
+	private static final String regexmove = "^([a-zA-Z]+)\\s*\\(\\s*([a-zA-Z0-9_-]+)\\s*,\\s*\\(\\s*\\d*?\\.?\\d+?\\s*,"
 			+ "\\s*\\d*?\\.?\\d+?\\s*\\)\\s*\\)";
-	private static final Pattern patternGeneric = Pattern.compile(regexGeneric);
+	private static final Pattern patternmove = Pattern.compile(regexmove);
+	
+	private static final String regexaffiche = "^([a-zA-Z]+)\\s*\\(\\s*([a-zA-Z0-9_-])+\\s*\\)";
+	private static final Pattern patternaffiche = Pattern.compile(regexaffiche);
 
 	/**
 	 * Verifie le format du text entrer par l'user
@@ -73,10 +76,15 @@ public class Dico {
 			}
 
 		}else {
-			matcher = patternGeneric.matcher(text);
+			matcher = patternmove.matcher(text);
 			if(matcher.matches()){
 				TYPE = 0;
 				return true;
+			}else {
+				TYPE = 0;
+				matcher = patternaffiche.matcher(text);
+				if(matcher.matches())
+					return true;
 			}
 		}
 		return false;
