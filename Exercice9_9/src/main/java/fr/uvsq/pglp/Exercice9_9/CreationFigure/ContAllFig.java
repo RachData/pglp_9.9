@@ -37,7 +37,7 @@ public class ContAllFig {
 	 * @return la figure
 	 */
 	public static allfigure get(String namefig) {
-		if(name == namefig)
+		if(name.contentEquals(namefig))
 			return figures;
 		return null ;
 	}

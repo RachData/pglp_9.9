@@ -17,8 +17,9 @@ public class GetConnection {
 	//private static final String DRIVER="derby.jdbc.EmbeddedDriver";
 
 	public void dropCreateTables() {
+		Statement state;
 		try (Connection connect = DriverManager.getConnection(JDBC_URL)) {
-			Statement state = connect.createStatement();
+			state = connect.createStatement();
 			state.addBatch("DROP TABLE Cercle");
 			state.addBatch("DROP TABLE Rectangle");
 			state.addBatch("DROP TABLE Triangle");
@@ -33,9 +34,10 @@ public class GetConnection {
 					+ "nomFig VARCHAR(40)"
 					+ ")");
 			state.executeBatch();
+			state.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}	
+		}
 	}
 
 	public void createTables() {
@@ -51,6 +53,7 @@ public class GetConnection {
 					+ "nomFig VARCHAR(40)"
 					+ ")");
 			state.executeBatch();
+			state.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}		

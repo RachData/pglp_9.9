@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import fr.uvsq.pglp.Exercice9_9.Allfigure.RectCarre;
+import fr.uvsq.pglp.Exercice9_9.exceptions.RectangleException;
 import fr.uvsq.pglp.Exercice9_9.Allfigure.Point2D;
 
 /**
@@ -85,11 +86,13 @@ public class RectangleDAO extends DAO<RectCarre>{
 				try {
 					result= prepare.executeQuery();
 					if(result.next()==true) {
-						try {
-							fig = new RectCarre(result.getString("NAME"), new Point2D(result.getDouble("CORDUX"), result.getDouble("CORDUY")), new Point2D(result.getDouble("CORDDX"), result.getDouble("CORDDY")));
-						} catch (Exception e) {
-						}
+
+						fig = new RectCarre(result.getString("NAME"), new Point2D(result.getDouble("CORDUX"), result.getDouble("CORDUY")), new Point2D(result.getDouble("CORDDX"), result.getDouble("CORDDY")));
+
 					}
+				} catch (RectangleException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}finally {
 					if(result != null)
 						result.close();

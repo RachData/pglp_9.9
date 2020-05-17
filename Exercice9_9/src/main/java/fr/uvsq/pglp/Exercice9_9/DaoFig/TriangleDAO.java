@@ -82,10 +82,7 @@ public class TriangleDAO extends DAO<Triangle>{
 				try {
 					result= prepare.executeQuery();
 					if(result.next()==true) {
-						try {
-							fig = new Triangle(result.getString("NAME"), new Point2D(result.getDouble("CORDSX"), result.getDouble("CORDSY")), new Point2D(result.getDouble("CORDDLX"), result.getDouble("CORDDLY")), new Point2D(result.getDouble("CORDDRX"), result.getDouble("CORDDRY")));
-						} catch (Exception e) {
-						}
+						fig = new Triangle(result.getString("NAME"), new Point2D(result.getDouble("CORDSX"), result.getDouble("CORDSY")), new Point2D(result.getDouble("CORDDLX"), result.getDouble("CORDDLY")), new Point2D(result.getDouble("CORDDRX"), result.getDouble("CORDDRY")));
 					}
 				}finally {
 					if(result != null)
