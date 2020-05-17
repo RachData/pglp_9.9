@@ -20,33 +20,32 @@ public class DrawingTUI {
 	 * et donne la main a l'interpreteur si la syntaxe est bonne
 	 * @param text la saisie de l'utilisateur
 	 */
-	public void nextCommand(String text) {
+	public Commands nextCommand(String text) {
 
 		String Commandename = "";
 		if(Dico.isMatching(text)) {
 			this.args = Dico.stringsplit(text);
 			Commandename= this.args.get(Dico.gettypeString());
-			interprete.execute(Commandename.toLowerCase(),this.args);
-			if ( Dico.gettypeString() == 1) {
-				this.affich("affiche");
-			}
+			return interprete.execute(Commandename.toLowerCase());
 
 		}else {
 			System.out.println("Exceptions a gerer erreur de syntaxe");
 		}
-
+		return null;
 	}
 
 	/**
 	 * afficher un dessin.
 	 */
-	public void affich(String name) {
+	public void affich() {
 		args = this.args.subList(0, 1);
 		args.add(args.get(0));
-		interprete.execute(name,args);
+		//interprete.execute(name,args);
 
-		System.out.println("	->"+ContAllFig.get(name));
+		System.out.println("	->"+ContAllFig.get(args.get(1)));
 
 	}
+
+
 
 }

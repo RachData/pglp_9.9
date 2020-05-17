@@ -1,8 +1,8 @@
 ----------------------------------------------------------------
-Sun May 17 05:10:07 CEST 2020:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance a816c00e-0172-209c-344f-00000eb04f78 
-on database directory /root/Documents/Java/ProgGL/exo9.9/Exercice9_9/FigureBD with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@b81eda8 
-Loaded from file:/usr/lib/jvm/apache-maven-3.6.3/repository/org/apache/derby/derby/10.12.1.1/derby-10.12.1.1.jar
+Sun May 17 18:23:21 CEST 2020:
+Amorçage de Derby version The Apache Software Foundation - Apache Derby - 10.15.2.0 - (1873585) : instance a816c00e-0172-2372-6f1a-00000ed01560 
+dans le répertoire de base de données /root/Documents/Java/ProgGL/exo9.9/Exercice9_9/FigureBD avec le chargeur de classe jdk.internal.loader.ClassLoaders$AppClassLoader@b81eda8
+Chargé de file:/opt/Apache/db-derby-10.15.2.0-bin/lib/derby.jar
 java.vendor=Debian
 java.runtime.version=13.0.2+8-Debian-2
 user.dir=/root/Documents/Java/ProgGL/exo9.9/Exercice9_9
@@ -10,4 +10,4 @@ os.name=Linux
 os.arch=amd64
 os.version=5.4.0-kali3-amd64
 derby.system.home=null
-Database Class Loader started - derby.database.classpath=''
+Chargeur de classe de la base de données démarré - derby.database.classpath = ''

@@ -28,6 +28,7 @@ public class CommandeCercle implements SpecificCommands{
 		try {
 			inst.getCercle(arg);
 		} catch (Exception e) {
+			e.printStackTrace();
 			System.out.println("exception a gerer dans commandeCreateFig");
 		}
 

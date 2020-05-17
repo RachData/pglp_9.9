@@ -89,7 +89,8 @@ public class CerlcleDAO extends DAO<Cercle> {
 						result.close();
 				}
 			} finally {
-				prepare.close();
+				if(prepare != null)
+					prepare.close();
 			}
 
 		} catch (SQLException e) {

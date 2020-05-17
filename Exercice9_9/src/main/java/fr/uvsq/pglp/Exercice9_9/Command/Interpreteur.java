@@ -25,7 +25,7 @@ public class Interpreteur {
 	 * execute une commande
 	 * @param commandName le nom de la commande
 	 */
-	public void execute(String Name,List<String> arg) {
+	/*public void execute(String Name,List<String> arg) {
 		Commands command = commandMap.get(Name);
 		try {
 			if (command == null) {
@@ -37,6 +37,21 @@ public class Interpreteur {
 		} catch (IllegalStateException e) {
 
 		}
-	}
+	}*/
+	
+	public Commands execute(String Name) {
+		Commands command = commandMap.get(Name);
+		try {
+			if (command == null) {
+				System.out.println("erreur de commande ... " + Name);
+				throw new IllegalStateException("no command registered for " + Name);
+			}
+			return command;
 
+		} catch (IllegalStateException e) {
+
+		}
+		return null;
+	}
+	
 }

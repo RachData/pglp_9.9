@@ -77,11 +77,11 @@ public class CommandsTest {
 	public void moveFigAndGroupTest() {
 		arg.removeAll(arg);
 		arg.add("move");
-		arg.add("tri");
+		arg.add("C2");
 		arg.add("5");
 		arg.add("5");
 		interprete.execute(arg.get(0),arg);
-		fig = ContAllFig.get("tri");
+		fig = ContAllFig.get("C2");
 		System.out.println(fig);
 
 	}
@@ -91,7 +91,7 @@ public class CommandsTest {
 
 		arg.removeAll(arg);
 		arg.add("affiche");
-		arg.add("tri");
+		arg.add("C1");
 		interprete.execute(arg.get(0),arg);
 		System.out.println("fin affiche");
 
