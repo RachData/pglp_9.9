@@ -3,7 +3,7 @@ package fr.uvsq.pglp.Exercice9_9.Command;
 import javax.sound.sampled.ReverbType;
 
 public class Initcommande {
-	
+
 
 	private static Generic genericProg;
 	private static GenericCommands quitprog;
@@ -14,7 +14,7 @@ public class Initcommande {
 	private static Specific receiver;
 	private static CommandMove move;
 	private static CommandAffichage affich;
-	
+
 	/**
 	 * Initialise les commandes
 	 */
@@ -27,9 +27,9 @@ public class Initcommande {
 		receiver = new Specific();
 
 		createCercle = new CommandeCercle(receiver);
-		
+
 		createRectangle = new CommandRectangle(receiver);
-		
+
 		createTriangle = new CommandTriangle(receiver);
 
 		move = new CommandMove(receiver);

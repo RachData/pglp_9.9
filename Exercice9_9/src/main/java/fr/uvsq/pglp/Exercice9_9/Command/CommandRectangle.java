@@ -3,7 +3,7 @@ package fr.uvsq.pglp.Exercice9_9.Command;
 import java.util.List;
 
 public class CommandRectangle implements Commands {
-	
+
 	private final Specific inst; 
 	/**
 	 * initialise le receiver pour la command quit
@@ -23,6 +23,7 @@ public class CommandRectangle implements Commands {
 		try {
 			inst.getRectangle(arg);
 		} catch (Exception e) {
+			e.printStackTrace();
 			System.out.println("exception a gerer dans commandeCreateFig");
 		}
 

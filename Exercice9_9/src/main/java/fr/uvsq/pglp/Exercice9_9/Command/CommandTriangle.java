@@ -3,8 +3,8 @@ package fr.uvsq.pglp.Exercice9_9.Command;
 import java.util.List;
 
 public class CommandTriangle implements Commands{
-	
-	
+
+
 	private final Specific inst; 
 	/**
 	 * initialise le receiver pour la command quit
@@ -24,12 +24,13 @@ public class CommandTriangle implements Commands{
 		try {
 			inst.getTriangle(arg);
 		} catch (Exception e) {
-			System.out.println("exception a gerer dans commandeCreateFig");
+			e.printStackTrace();
+			System.out.println("exception a gerer dans commandeTriangle " + e);
 		}
 
 	}
 
 
-	
+
 
 }

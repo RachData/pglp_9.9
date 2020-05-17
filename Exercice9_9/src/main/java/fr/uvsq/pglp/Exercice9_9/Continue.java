@@ -6,7 +6,7 @@ package fr.uvsq.pglp.Exercice9_9;
  *
  */
 public class Continue {
-	
+
 	private static boolean switchOn = true;
 
 	/**
@@ -16,7 +16,7 @@ public class Continue {
 	public static boolean isOn() {
 		return switchOn;
 	}
-	
+
 	public static void turnOff() {
 		switchOn = false;
 	}	

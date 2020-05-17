@@ -30,7 +30,7 @@ public class DrawingTUI {
 			if ( Dico.gettypeString() == 1) {
 				this.affich("affiche");
 			}
-			
+
 		}else {
 			System.out.println("Exceptions a gerer erreur de syntaxe");
 		}
@@ -44,9 +44,9 @@ public class DrawingTUI {
 		args = this.args.subList(0, 1);
 		args.add(args.get(0));
 		interprete.execute(name,args);
-		
+
 		System.out.println("	->"+ContAllFig.get(name));
-		
+
 	}
 
 }

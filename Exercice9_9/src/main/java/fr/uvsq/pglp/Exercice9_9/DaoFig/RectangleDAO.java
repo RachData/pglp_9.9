@@ -15,7 +15,7 @@ import fr.uvsq.pglp.Exercice9_9.Allfigure.Point2D;
  *
  */
 public class RectangleDAO extends DAO<RectCarre>{
-	
+
 	/**
 	 * initilise la connection avec la base de donnée
 	 * @param conn la connection
@@ -32,6 +32,7 @@ public class RectangleDAO extends DAO<RectCarre>{
 
 
 		try {
+			/*
 
 			Statement s;
 			s = connect.createStatement();
@@ -43,11 +44,11 @@ public class RectangleDAO extends DAO<RectCarre>{
 			}finally {
 				s.close();
 
-			}
+			}*/
 
 			PreparedStatement prepare = null;
 			try {
-				prepare = connect.prepareStatement("INSERT INTO Cercle (name, CordUX, CordUy,CordDX, CordDy) VALUES (?,?,?,?,?) ");
+				prepare = connect.prepareStatement("INSERT INTO rectangle (name, CordUX, CordUy,CordDX, CordDy) VALUES (?,?,?,?,?) ");
 				prepare.setString(1, obj.getName());
 				prepare.setDouble(2, obj.getUpLeft().getX());
 				prepare.setDouble(3, obj.getUpLeft().getY());
@@ -58,7 +59,7 @@ public class RectangleDAO extends DAO<RectCarre>{
 			} finally {
 				prepare.close();
 			}
-			
+
 		} catch (SQLException e) {
 			System.out.println("Exception a gerer dans CercleDAO");
 		}
@@ -74,13 +75,13 @@ public class RectangleDAO extends DAO<RectCarre>{
 
 		PreparedStatement prepare = null;
 		ResultSet result= null;
-		
+
 		try {
-			
+
 			try {
-				prepare = this.connect.prepareStatement("SELECT * FROM CERCLE WHERE NAME = ?");
+				prepare = this.connect.prepareStatement("SELECT * FROM rectangle WHERE NAME = ?");
 				prepare.setString(1, name);
-				
+
 				try {
 					result= prepare.executeQuery();
 					if(result.next()==true) {
@@ -96,11 +97,11 @@ public class RectangleDAO extends DAO<RectCarre>{
 			} finally {
 				prepare.close();
 			}
-			
+
 		} catch (SQLException e) {
 			System.out.println("Exception a gerer dans CercleDAO");
 		}
-		
+
 
 		return fig;
 	}
@@ -115,7 +116,7 @@ public class RectangleDAO extends DAO<RectCarre>{
 		try
 		{
 			try {
-				prepare =this.connect.prepareStatement("update Cercle set name=?,CordUX=?,CordUY=?,CordDX=?,CordDY=? where name=?");
+				prepare =this.connect.prepareStatement("update rectangle set name=?,CordUX=?,CordUY=?,CordDX=?,CordDY=? where name=?");
 				prepare.setString(1, obj.getName());
 				prepare.setDouble(2, obj.getUpLeft().getX());
 				prepare.setDouble(3, obj.getUpLeft().getY());
@@ -127,7 +128,7 @@ public class RectangleDAO extends DAO<RectCarre>{
 			} finally {
 				prepare.close();
 			}
-			
+
 		} 
 		catch (SQLException e) 
 		{
@@ -146,7 +147,7 @@ public class RectangleDAO extends DAO<RectCarre>{
 		try
 		{
 			try {
-				prepare =this.connect.prepareStatement("delete from Cercle where NAME=?");
+				prepare =this.connect.prepareStatement("delete from rectangle where NAME=?");
 				prepare.setString(1, name);
 				prepare.executeUpdate();
 				return true;

@@ -57,9 +57,11 @@ public class Specific {
 		TriangleDAO tdao = DaoFactory.getTriangleDAO();
 		Triangle tr = tdao.read(arg.get(0));
 		if(tr == null) {
+
 			allfigure fig = FigFactory.getFigure(arg);
 			ContAllFig.add(arg.get(0), fig);
 			if(fig != null ) {
+
 				tr = (Triangle) fig;
 				tdao = DaoFactory.getTriangleDAO();
 				if(tdao.create(tr)==false)

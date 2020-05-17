@@ -3,7 +3,6 @@ package fr.uvsq.pglp.Exercice9_9.DaoFig;
 
 import java.sql.Connection;
 
-import fr.uvsq.pglp.Exercice9_9.Allfigure.allfigure;
 
 /**
  * Un DAO

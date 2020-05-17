@@ -10,7 +10,7 @@ import fr.uvsq.pglp.Exercice9_9.Allfigure.Point2D;
 import fr.uvsq.pglp.Exercice9_9.Allfigure.Triangle;
 
 public class TriangleDAO extends DAO<Triangle>{
-	
+
 	/**
 	 * initilise la connection avec la base de donnée
 	 * @param conn la connection
@@ -27,7 +27,7 @@ public class TriangleDAO extends DAO<Triangle>{
 
 
 		try {
-
+			/*
 			Statement s;
 			s = connect.createStatement();
 			try {
@@ -38,24 +38,25 @@ public class TriangleDAO extends DAO<Triangle>{
 			}finally {
 				s.close();
 
-			}
+			}*/
 
 			PreparedStatement prepare = null;
 			try {
-				prepare = connect.prepareStatement("INSERT INTO Cercle (name, CordUX, CordUy,CordDX, CordDy) VALUES (?,?,?,?,?,?,?) ");
+				prepare = connect.prepareStatement("INSERT INTO triangle (name, CordSX, CordSY, CordDLX, CordDLY, CordDRX, CordDRY) VALUES (?,?,?,?,?,?,?) ");
 				prepare.setString(1, obj.getName());
 				prepare.setDouble(2, obj.getSommet().getX());
-				prepare.setDouble(2, obj.getSommet().getY());
-				prepare.setDouble(2, obj.getDownLeft().getX());
-				prepare.setDouble(3, obj.getDownLeft().getY());
-				prepare.setDouble(4, obj.getDownRight().getX());
-				prepare.setDouble(5, obj.getDownRight().getY());
+				prepare.setDouble(3, obj.getSommet().getY());
+				prepare.setDouble(4, obj.getDownLeft().getX());
+				prepare.setDouble(5, obj.getDownLeft().getY());
+				prepare.setDouble(6, obj.getDownRight().getX());
+				prepare.setDouble(7, obj.getDownRight().getY());
 				prepare.executeUpdate();
+				prepare.close();
 				return true;
 			} finally {
 				prepare.close();
 			}
-			
+
 		} catch (SQLException e) {
 			System.out.println("Exception a gerer dans CercleDAO");
 		}
@@ -71,13 +72,13 @@ public class TriangleDAO extends DAO<Triangle>{
 
 		PreparedStatement prepare = null;
 		ResultSet result= null;
-		
+
 		try {
-			
+
 			try {
-				prepare = this.connect.prepareStatement("SELECT * FROM CERCLE WHERE NAME = ?");
+				prepare = this.connect.prepareStatement("SELECT * FROM triangle WHERE NAME = ?");
 				prepare.setString(1, name);
-				
+
 				try {
 					result= prepare.executeQuery();
 					if(result.next()==true) {
@@ -93,11 +94,11 @@ public class TriangleDAO extends DAO<Triangle>{
 			} finally {
 				prepare.close();
 			}
-			
+
 		} catch (SQLException e) {
 			System.out.println("Exception a gerer dans CercleDAO");
 		}
-		
+
 
 		return fig;
 	}
@@ -112,7 +113,7 @@ public class TriangleDAO extends DAO<Triangle>{
 		try
 		{
 			try {
-				prepare =this.connect.prepareStatement("update Cercle set name=?,CordSX=?,CordSY=?,CordDLX=?,CordDRY=?,CordDRX=?,CordDRY=? where name=?");
+				prepare =this.connect.prepareStatement("update triangle set name=?,CordSX=?,CordSY=?,CordDLX=?,CordDLY=?,CordDRX=?,CordDRY=? where name=?");
 				prepare.setString(1, obj.getName());
 				prepare.setDouble(2, obj.getSommet().getX());
 				prepare.setDouble(3, obj.getSommet().getY());
@@ -126,7 +127,7 @@ public class TriangleDAO extends DAO<Triangle>{
 			} finally {
 				prepare.close();
 			}
-			
+
 		} 
 		catch (SQLException e) 
 		{
@@ -145,7 +146,7 @@ public class TriangleDAO extends DAO<Triangle>{
 		try
 		{
 			try {
-				prepare =this.connect.prepareStatement("delete from Cercle where NAME=?");
+				prepare =this.connect.prepareStatement("delete from triangle where NAME=?");
 				prepare.setString(1, name);
 				prepare.executeUpdate();
 				return true;

@@ -74,7 +74,7 @@ public class FigFactory {
 			}
 			break;
 		default:
-			
+
 		}
 
 		return fig;

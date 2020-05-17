@@ -20,16 +20,16 @@ public class DaoFactoryTest {
 		c1 = new Cercle("C2",centre, 8);
 	}
 
-	
+
 	/*@Test
 	public void Createtest() {
 		cdao = (CerlcleDAO) DaoFactory.getCerlcleDAO();
-		
+
 		cdao.create(new Cercle("C1", centre, 8));
 		assertTrue(cdao.create(c1));
 	}*/
-	
-	
+
+
 	@Test
 	public void Readtest() {
 		cdao = (CerlcleDAO) DaoFactory.getCerlcleDAO();

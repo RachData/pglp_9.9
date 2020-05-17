@@ -9,6 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import fr.uvsq.pglp.Exercice9_9.Allfigure.Cercle;
+import fr.uvsq.pglp.Exercice9_9.Allfigure.Triangle;
 import fr.uvsq.pglp.Exercice9_9.Allfigure.allfigure;
 import fr.uvsq.pglp.Exercice9_9.Command.*;
 import fr.uvsq.pglp.Exercice9_9.CreationFigure.ContAllFig;
@@ -30,23 +31,23 @@ public class CommandsTest {
 	@Before
 	public void setUp() throws Exception {
 		arg = new ArrayList<String>();
-		interprete = new Interpreteur();
+		interprete = Initcommande.init();
 
 		genericProg=new Generic();
 		quitprog = new CommandQuit(genericProg);
 
 		receiver = new Specific();
-		
+
 		createCercle = new CommandeCercle(receiver);
 
 		move = new CommandMove(receiver);
-		
-		affich = new CommandAffichage(receiver);
 
+		affich = new CommandAffichage(receiver);
+		/*
 		interprete.register("quit", quitprog);
 		interprete.register("cercle", createCercle);
 		interprete.register("move", move);
-		interprete.register("affiche", affich);
+		interprete.register("affiche", affich)*/;
 	}
 	/*
 	@Test
@@ -55,28 +56,32 @@ public class CommandsTest {
 		interprete.execute("quit",arg);
 
 	}*/
-/*
+	/*
 	@Test
 	public void createCercleTest() {
-		arg.add("Cercle1");
-		arg.add("cercle");
+		arg.add("tri");
+		arg.add("triangle");
+		arg.add("3.2");
+		arg.add("5.0");
+		arg.add("6");
 		arg.add("3.2");
 		arg.add("5.0");
 		arg.add("6");
 		interprete.execute(arg.get(1),arg);
-		assertTrue(ContAllFig.get("Cercle1") instanceof Cercle);
+		System.out.println(ContAllFig.get("tri"));
+		assertTrue(ContAllFig.get("tri") instanceof Triangle);
 
-	}*/
-
+	}
+	 */
 	@Test
 	public void moveFigAndGroupTest() {
 		arg.removeAll(arg);
 		arg.add("move");
-		arg.add("C1");
-		arg.add("20");
-		arg.add("20");
+		arg.add("tri");
+		arg.add("5");
+		arg.add("5");
 		interprete.execute(arg.get(0),arg);
-		fig = ContAllFig.get("C1");
+		fig = ContAllFig.get("tri");
 		System.out.println(fig);
 
 	}
@@ -86,8 +91,9 @@ public class CommandsTest {
 
 		arg.removeAll(arg);
 		arg.add("affiche");
-		arg.add("C1");
+		arg.add("tri");
 		interprete.execute(arg.get(0),arg);
+		System.out.println("fin affiche");
 
 	}
 

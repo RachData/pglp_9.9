@@ -52,13 +52,11 @@ public class CerlcleDAO extends DAO<Cercle> {
 				prepare.setDouble(3, obj.getCenter().getY());
 				prepare.setDouble(4, obj.getRayon());
 				prepare.executeUpdate();
-				System.out.println("Passer " + obj);
-
 				return true;
 			} finally {
 				prepare.close();
 			}
-			
+
 		} catch (SQLException e) {
 			System.out.println("Exception a gerer dans CercleDAO");
 		}
@@ -74,13 +72,13 @@ public class CerlcleDAO extends DAO<Cercle> {
 
 		PreparedStatement prepare = null;
 		ResultSet result= null;
-		
+
 		try {
-			
+
 			try {
 				prepare = this.connect.prepareStatement("SELECT * FROM CERCLE WHERE NAME = ?");
 				prepare.setString(1, name);
-				
+
 				try {
 					result= prepare.executeQuery();
 					if(result.next()==true) {
@@ -93,11 +91,11 @@ public class CerlcleDAO extends DAO<Cercle> {
 			} finally {
 				prepare.close();
 			}
-			
+
 		} catch (SQLException e) {
 			System.out.println("Exception a gerer dans CercleDAO");
 		}
-		
+
 
 		return fig;
 	}
@@ -123,7 +121,7 @@ public class CerlcleDAO extends DAO<Cercle> {
 			} finally {
 				prepare.close();
 			}
-			
+
 		} 
 		catch (SQLException e) 
 		{
