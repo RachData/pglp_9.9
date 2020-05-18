@@ -6,9 +6,8 @@ package fr.uvsq.pglp.Exercice9_9.Allfigure;
  *
  */
 
-public class Triangle implements allfigure{
+public class Triangle extends allfigure{
 
-	private String name;
 	private Point2D downLeft;
 	private Point2D downRight;
 	private Point2D sommet;
@@ -21,7 +20,7 @@ public class Triangle implements allfigure{
 	 * @param downRight le point a l'angle bas droit du triangle
 	 */
 	public Triangle(String name, Point2D sommet, Point2D downLeft, Point2D downRight) {
-		this.name = name;
+		super.name = name;
 		this.sommet=sommet;
 		this.downLeft = downLeft;
 		this.downRight = downRight;
@@ -64,7 +63,7 @@ public class Triangle implements allfigure{
 	 * @return le Nom
 	 */
 	public String getName() {
-		return name;
+		return super.name;
 	}
 
 

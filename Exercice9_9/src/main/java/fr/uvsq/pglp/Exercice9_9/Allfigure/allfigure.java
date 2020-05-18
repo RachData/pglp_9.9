@@ -6,7 +6,9 @@ package fr.uvsq.pglp.Exercice9_9.Allfigure;
  *
  */
 
-public interface allfigure {
+public abstract class allfigure {
+	
+	protected String name;
 
 	/**
 	 * deplace une figure
@@ -14,5 +16,9 @@ public interface allfigure {
 	 * @param dx x move
 	 * @param dy y move
 	 */
-	void move(double dx, double dy);
+	public abstract void move(double dx, double dy);
+	
+	public String getName() {
+		return name;
+	}
 }

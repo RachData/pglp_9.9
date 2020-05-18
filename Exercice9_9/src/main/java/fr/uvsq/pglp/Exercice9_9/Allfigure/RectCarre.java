@@ -6,18 +6,8 @@ import fr.uvsq.pglp.Exercice9_9.exceptions.*;
  * @author root
  *
  */
-public class RectCarre implements allfigure{
+public class RectCarre extends allfigure{
 
-	public void setUpLeft(Point2D upLeft) {
-		this.upLeft = upLeft;
-	}
-
-
-	public void setDownRight(Point2D downRight) {
-		this.downRight = downRight;
-	}
-
-	private String name;
 	private Point2D upLeft;
 	private Point2D downRight;
 
@@ -33,7 +23,7 @@ public class RectCarre implements allfigure{
 		if(test==false ) {
 			throw new RectangleException();
 		}else {
-			this.name = name;
+			super.name = name;
 			this.upLeft = upLeft;
 			this.downRight = downRight;
 
@@ -76,7 +66,7 @@ public class RectCarre implements allfigure{
 	 * @return nom
 	 */
 	public String getName() {
-		return name;
+		return super.name;
 	}
 
 	/**

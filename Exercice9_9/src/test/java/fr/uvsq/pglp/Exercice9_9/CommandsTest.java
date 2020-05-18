@@ -12,7 +12,7 @@ import fr.uvsq.pglp.Exercice9_9.Allfigure.Cercle;
 import fr.uvsq.pglp.Exercice9_9.Allfigure.Triangle;
 import fr.uvsq.pglp.Exercice9_9.Allfigure.allfigure;
 import fr.uvsq.pglp.Exercice9_9.Command.*;
-import fr.uvsq.pglp.Exercice9_9.CreationFigure.ContAllFig;
+import fr.uvsq.pglp.Exercice9_9.CreationFigure.ContFig;
 
 public class CommandsTest {
 	Generic genericProg;
@@ -81,7 +81,7 @@ public class CommandsTest {
 		arg.add("5");
 		arg.add("5");
 		interprete.execute(arg.get(0),arg);
-		fig = ContAllFig.get("C2");
+		fig = ContFig.get("C2");
 		System.out.println(fig);
 
 	}

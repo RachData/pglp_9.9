@@ -34,9 +34,13 @@ public class DaoFactory {
 	public static TriangleDAO getTriangleDAO(){
 		return new TriangleDAO(conn);
 	}
-	/*
-	public static GroupFigDAO getCompositePerso(){
+	
+	/**
+	 * retourne le DAO des groupes
+	 * @return DAO Groupe
+	 */
+	public static GroupFigDAO getGroupeDAO(){
 		return new GroupFigDAO(conn);
-	}*/
+	}
 
 }

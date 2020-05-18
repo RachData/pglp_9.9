@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import fr.uvsq.pglp.Exercice9_9.Allfigure.Cercle;
 import fr.uvsq.pglp.Exercice9_9.Allfigure.GroupFig;
@@ -37,7 +38,10 @@ public class GroupFigDAO extends DAO<GroupFig> {
 			Statement s;
 			s = connect.createStatement();
 			try {
-				s.execute("create table Groupe(Id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,name varchar(40) NOT NULL UNIQUE)");
+				//s.execute("create table Groupe(Id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,name varchar(40) NOT NULL UNIQUE)");
+				s.addBatch("create table Groupe(Id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,name varchar(40) NOT NULL UNIQUE)");
+				s.addBatch("CREATE TABLE appartient (nomGrp VARCHAR(40) NOT NULL UNIQUE,nomFig VARCHAR(40)) NOT NULL UNIQUE");
+				s.executeBatch();
 				System.out.println("Created table derby");
 			} catch (Exception e) {
 
@@ -45,47 +49,30 @@ public class GroupFigDAO extends DAO<GroupFig> {
 				s.close();
 
 			}*/
-
 			PreparedStatement prepare = null;
 			try {
-				String name ="";
 				prepare = connect.prepareStatement("INSERT INTO Groupe (name) VALUES (?) ");
 				prepare.setString(1, obj.getName());
+				prepare.executeUpdate();
 				ItteratorFigure affich = new ItteratorFigure(obj);
 				Iterator grouptIter = affich.getIterator();
 				while (grouptIter.HasNext()) {
 					allfigure nextValue=grouptIter.Next();
-					if(nextValue instanceof Cercle) {
-						nextValue = (Cercle)nextValue;
-						name = ((Cercle) nextValue).getName();
-					}
-					else
-						if(nextValue instanceof RectCarre){
-							nextValue = (RectCarre)nextValue;
-							name = ((RectCarre) nextValue).getName();
-						}
-						else
-							if(nextValue instanceof Triangle){
-								nextValue = (Triangle)nextValue;
-								name = ((Triangle) nextValue).getName();
-							}
-
-					prepare = connect.prepareStatement(
-							"INSERT INTO appartient "
-									+ "VALUES (?, ?)");
+					prepare = connect.prepareStatement("INSERT INTO appartient VALUES (?, ?)");
 					prepare.setString(1, obj.getName());
-					prepare.setString(2, name);
+					prepare.setString(2, nextValue.getName());
 					prepare.addBatch();
+					System.out.println("dao group : "+ nextValue);
 				}
-
 				prepare.executeBatch();
-				prepare.executeUpdate();
 				return true;
 			} finally {
-				prepare.close();
+				if(prepare != null)
+					prepare.close();
 			}
 
 		} catch (SQLException e) {
+			e.printStackTrace();
 			System.out.println("Exception a gerer dans CercleDAO");
 		}
 		return false;
@@ -104,7 +91,7 @@ public class GroupFigDAO extends DAO<GroupFig> {
 		try {
 
 			try {
-				prepare = this.connect.prepareStatement("SELECT * FROM appartient WHERE id = ?");
+				prepare = this.connect.prepareStatement("SELECT * FROM appartient WHERE nomGrp = ?");
 				prepare.setString(1, name);
 
 				try {
@@ -114,6 +101,7 @@ public class GroupFigDAO extends DAO<GroupFig> {
 							fig = new GroupFig(name);
 
 						} catch (Exception e) {
+							e.printStackTrace();
 						}
 					}
 				}finally {
@@ -189,7 +177,7 @@ public class GroupFigDAO extends DAO<GroupFig> {
 		try
 		{
 			try {
-				prepare =this.connect.prepareStatement("delete from Cercle where NAME=?");
+				prepare =this.connect.prepareStatement("delete from Groupe where NAME=?");
 				prepare.setString(1, name);
 				prepare.executeUpdate();
 				return true;

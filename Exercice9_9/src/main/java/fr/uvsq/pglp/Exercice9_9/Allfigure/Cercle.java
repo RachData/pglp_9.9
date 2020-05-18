@@ -6,8 +6,7 @@ package fr.uvsq.pglp.Exercice9_9.Allfigure;
  *
  */
 
-public class Cercle implements allfigure{
-	private String name;
+public class Cercle extends allfigure{
 	private Point2D center;
 	private double rayon;
 
@@ -18,7 +17,7 @@ public class Cercle implements allfigure{
 	 * @param radius the radius
 	 */
 	public Cercle(String name, Point2D center, double radius) {
-		this.name = name;
+		super.name = name;
 		this.center = center;
 		this.rayon = radius;
 	}
@@ -52,7 +51,7 @@ public class Cercle implements allfigure{
 	}
 
 	public String getName() {
-		return name;
+		return super.name;
 	}
 
 

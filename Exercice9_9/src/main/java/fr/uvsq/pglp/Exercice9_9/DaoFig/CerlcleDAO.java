@@ -52,11 +52,10 @@ public class CerlcleDAO extends DAO<Cercle> {
 				prepare.setDouble(3, obj.getCenter().getY());
 				prepare.setDouble(4, obj.getRayon());
 				prepare.executeUpdate();
-				return true;
 			} finally {
 				prepare.close();
 			}
-
+			return true;
 		} catch (SQLException e) {
 			System.out.println("Exception a gerer dans CercleDAO");
 		}

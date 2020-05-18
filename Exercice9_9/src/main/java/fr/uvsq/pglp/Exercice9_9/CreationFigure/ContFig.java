@@ -13,7 +13,7 @@ import fr.uvsq.pglp.Exercice9_9.Allfigure.*;
  * @author root
  *
  */
-public class ContAllFig {
+public class ContFig {
 
 	private static allfigure figures;
 	private static String name= "";

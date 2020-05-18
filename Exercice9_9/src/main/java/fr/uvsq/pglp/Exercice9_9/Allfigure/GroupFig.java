@@ -8,9 +8,8 @@ import java.util.List;
  * @author root
  *
  */
-public class GroupFig implements allfigure{
+public class GroupFig extends allfigure{
 
-	private String name;
 	private List<allfigure> figures;
 
 	/**
@@ -18,7 +17,7 @@ public class GroupFig implements allfigure{
 	 * @param name
 	 */
 	public GroupFig(String name) {
-		this.name = name;
+		super.name = name;
 		figures = new ArrayList<allfigure>();
 	}
 
@@ -36,7 +35,7 @@ public class GroupFig implements allfigure{
 	 * @return
 	 */
 	public String getName() {
-		return name;
+		return super.name;
 	}
 
 	/**

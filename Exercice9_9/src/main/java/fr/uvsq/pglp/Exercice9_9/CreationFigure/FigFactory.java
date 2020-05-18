@@ -63,11 +63,11 @@ public class FigFactory {
 			if(args.size() > 1) {
 				int i=2;
 				while(i<args.size()) {
-					fig = ContAllFig.get(args.get(i));
+					fig = ContFig.get(args.get(i));
 					if(fig != null)
 						grp.add(fig);
 					else
-						System.out.println("exception a gerer dans FigeFactory");
+						System.out.println("exception a gerer dans FigFactory groupe");
 					i++;
 				}
 				fig = grp ;

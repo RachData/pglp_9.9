@@ -70,8 +70,6 @@ public class FactoryCreateFigTest {
 	public void FigFactoryAndContAllFigTest() throws RectangleException {
 		//FigFactory figureFactory = new FigFactory();
 
-		allfigure cercle = null;
-
 		List<String> arg = new ArrayList<String>();
 		arg.add("C1");
 		arg.add("cercle");
@@ -79,9 +77,30 @@ public class FactoryCreateFigTest {
 		arg.add("5.0");
 		arg.add("6");
 
-		ContAllFig.add(arg.get(0), FigFactory.getFigure(arg));
+		ContFig.add(arg.get(0), FigFactory.getFigure(arg));
 
-		assertTrue(ContAllFig.get("C1") instanceof Cercle);
+		assertTrue(ContFig.get("C1") instanceof Cercle);
+
+
+	}
+	
+	@Test
+	public void FigFactoryGrouptTest() throws RectangleException {
+		//FigFactory figureFactory = new FigFactory();
+
+		allfigure grp = null;
+
+		List<String> arg = new ArrayList<String>();
+		arg.add("grp1");
+		arg.add("groupe");
+		/*arg.add("3.2");
+		arg.add("5.0");
+		arg.add("6");*/
+
+		grp = FigFactory.getFigure(arg);
+		System.out.println(grp);
+
+		assertTrue(grp instanceof GroupFig);
 
 
 	}

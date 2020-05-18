@@ -16,23 +16,20 @@ public class GetConnection {
 	private static final String DRIVER="org.apache.derby.jdbc.EmbeddedDriver";
 	//private static final String DRIVER="derby.jdbc.EmbeddedDriver";
 
-	public void dropCreateTables() {
+	public static void dropCreateTables() {
 		Statement state;
-		try (Connection connect = DriverManager.getConnection(JDBC_URL)) {
+		try (Connection connect = getInstanceConnexion()) {
 			state = connect.createStatement();
 			state.addBatch("DROP TABLE Cercle");
 			state.addBatch("DROP TABLE Rectangle");
 			state.addBatch("DROP TABLE Triangle");
-			state.addBatch("DROP TABLE Groupe");
+			/*state.addBatch("DROP TABLE Groupe");
+			state.addBatch("DROP TABLE appartient");
 			state.addBatch("create table Cercle(Id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,name varchar(40) NOT NULL UNIQUE, CordX double, CordY double, Rayon double)");
 			state.addBatch("create table Rectangle(Id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,name varchar(40) NOT NULL UNIQUE, CordUX double, CordUY double, CordDX double, CordDY double)");
 			state.addBatch("create table Triangle(Id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,name varchar(40) NOT NULL UNIQUE, CordSX double, CordSY double, CordDLX double, CordDLY double, CordDRX double, CordDRY double)");
 			state.addBatch("create table Groupe(Id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,name varchar(40) NOT NULL UNIQUE)");
-			state.addBatch( // Association n-n
-					"CREATE TABLE appartient ("
-					+ "nomGrp VARCHAR(40),"
-					+ "nomFig VARCHAR(40)"
-					+ ")");
+			state.addBatch("CREATE TABLE appartient (nomGrp VARCHAR(40),nomFig VARCHAR(40))");*/
 			state.executeBatch();
 			state.close();
 		} catch (SQLException e) {
@@ -40,18 +37,14 @@ public class GetConnection {
 		}
 	}
 
-	public void createTables() {
+	public static void createTables() {
 		try (Connection connect = DriverManager.getConnection(JDBC_URL)) {
 			Statement state = connect.createStatement();
 			state.addBatch("create table Cercle(Id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,name varchar(40) NOT NULL UNIQUE, CordX double, CordY double, Rayon double)");
 			state.addBatch("create table Rectangle(Id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,name varchar(40) NOT NULL UNIQUE, CordUX double, CordUY double, CordDX double, CordDY double)");
 			state.addBatch("create table Triangle(Id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,name varchar(40) NOT NULL UNIQUE, CordSX double, CordSY double, CordDLX double, CordDLY double, CordDRX double, CordDRY double)");
 			state.addBatch("create table Groupe(Id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,name varchar(40) NOT NULL UNIQUE)");
-			state.addBatch( // Association n-n
-					"CREATE TABLE appartient ("
-					+ "nomGrp VARCHAR(40),"
-					+ "nomFig VARCHAR(40)"
-					+ ")");
+			state.addBatch("CREATE TABLE appartient (nomGrp VARCHAR(40),nomFig VARCHAR(40))");
 			state.executeBatch();
 			state.close();
 		} catch (SQLException e) {

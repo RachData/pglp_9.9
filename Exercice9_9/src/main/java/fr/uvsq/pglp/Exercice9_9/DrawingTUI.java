@@ -3,7 +3,7 @@ package fr.uvsq.pglp.Exercice9_9;
 import java.util.List;
 
 import fr.uvsq.pglp.Exercice9_9.Command.*;
-import fr.uvsq.pglp.Exercice9_9.CreationFigure.ContAllFig;
+import fr.uvsq.pglp.Exercice9_9.CreationFigure.ContFig;
 
 /**
  * l'interaction avec l’utilisateur
@@ -38,11 +38,10 @@ public class DrawingTUI {
 	 * afficher un dessin.
 	 */
 	public void affich() {
-		args = this.args.subList(0, 1);
-		args.add(args.get(0));
+		this.args = this.args.subList(0, 1);
+		this.args.add(this.args.get(0));
 		//interprete.execute(name,args);
-
-		System.out.println("	->"+ContAllFig.get(args.get(1)));
+		System.out.print(ContFig.get(args.get(1)));
 
 	}
 
