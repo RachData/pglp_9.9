@@ -51,11 +51,13 @@ public class Dico {
 			+ "\\s*\\d*?\\.?\\d+?\\s*\\)\\s*\\)";
 	private static final Pattern patternmove = Pattern.compile(regexmove);
 
-	private static final String regexaffiche = "^([a-zA-Z]+)\\s*\\(\\s*([a-zA-Z0-9_-])+\\s*\\)";
+	//private static final String regexaffiche = "^([a-zA-Z]+)\\s*\\(\\s*([a-zA-Z0-9_-])+\\s*\\)";
+	private static final String regexaffiche = "^([a-zA-Z]+)\\s*\\(\\s*(([a-zA-Z0-9_-]*\\s*+),*)+\\)";
 	private static final Pattern patternaffiche = Pattern.compile(regexaffiche);
 
 	private static final String regexgroup = "^([a-zA-Z0-9_-]+)\\s*=\\s*([a-zA-Z]+)\\s*\\(\\s*(([a-zA-Z0-9_-]*\\s*+),*)+\\)";
 	private static final Pattern patterngroup = Pattern.compile(regexgroup);
+	
 
 	/**
 	 * Verifie le format du text entrer par l'user

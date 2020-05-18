@@ -31,7 +31,7 @@ public class Specific {
 					System.out.println("Ecpetions a gerer dans specific getcercle");
 			}
 		}else
-			System.out.println("Ecpetions a gerer dans specific getcercle figure existant");
+			System.out.println("Ecpetions a gerer dans specific getcercle figure existant " + arg.toString());
 
 	}
 
@@ -45,9 +45,9 @@ public class Specific {
 				rect = (RectCarre) fig;
 				rdao = DaoFactory.getRectangleDAO();
 				if(rdao.create(rect)==false)
-					System.out.println("Ecpetions a gerer dans specific getcercle");
+					System.out.println("Ecpetions a gerer dans specific getRectangle");
 			}else
-				System.out.println("Ecpetions a gerer dans specific getcercle figure existant");
+				System.out.println("Ecpetions a gerer dans specific getRectangle figure existant");
 		}
 
 
@@ -65,9 +65,9 @@ public class Specific {
 				tr = (Triangle) fig;
 				tdao = DaoFactory.getTriangleDAO();
 				if(tdao.create(tr)==false)
-					System.out.println("Ecpetions a gerer dans specific getcercle");
+					System.out.println("Ecpetions a gerer dans specific getTriangle");
 			}else
-				System.out.println("Ecpetions a gerer dans specific getcercle figure existant");
+				System.out.println("Ecpetions a gerer dans specific getTriangle figure existant");
 		}
 
 	}
@@ -75,8 +75,8 @@ public class Specific {
 	public void getGroupe(List<String> arg) {
 		GroupFigDAO gdao = DaoFactory.getGroupeDAO();
 		GroupFig gr = gdao.read(arg.get(0));
-		if(gr == null) {
-			System.out.println("Passer");
+		//if(gr == null) {
+			System.out.println("Passer dans get group");
 			allfigure fig = FigFactory.getFigure(arg);
 			ContFig.add(arg.get(0), fig);
 			if(fig != null ) {
@@ -84,10 +84,10 @@ public class Specific {
 				gr = (GroupFig) fig;
 				gdao = DaoFactory.getGroupeDAO();
 				if(gdao.create(gr)==false)
-					System.out.println("Ecpetions a gerer dans specific getcercle");
+					System.out.println("Ecpetions a gerer dans specific getGroupe");
 			}else
-				System.out.println("Ecpetions a gerer dans specific getcercle figure existant");
-		}
+				System.out.println("Ecpetions a gerer dans specific getGroupe figure existant");
+		//}
 
 	}
 
@@ -100,8 +100,8 @@ public class Specific {
 		allfigure fig = this.find(arg.get(1));
 		if(fig != null) {
 			fig.move(Double.parseDouble(arg.get(2)), Double.parseDouble(arg.get(3)));
-			ContFig.add(arg.get(1), fig);
 			this.update(fig);
+			ContFig.add(arg.get(1), fig);
 		}
 		else
 			System.out.println("Exception a gerrer MOve");

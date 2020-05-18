@@ -2,6 +2,11 @@ package fr.uvsq.pglp.Exercice9_9.CreationFigure;
 
 import java.util.List;
 import fr.uvsq.pglp.Exercice9_9.Allfigure.*;
+import fr.uvsq.pglp.Exercice9_9.DaoFig.CerlcleDAO;
+import fr.uvsq.pglp.Exercice9_9.DaoFig.DaoFactory;
+import fr.uvsq.pglp.Exercice9_9.DaoFig.GroupFigDAO;
+import fr.uvsq.pglp.Exercice9_9.DaoFig.RectangleDAO;
+import fr.uvsq.pglp.Exercice9_9.DaoFig.TriangleDAO;
 
 /**
  * la fabrique de figure
@@ -63,7 +68,7 @@ public class FigFactory {
 			if(args.size() > 1) {
 				int i=2;
 				while(i<args.size()) {
-					fig = ContFig.get(args.get(i));
+					fig = find(args.get(i));
 					if(fig != null)
 						grp.add(fig);
 					else
@@ -79,5 +84,74 @@ public class FigFactory {
 
 		return fig;
 	}
+	/*
+	private allfigure find(allfigure nextValue) {
+		
+		if(nextValue instanceof Cercle) {
+			String name = nextValue.getName();
+			CerlcleDAO cdao = DaoFactory.getCerlcleDAO();
+			Cercle cercl = cdao.read(name);
+			if (cercl != null) {
+				return cercl;
+			}
+		}
+		else
+			if(nextValue instanceof RectCarre){
+				String name = nextValue.getName();
+				RectangleDAO rdao = DaoFactory.getRectangleDAO();
+				RectCarre rect = rdao.read(name);
+				if (rect != null) {
+					return rect;
+				}
+			}
+			else
+				if(nextValue instanceof Triangle){
+					String name = nextValue.getName();
+					TriangleDAO tdao = DaoFactory.getTriangleDAO();
+					Triangle tr = tdao.read(name);
+					if (tr != null) {
+						return tr;
+					}
+				}
+/*	
+		GroupFigDAO gdao = DaoFactory.getGroupeDAO();
+		GroupFig grp = gdao.read(name);
+		if (grp != null) {
+			this.figFind = "GroupFig";
+			return grp;
+		}
+*
+		return null;
+	}*/
+	
+	private static allfigure find(String name) {
+
+		TriangleDAO tdao = DaoFactory.getTriangleDAO();
+		Triangle tr = tdao.read(name);
+		if (tr != null) {
+			return tr;
+		}
+
+		CerlcleDAO cdao = DaoFactory.getCerlcleDAO();
+		Cercle cercl = cdao.read(name);
+		if (cercl != null) {
+			return cercl;
+		}
+
+		RectangleDAO rdao = DaoFactory.getRectangleDAO();
+		RectCarre rect = rdao.read(name);
+		if (rect != null) {
+			return rect;
+		}
+		
+		/*GroupFigDAO gdao = DaoFactory.getGroupeDAO();
+		GroupFig grp = gdao.read(name);
+		if (grp != null) {
+			return grp;
+		}*/
+
+		return null;
+	}
+
 
 }

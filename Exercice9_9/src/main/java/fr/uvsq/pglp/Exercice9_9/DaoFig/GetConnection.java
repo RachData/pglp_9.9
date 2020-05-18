@@ -29,7 +29,7 @@ public class GetConnection {
 			state.addBatch("create table Rectangle(Id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,name varchar(40) NOT NULL UNIQUE, CordUX double, CordUY double, CordDX double, CordDY double)");
 			state.addBatch("create table Triangle(Id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,name varchar(40) NOT NULL UNIQUE, CordSX double, CordSY double, CordDLX double, CordDLY double, CordDRX double, CordDRY double)");
 			state.addBatch("create table Groupe(Id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,name varchar(40) NOT NULL UNIQUE)");
-			state.addBatch("CREATE TABLE appartient (nomGrp VARCHAR(40),nomFig VARCHAR(40))");*/
+			state.addBatch("CREATE TABLE appartient (Id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,nomGrp VARCHAR(40),nomFig VARCHAR(40))");*/
 			state.executeBatch();
 			state.close();
 		} catch (SQLException e) {
@@ -44,7 +44,7 @@ public class GetConnection {
 			state.addBatch("create table Rectangle(Id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,name varchar(40) NOT NULL UNIQUE, CordUX double, CordUY double, CordDX double, CordDY double)");
 			state.addBatch("create table Triangle(Id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,name varchar(40) NOT NULL UNIQUE, CordSX double, CordSY double, CordDLX double, CordDLY double, CordDRX double, CordDRY double)");
 			state.addBatch("create table Groupe(Id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,name varchar(40) NOT NULL UNIQUE)");
-			state.addBatch("CREATE TABLE appartient (nomGrp VARCHAR(40),nomFig VARCHAR(40))");
+			state.addBatch("CREATE TABLE appartient (Id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,nomGrp VARCHAR(40) NOT NULL,nomFig VARCHAR(40) NOT NULL)");
 			state.executeBatch();
 			state.close();
 		} catch (SQLException e) {

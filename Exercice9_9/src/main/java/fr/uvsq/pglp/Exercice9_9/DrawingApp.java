@@ -20,12 +20,11 @@ public enum DrawingApp {
 			command = saisie.nextCommand(text);
 			if (command != null) {
 				command.apply(Dico.stringsplit(text));
-				if(Dico.gettypeString()==1)
-					saisie.affich();
+				saisie.affich();
 			}else {
 				System.out.println("Exception a gerer dans run de drawing App");
 			}
-			
+
 
 		}
 

@@ -59,10 +59,12 @@ public class GroupFigDAO extends DAO<GroupFig> {
 				while (grouptIter.HasNext()) {
 					allfigure nextValue=grouptIter.Next();
 					prepare = connect.prepareStatement("INSERT INTO appartient VALUES (?, ?)");
-					prepare.setString(1, obj.getName());
-					prepare.setString(2, nextValue.getName());
-					prepare.addBatch();
-					System.out.println("dao group : "+ nextValue);
+					if(obj.getName()!=nextValue.getName()) {
+						prepare.setString(1, obj.getName());
+						prepare.setString(2, nextValue.getName());
+						prepare.addBatch();
+						System.out.println("dao group : "+ nextValue);
+					}
 				}
 				prepare.executeBatch();
 				return true;
@@ -109,11 +111,15 @@ public class GroupFigDAO extends DAO<GroupFig> {
 						result.close();
 				}
 			} finally {
-				prepare.close();
+				if (prepare != null) {
+					prepare.close();
+				}
+				
 			}
 
 		} catch (SQLException e) {
-			System.out.println("Exception a gerer dans CercleDAO");
+			e.printStackTrace();
+			System.out.println("Exception a gerer dans GroupDAO");
 		}
 
 
