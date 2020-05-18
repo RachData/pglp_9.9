@@ -63,14 +63,9 @@ public class GetConnection {
 		try {
 
 			//Class.forName(DRIVER);
-
-			System.out.println("get connection");
 			Connection connec =DriverManager.getConnection(JDBC_URL);
 			if (connec!=null)
-			{
-				System.out.println("connexion au serveur de Bd reuissi");
 				return connec;
-			}
 		} catch (SQLException e )
 		{
 			e.printStackTrace();

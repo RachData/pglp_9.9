@@ -79,7 +79,7 @@ public class FactoryCreateFigTest {
 
 		ContFig.add(arg.get(0), FigFactory.getFigure(arg));
 
-		assertTrue(ContFig.get("C1") instanceof Cercle);
+		assertTrue(ContFig.get() instanceof Cercle);
 
 
 	}

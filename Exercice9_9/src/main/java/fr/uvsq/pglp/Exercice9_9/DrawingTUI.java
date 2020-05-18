@@ -38,11 +38,11 @@ public class DrawingTUI {
 	 * afficher un dessin.
 	 */
 	public void affich() {
-		if (args.get(0).toLowerCase().contentEquals("affiche")==false) {
+		if (args.get(0).toLowerCase().contentEquals("affiche")==false&&args.get(0).toLowerCase().contentEquals("quit")==false) {
 			this.args = this.args.subList(0, 1);
 			this.args.add(this.args.get(0));
 			//interprete.execute(name,args);
-			System.out.println(ContFig.get(args.get(1)));
+			System.out.println(ContFig.get());
 		}
 		
 

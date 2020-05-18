@@ -13,9 +13,9 @@ public class dicoTest {
 
 	@Before
 	public void setUp() throws Exception {
-		Strcercle = new String("c1= Cercle((1,2),3)");
+		Strcercle = new String("c1= Cercle((-1,2),3)");
 		Strrectcarre = new String("r1 = Rectangle( (4 , 5) , (6 , 7))");
-		Strtriangle = new String("t1 = Triangle( (8  , 9), (1.0 , 1.1) , (1.2 , 1.3))");
+		Strtriangle = new String("t1 = Triangle( (8  , -9), (1.0 , -1.1) , (-1.2 , 1.3))");
 	}
 
 	@Test
@@ -23,6 +23,7 @@ public class dicoTest {
 		System.out.println("testcercle ...");
 		if(Dico.isMatching(Strcercle)) {
 			Dico.stringsplit(Strcercle);
+			System.out.println(Dico.stringsplit(Strcercle));
 		}else {
 			System.out.println("Erreur de syntaxe ....");
 		}
@@ -33,6 +34,7 @@ public class dicoTest {
 		System.out.println("testrectcarre ...");
 		if(Dico.isMatching(Strrectcarre)) {
 			Dico.stringsplit(Strrectcarre);
+			System.out.println(Dico.stringsplit(Strrectcarre));
 		}else {
 			System.out.println("Erreur de syntaxe ....");
 		}
@@ -43,6 +45,7 @@ public class dicoTest {
 		System.out.println("testtrinagle ...");
 		if(Dico.isMatching(Strtriangle)) {
 			Dico.stringsplit(Strtriangle);
+			System.out.println(Dico.stringsplit(Strtriangle));
 		}else {
 			System.out.println("Erreur de syntaxe ....");
 		}

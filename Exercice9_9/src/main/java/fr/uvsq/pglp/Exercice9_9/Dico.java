@@ -24,24 +24,24 @@ public class Dico {
 	/**
 	 * format generale cercle nom = commande((nombre,nombre),nombre)
 	 */
-	private static final String regexcercle = "^([a-zA-Z0-9_-]+)\\s*=\\s*([a-zA-Z]+)\\s*\\(\\s*\\(\\s*\\d*\\.?\\d+?\\s*"
-			+ ",\\s*\\d*\\.?\\d+\\s*\\)\\s*,\\s*\\d*\\.?\\d+?\\s*\\)";
+	private static final String regexcercle = "^([a-zA-Z0-9_-]+)\\s*=\\s*([a-zA-Z]+)\\s*\\(\\s*\\(\\s*-?\\d*\\.?\\d+?\\s*"
+			+ ",\\s*-?\\d*\\.?\\d+\\s*\\)\\s*,\\s*\\d*\\.?\\d+?\\s*\\)";
 	private static final Pattern patterncercle = Pattern.compile(regexcercle);
 
 	/**
 	 * format generale rectangle et carre nom = commande((nombre,nombre),(nombre,nombre))
 	 */
-	private static final String regexrectcarre = "^([a-zA-Z0-9_-]+)\\s*=\\s*([a-zA-Z]+)\\s*\\(\\s*\\(\\s*\\d*.?\\d+?\\s*"
-			+ ",\\s*\\d*.?\\d+\\s*\\)\\s*,\\s*\\(\\s*\\d*?\\.?\\d+?\\s*\\,\\s*\\d*?\\."
+	private static final String regexrectcarre = "^([a-zA-Z0-9_-]+)\\s*=\\s*([a-zA-Z]+)\\s*\\(\\s*\\(\\s*-?\\d*.?\\d+?\\s*"
+			+ ",\\s*-?\\d*.?\\d+\\s*\\)\\s*,\\s*\\(\\s*-?\\d*?\\.?\\d+?\\s*\\,\\s*-?\\d*?\\."
 			+ "?\\d+?\\s*\\)\\s*\\)";
 	private static final Pattern patternrectcarre = Pattern.compile(regexrectcarre);
 
 	/**
 	 * format generale triangle nom = commande((nombre,nombre),(nombre,nombre),(nombre,nombre))
 	 */
-	private static final String regextriangle = "^([a-zA-Z0-9_-]+)\\s*=\\s*([a-zA-Z]+)\\s*\\(\\s*\\(\\s*\\d*.?\\d+?\\s*,"
-			+ "\\s*\\d*.?\\d+\\s*\\)\\s*,\\s*\\(\\s*\\d*?\\.?\\d+?\\s*\\,\\s*\\d*?\\.?\\"
-			+ "d+?\\s*\\)\\s*,\\s*\\(\\s*\\d*?\\.?\\d+?\\s*\\,\\s*\\d*?\\.?\\d+?\\s*\\)\\s*\\)";
+	private static final String regextriangle = "^([a-zA-Z0-9_-]+)\\s*=\\s*([a-zA-Z]+)\\s*\\(\\s*\\(\\s*-?\\d*.?\\d+?\\s*,"
+			+ "\\s*-?\\d*.?\\d+\\s*\\)\\s*,\\s*\\(\\s*-?\\d*?\\.?\\d+?\\s*\\,\\s*-?\\d*?\\.?\\"
+			+ "d+?\\s*\\)\\s*,\\s*\\(\\s*-?\\d*?\\.?\\d+?\\s*\\,\\s*-?\\d*?\\.?\\d+?\\s*\\)\\s*\\)";
 	private static final Pattern patterntriangle = Pattern.compile(regextriangle);
 
 	/**

@@ -36,10 +36,8 @@ public class ContFig {
 	 * @param name le nom de la figure
 	 * @return la figure
 	 */
-	public static allfigure get(String namefig) {
-		if(name.contentEquals(namefig))
+	public static allfigure get() {
 			return figures;
-		return null ;
 	}
 
 
