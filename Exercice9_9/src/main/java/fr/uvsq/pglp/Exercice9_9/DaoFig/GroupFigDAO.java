@@ -10,7 +10,6 @@ import fr.uvsq.pglp.Exercice9_9.Allfigure.Cercle;
 import fr.uvsq.pglp.Exercice9_9.Allfigure.GroupFig;
 import fr.uvsq.pglp.Exercice9_9.Allfigure.Iterator;
 import fr.uvsq.pglp.Exercice9_9.Allfigure.ItteratorFigure;
-import fr.uvsq.pglp.Exercice9_9.Allfigure.Point2D;
 import fr.uvsq.pglp.Exercice9_9.Allfigure.RectCarre;
 import fr.uvsq.pglp.Exercice9_9.Allfigure.Triangle;
 import fr.uvsq.pglp.Exercice9_9.Allfigure.allfigure;
@@ -19,6 +18,7 @@ public class GroupFigDAO extends DAO<GroupFig> {
 
 	/**
 	 * initilise la connection avec la base de donnée
+	 * 
 	 * @param conn la connection
 	 */
 	public GroupFigDAO(Connection conn) {
@@ -31,24 +31,22 @@ public class GroupFigDAO extends DAO<GroupFig> {
 	@Override
 	public boolean create(GroupFig obj) {
 
-
 		try {
 
 			/*
-			Statement s;
-			s = connect.createStatement();
-			try {
-				//s.execute("create table Groupe(Id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,name varchar(40) NOT NULL UNIQUE)");
-				s.addBatch("create table Groupe(Id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,name varchar(40) NOT NULL UNIQUE)");
-				s.addBatch("CREATE TABLE appartient (nomGrp VARCHAR(40) NOT NULL UNIQUE,nomFig VARCHAR(40)) NOT NULL UNIQUE");
-				s.executeBatch();
-				System.out.println("Created table derby");
-			} catch (Exception e) {
-
-			}finally {
-				s.close();
-
-			}*/
+			 * Statement s; s = connect.createStatement(); try { //s.
+			 * execute("create table Groupe(Id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,name varchar(40) NOT NULL UNIQUE)"
+			 * ); s.
+			 * addBatch("create table Groupe(Id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,name varchar(40) NOT NULL UNIQUE)"
+			 * ); s.
+			 * addBatch("CREATE TABLE appartient (nomGrp VARCHAR(40) NOT NULL UNIQUE,nomFig VARCHAR(40)) NOT NULL UNIQUE"
+			 * ); s.executeBatch(); System.out.println("Created table derby"); } catch
+			 * (Exception e) {
+			 * 
+			 * }finally { s.close();
+			 * 
+			 * }
+			 */
 			PreparedStatement prepare = null;
 			try {
 				prepare = connect.prepareStatement("INSERT INTO Groupe (name) VALUES (?) ");
@@ -56,20 +54,20 @@ public class GroupFigDAO extends DAO<GroupFig> {
 				prepare.executeUpdate();
 				ItteratorFigure affich = new ItteratorFigure(obj);
 				Iterator grouptIter = affich.getIterator();
+				prepare = connect.prepareStatement("INSERT INTO appartient (nomGrp,nomFig) VALUES (?, ?)");
 				while (grouptIter.HasNext()) {
-					allfigure nextValue=grouptIter.Next();
-					prepare = connect.prepareStatement("INSERT INTO appartient VALUES (?, ?)");
-					if(obj.getName()!=nextValue.getName()) {
+					allfigure nextValue = grouptIter.Next();
+
+					if (obj.getName() != nextValue.getName()) {
 						prepare.setString(1, obj.getName());
 						prepare.setString(2, nextValue.getName());
 						prepare.addBatch();
-						System.out.println("dao group : "+ nextValue);
 					}
 				}
 				prepare.executeBatch();
 				return true;
 			} finally {
-				if(prepare != null)
+				if (prepare != null)
 					prepare.close();
 			}
 
@@ -85,36 +83,40 @@ public class GroupFigDAO extends DAO<GroupFig> {
 	 */
 	@Override
 	public GroupFig read(String name) {
-		GroupFig fig=null;
-
+		GroupFig grpfig = null;
+		allfigure fig = null ;
 		PreparedStatement prepare = null;
-		ResultSet result= null;
+		ResultSet result = null;
 
 		try {
 
 			try {
 				prepare = this.connect.prepareStatement("SELECT * FROM appartient WHERE nomGrp = ?");
 				prepare.setString(1, name);
-
+				grpfig = new GroupFig(name);
 				try {
-					result= prepare.executeQuery();
-					if(result.next()==true) {
+					result = prepare.executeQuery();
+					while (result.next() == true) {
 						try {
-							fig = new GroupFig(name);
+
+							fig = find(result.getString("nomFig"));
+							if(fig != null)
+								grpfig.add(fig);
 
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
+
 					}
-				}finally {
-					if(result != null)
+				} finally {
+					if (result != null)
 						result.close();
 				}
 			} finally {
 				if (prepare != null) {
 					prepare.close();
 				}
-				
+
 			}
 
 		} catch (SQLException e) {
@@ -122,8 +124,7 @@ public class GroupFigDAO extends DAO<GroupFig> {
 			System.out.println("Exception a gerer dans GroupDAO");
 		}
 
-
-		return fig;
+		return grpfig;
 	}
 
 	/**
@@ -133,30 +134,26 @@ public class GroupFigDAO extends DAO<GroupFig> {
 	public boolean update(GroupFig obj) {
 
 		PreparedStatement prepare = null;
-		String name ="";
-		try
-		{
+		String name = "";
+		try {
 			try {
-				prepare =this.connect.prepareStatement("update Cercle set name=?,CordUX=?,CordUY=?,CordDX=?,CordDY=? where name=?");
+				prepare = this.connect
+						.prepareStatement("update Cercle set name=?,CordUX=?,CordUY=?,CordDX=?,CordDY=? where name=?");
 				prepare.setString(1, obj.getName());
 				ItteratorFigure affich = new ItteratorFigure(obj);
 				Iterator grouptIter = affich.getIterator();
 				while (grouptIter.HasNext()) {
-					allfigure nextValue=grouptIter.Next();
-					if(nextValue instanceof Cercle) {
-						nextValue = (Cercle)nextValue;
+					allfigure nextValue = grouptIter.Next();
+					if (nextValue instanceof Cercle) {
+						nextValue = (Cercle) nextValue;
 						name = ((Cercle) nextValue).getName();
+					} else if (nextValue instanceof RectCarre) {
+						nextValue = (RectCarre) nextValue;
+						name = ((RectCarre) nextValue).getName();
+					} else if (nextValue instanceof Triangle) {
+						nextValue = (Triangle) nextValue;
+						name = ((Triangle) nextValue).getName();
 					}
-					else
-						if(nextValue instanceof RectCarre){
-							nextValue = (RectCarre)nextValue;
-							name = ((RectCarre) nextValue).getName();
-						}
-						else
-							if(nextValue instanceof Triangle){
-								nextValue = (Triangle)nextValue;
-								name = ((Triangle) nextValue).getName();
-							}
 				}
 				prepare.setString(6, obj.getName());
 				prepare.executeUpdate();
@@ -165,11 +162,9 @@ public class GroupFigDAO extends DAO<GroupFig> {
 				prepare.close();
 			}
 
-		} 
-		catch (SQLException e) 
-		{
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}	
+		}
 		return false;
 	}
 
@@ -180,22 +175,43 @@ public class GroupFigDAO extends DAO<GroupFig> {
 	public boolean delete(String name) {
 
 		PreparedStatement prepare = null;
-		try
-		{
+		try {
 			try {
-				prepare =this.connect.prepareStatement("delete from Groupe where NAME=?");
+				prepare = this.connect.prepareStatement("delete from Groupe where NAME=?");
 				prepare.setString(1, name);
 				prepare.executeUpdate();
 				return true;
 			} finally {
 				prepare.close();
 			}
-		}
-		catch (SQLException e) 
-		{
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}	
+		}
 		return false;
+	}
+
+	private static allfigure find(String name) {
+
+		TriangleDAO tdao = DaoFactory.getTriangleDAO();
+		Triangle tr = tdao.read(name);
+		if (tr != null) {
+			return tr;
+		}
+
+		CerlcleDAO cdao = DaoFactory.getCerlcleDAO();
+		Cercle cercl = cdao.read(name);
+		if (cercl != null) {
+			return cercl;
+		}
+
+		RectangleDAO rdao = DaoFactory.getRectangleDAO();
+		RectCarre rect = rdao.read(name);
+		if (rect != null) {
+			return rect;
+		}
+
+
+		return null;
 	}
 
 }

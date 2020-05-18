@@ -47,8 +47,8 @@ public class Dico {
 	/**
 	 * forme general pour deplacer une figure
 	 */
-	private static final String regexmove = "^([a-zA-Z]+)\\s*\\(\\s*([a-zA-Z0-9_-]+)\\s*,\\s*\\(\\s*\\d*?\\.?\\d+?\\s*,"
-			+ "\\s*\\d*?\\.?\\d+?\\s*\\)\\s*\\)";
+	private static final String regexmove = "^([a-zA-Z]+)\\s*\\(\\s*([a-zA-Z0-9_-]+)\\s*,\\s*\\(\\s*-?\\d*?\\.?\\d+?\\s*,"
+			+ "\\s*-?\\d*?\\.?\\d+?\\s*\\)\\s*\\)";
 	private static final Pattern patternmove = Pattern.compile(regexmove);
 
 	//private static final String regexaffiche = "^([a-zA-Z]+)\\s*\\(\\s*([a-zA-Z0-9_-])+\\s*\\)";
