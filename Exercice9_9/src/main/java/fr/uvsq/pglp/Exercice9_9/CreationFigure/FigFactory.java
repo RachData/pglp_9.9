@@ -86,45 +86,7 @@ public class FigFactory {
 
 		return fig;
 	}
-	/*
-	private allfigure find(allfigure nextValue) {
-		
-		if(nextValue instanceof Cercle) {
-			String name = nextValue.getName();
-			CerlcleDAO cdao = DaoFactory.getCerlcleDAO();
-			Cercle cercl = cdao.read(name);
-			if (cercl != null) {
-				return cercl;
-			}
-		}
-		else
-			if(nextValue instanceof RectCarre){
-				String name = nextValue.getName();
-				RectangleDAO rdao = DaoFactory.getRectangleDAO();
-				RectCarre rect = rdao.read(name);
-				if (rect != null) {
-					return rect;
-				}
-			}
-			else
-				if(nextValue instanceof Triangle){
-					String name = nextValue.getName();
-					TriangleDAO tdao = DaoFactory.getTriangleDAO();
-					Triangle tr = tdao.read(name);
-					if (tr != null) {
-						return tr;
-					}
-				}
-/*	
-		GroupFigDAO gdao = DaoFactory.getGroupeDAO();
-		GroupFig grp = gdao.read(name);
-		if (grp != null) {
-			this.figFind = "GroupFig";
-			return grp;
-		}
-*
-		return null;
-	}*/
+
 	
 	private static allfigure find(String name) {
 

@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-Tue May 19 02:19:22 CEST 2020:
-Amorçage de Derby version The Apache Software Foundation - Apache Derby - 10.15.2.0 - (1873585) : instance a816c00e-0172-2a4c-9a7e-00000ec849a0 
+Tue May 19 03:24:14 CEST 2020:
+Amorçage de Derby version The Apache Software Foundation - Apache Derby - 10.15.2.0 - (1873585) : instance a816c00e-0172-2a87-f91a-00000ec805d0 
 dans le répertoire de base de données /root/Documents/Java/ProgGL/exo9.9/Exercice9_9/FigureBD avec le chargeur de classe jdk.internal.loader.ClassLoaders$AppClassLoader@b81eda8
 Chargé de file:/opt/Apache/db-derby-10.15.2.0-bin/lib/derby.jar
 java.vendor=Debian

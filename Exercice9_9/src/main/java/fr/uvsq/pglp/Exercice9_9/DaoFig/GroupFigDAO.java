@@ -136,25 +136,24 @@ public class GroupFigDAO extends DAO<GroupFig> {
 
 		PreparedStatement prepare = null;
 		String name = "";
+		ItteratorFigure affich = new ItteratorFigure(obj);
 		try {
 			try {
 				prepare = this.connect
 						.prepareStatement("update Cercle set name=?,CordUX=?,CordUY=?,CordDX=?,CordDY=? where name=?");
 				prepare.setString(1, obj.getName());
-				ItteratorFigure affich = new ItteratorFigure(obj);
+				
 				Iterator grouptIter = affich.getIterator();
+				prepare = connect.prepareStatement("INSERT INTO appartient (nomGrp,nomFig) VALUES (?, ?)");
 				while (grouptIter.HasNext()) {
 					allfigure nextValue = grouptIter.Next();
-					if (nextValue instanceof Cercle) {
-						nextValue = (Cercle) nextValue;
-						name = ((Cercle) nextValue).getName();
-					} else if (nextValue instanceof RectangleFig) {
-						nextValue = (RectangleFig) nextValue;
-						name = ((RectangleFig) nextValue).getName();
-					} else if (nextValue instanceof Triangle) {
-						nextValue = (Triangle) nextValue;
-						name = ((Triangle) nextValue).getName();
+
+					if (obj.getName() != nextValue.getName()) {
+						prepare.setString(1, obj.getName());
+						prepare.setString(2, nextValue.getName());
+						prepare.addBatch();
 					}
+					this.updateellementgroup(nextValue);
 				}
 				prepare.setString(6, obj.getName());
 				prepare.executeUpdate();
@@ -219,6 +218,31 @@ public class GroupFigDAO extends DAO<GroupFig> {
 
 
 		return null;
+	}
+	
+	
+	private void updateellementgroup(allfigure nextValue) {
+		
+		if(nextValue instanceof Cercle) {
+			CerlcleDAO cdao = DaoFactory.getCerlcleDAO();
+			cdao.update((Cercle)nextValue);
+		}
+		else
+			if(nextValue instanceof RectangleFig){
+				RectangleDAO rdao = DaoFactory.getRectangleDAO();
+				rdao.update((RectangleFig)nextValue);
+			}
+			else
+				if(nextValue instanceof Triangle){
+					TriangleDAO tdao = DaoFactory.getTriangleDAO();
+					tdao.update((Triangle)nextValue);
+				}else
+					if(nextValue instanceof Carrer) {
+						CarreDAO tdao = DaoFactory.getCarreDAO();
+						tdao.update((Carrer)nextValue);
+					}
+
+		
 	}
 
 }

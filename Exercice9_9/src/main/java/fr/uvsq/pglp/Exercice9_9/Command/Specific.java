@@ -117,9 +117,16 @@ public class Specific {
 	public void move(List<String> arg) {
 
 		allfigure fig = this.find(arg.get(1));
+		System.out.println(fig);
 		if(fig != null) {
 			fig.move(Double.parseDouble(arg.get(2)), Double.parseDouble(arg.get(3)));
-			this.update(fig);
+			ItteratorFigure affich = new ItteratorFigure(fig);
+			Iterator grouptIter = affich.getIterator();
+			while (grouptIter.HasNext()) {
+				this.update(grouptIter.Next());
+				System.out.println("passer group");
+			}
+			
 			ContFig.add(arg.get(1), fig);
 		}
 		else
