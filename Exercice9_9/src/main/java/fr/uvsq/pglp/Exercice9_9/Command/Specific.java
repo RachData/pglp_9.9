@@ -22,7 +22,7 @@ public class Specific {
 		CerlcleDAO cdao = DaoFactory.getCerlcleDAO();
 		Cercle cercl = cdao.read(arg.get(0));
 		if(cercl == null) {
-			allfigure fig = FigFactory.getFigure(arg);
+			Allfigure fig = FigFactory.getFigure(arg);
 			ContFig.add(arg.get(0), fig);
 			if(fig != null ) {
 				cercl = (Cercle) fig;
@@ -43,7 +43,7 @@ public class Specific {
 		RectangleDAO rdao = DaoFactory.getRectangleDAO();
 		RectangleFig rect = rdao.read(arg.get(0));
 		if(rect == null) {
-			allfigure fig = FigFactory.getFigure(arg);
+			Allfigure fig = FigFactory.getFigure(arg);
 			ContFig.add(arg.get(0), fig);
 			if(fig != null ) {
 				rect = (RectangleFig) fig;
@@ -65,7 +65,7 @@ public class Specific {
 		CarreDAO cadao = DaoFactory.getCarreDAO();
 		Carrer care = cadao.read(arg.get(0));
 		if(care == null) {
-			allfigure fig = FigFactory.getFigure(arg);
+			Allfigure fig = FigFactory.getFigure(arg);
 			ContFig.add(arg.get(0), fig);
 			if(fig != null ) {
 				care = (Carrer) fig;
@@ -89,7 +89,7 @@ public class Specific {
 		Triangle tr = tdao.read(arg.get(0));
 		if(tr == null) {
 
-			allfigure fig = FigFactory.getFigure(arg);
+			Allfigure fig = FigFactory.getFigure(arg);
 			ContFig.add(arg.get(0), fig);
 			if(fig != null ) {
 
@@ -112,7 +112,7 @@ public class Specific {
 		GroupFig gr = gdao.read(arg.get(0));
 		if(gr == null) {
 			//System.out.println("Passer dans get group");
-			allfigure fig = FigFactory.getFigure(arg);
+			Allfigure fig = FigFactory.getFigure(arg);
 			ContFig.add(arg.get(0), fig);
 			if(fig != null ) {
 
@@ -122,7 +122,8 @@ public class Specific {
 					System.out.println("Ecpetions a gerer dans specific getGroupe");
 			}else
 				System.out.println("Ecpetions a gerer dans specific getGroupe figure existant");
-		}
+		}else
+			System.out.println("Ecpetions a gerer dans specific getGroupe figure existant");
 
 	}
 
@@ -132,7 +133,7 @@ public class Specific {
 	 */
 	public void move(List<String> arg) {
 
-		allfigure fig = this.find(arg.get(1));
+		Allfigure fig = this.find(arg.get(1));
 		if(fig != null) {
 			fig.move(Double.parseDouble(arg.get(2)), Double.parseDouble(arg.get(3)));
 			if(fig instanceof GroupFig) {
@@ -140,8 +141,8 @@ public class Specific {
 				ItteratorFigure affich = new ItteratorFigure(fig);
 				Iterator grouptIter = affich.getIterator();
 				while (grouptIter.HasNext()) {
-					allfigure nextValue=grouptIter.Next();
-					if(fig.getName()!= nextValue.getName()) {
+					Allfigure nextValue=grouptIter.Next();
+					if(!fig.getName().contentEquals(nextValue.getName())) {
 						if(nextValue instanceof Cercle) {
 							this.figFind="Cercle";
 						}
@@ -172,7 +173,7 @@ public class Specific {
 	 */
 	public void affiche(String fig) {
 
-		allfigure allfig = this.find(fig);
+		Allfigure allfig = this.find(fig);
 		if(allfig != null) {
 			AfficheFig.affich(allfig);
 		}
@@ -186,7 +187,7 @@ public class Specific {
 	 * @param name
 	 * @return
 	 */
-	private allfigure find(String name) {
+	private Allfigure find(String name) {
 
 		TriangleDAO tdao = DaoFactory.getTriangleDAO();
 		Triangle tr = tdao.read(name);
@@ -225,7 +226,7 @@ public class Specific {
 		return null;
 	}
 
-	private void update(allfigure fig) {
+	private void update(Allfigure fig) {
 		switch (this.figFind) {
 		case "Triangle":
 			Triangle tr = (Triangle) fig;

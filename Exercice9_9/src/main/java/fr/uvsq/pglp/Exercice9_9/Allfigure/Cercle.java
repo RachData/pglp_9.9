@@ -6,7 +6,7 @@ package fr.uvsq.pglp.Exercice9_9.Allfigure;
  *
  */
 
-public class Cercle extends allfigure{
+public class Cercle extends Allfigure{
 	private Point2D center;
 	private double rayon;
 

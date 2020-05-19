@@ -27,9 +27,9 @@ public class FigFactory {
 	 * @param args les arguments qui servent a instancier une figure
 	 * @return la figure
 	 */
-	public static allfigure getFigure(List<String> args) {
+	public static Allfigure getFigure(List<String> args) {
 
-		allfigure fig = null;
+		Allfigure fig = null;
 		String typeFigure = args.get(1).toUpperCase();
 		switch (typeFigure) {
 		case CERCLE:
@@ -55,7 +55,6 @@ public class FigFactory {
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
-			System.out.println("figFactory");
 			break;
 
 		case TRIANGLE:
@@ -66,8 +65,9 @@ public class FigFactory {
 			break;
 
 		case GROUPE:
-			GroupFig grp = new GroupFig(args.get(0));
 			if(args.size() > 1) {
+				GroupFig grp = new GroupFig(args.get(0));
+				
 				int i=2;
 				while(i<args.size()) {
 					fig = find(args.get(i));
@@ -88,7 +88,7 @@ public class FigFactory {
 	}
 
 	
-	private static allfigure find(String name) {
+	private static Allfigure find(String name) {
 
 		TriangleDAO tdao = DaoFactory.getTriangleDAO();
 		Triangle tr = tdao.read(name);

@@ -6,7 +6,7 @@ package fr.uvsq.pglp.Exercice9_9.Allfigure;
  *
  */
 
-public class Triangle extends allfigure{
+public class Triangle extends Allfigure{
 
 	private Point2D downLeft;
 	private Point2D downRight;

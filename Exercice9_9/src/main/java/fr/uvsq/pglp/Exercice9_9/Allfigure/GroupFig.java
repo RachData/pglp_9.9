@@ -8,9 +8,9 @@ import java.util.List;
  * @author root
  *
  */
-public class GroupFig extends allfigure{
+public class GroupFig extends Allfigure{
 
-	private List<allfigure> figures;
+	private List<Allfigure> figures;
 
 	/**
 	 * initialise le nom du groupe
@@ -18,14 +18,14 @@ public class GroupFig extends allfigure{
 	 */
 	public GroupFig(String name) {
 		super.name = name;
-		figures = new ArrayList<allfigure>();
+		figures = new ArrayList<Allfigure>();
 	}
 
 	/**
 	 * retoure une liste immuable du groupe
 	 * @return
 	 */
-	public List<allfigure> gettab(){
+	public List<Allfigure> gettab(){
 		return Collections 
 				.unmodifiableList(figures);
 	}
@@ -42,7 +42,7 @@ public class GroupFig extends allfigure{
 	 * ajoute un element dans le groupe
 	 * @param element
 	 */
-	public void add(allfigure element) {
+	public void add(Allfigure element) {
 		figures.add(element);
 	}
 
@@ -50,7 +50,7 @@ public class GroupFig extends allfigure{
 	 * supprime un element du goupe
 	 * @param perso
 	 */
-	public void remove(allfigure perso) {
+	public void remove(Allfigure perso) {
 		this.figures.remove(perso);
 	}
 

@@ -10,13 +10,13 @@ import java.util.List;
  */
 public class ItteratorFigure {
 
-	private ArrayList<allfigure> grpfig=new ArrayList<allfigure>();
+	private ArrayList<Allfigure> grpfig=new ArrayList<Allfigure>();
 
 	/**
 	 * initialise ItteratorFigure
 	 * @param root
 	 */
-	public ItteratorFigure (allfigure root) {
+	public ItteratorFigure (Allfigure root) {
 		this.grpfig.add(root);
 	}
 
@@ -37,7 +37,7 @@ public class ItteratorFigure {
 				if(grpfig.get(verifier) instanceof GroupFig) {
 					GroupFig test=(GroupFig)grpfig.get(verifier);
 					int i=0;
-					List<allfigure> arrlist = test.gettab(); 
+					List<Allfigure> arrlist = test.gettab(); 
 					while(i<arrlist.size()) {
 						grpfig.add(arrlist.get(i));
 						i++;
@@ -64,7 +64,7 @@ public class ItteratorFigure {
 		 * retourne la figure dans la liste
 		 */
 		@Override
-		public allfigure Next() {
+		public Allfigure Next() {
 			if(this.HasNext()) {
 				index++;
 				return grpfig.get(index-1);

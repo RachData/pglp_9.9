@@ -50,7 +50,7 @@ public class FactoryCreateFigTest {
 	public void FigFactoryTest() throws RectangleException {
 		//FigFactory figureFactory = new FigFactory();
 
-		allfigure cercle = null;
+		Allfigure cercle = null;
 
 		List<String> arg = new ArrayList<String>();
 		arg.add("C1");
@@ -88,7 +88,7 @@ public class FactoryCreateFigTest {
 	public void FigFactoryGrouptTest() throws RectangleException {
 		//FigFactory figureFactory = new FigFactory();
 
-		allfigure grp = null;
+		Allfigure grp = null;
 
 		List<String> arg = new ArrayList<String>();
 		arg.add("grp1");

@@ -15,7 +15,7 @@ import fr.uvsq.pglp.Exercice9_9.Allfigure.*;
  */
 public class ContFig {
 
-	private static allfigure figures;
+	private static Allfigure figures;
 	private static String name= "";
 
 	/**
@@ -23,7 +23,7 @@ public class ContFig {
 	 * @param name le nom de la figure
 	 * @param fig la figure
 	 */
-	public static void add(String namefig, allfigure fig)
+	public static void add(String namefig, Allfigure fig)
 	{	if(fig != null) {
 		figures= fig;
 		name = namefig;
@@ -36,7 +36,7 @@ public class ContFig {
 	 * @param name le nom de la figure
 	 * @return la figure
 	 */
-	public static allfigure get() {
+	public static Allfigure get() {
 			return figures;
 	}
 

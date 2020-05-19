@@ -6,7 +6,7 @@ package fr.uvsq.pglp.Exercice9_9.Allfigure;
  *
  */
 
-public class Point2D  extends allfigure{
+public class Point2D  extends Allfigure{
 
 	private double x;
 	private double y;

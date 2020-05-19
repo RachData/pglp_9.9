@@ -16,6 +16,6 @@ public interface Iterator {
 	 * return une figure dans la liste groupe
 	 * @return une figure
 	 */
-	public allfigure Next();
+	public Allfigure Next();
 
 }

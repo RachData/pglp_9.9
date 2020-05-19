@@ -6,7 +6,7 @@ import fr.uvsq.pglp.Exercice9_9.exceptions.*;
  * @author root
  *
  */
-public class RectangleFig extends allfigure{
+public class RectangleFig extends Allfigure{
 
 	private Point2D upLeft;
 	private Point2D downRight;

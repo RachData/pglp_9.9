@@ -14,13 +14,13 @@ import fr.uvsq.pglp.Exercice9_9.Allfigure.*;
 
 public class figureTest {
 
-	allfigure c1;
+	Allfigure c1;
 	Point2D centre;
-	allfigure r1;
-	allfigure Care;
+	Allfigure r1;
+	Allfigure Care;
 	Point2D ul;
 	Point2D dr;
-	allfigure t1;
+	Allfigure t1;
 	Point2D som;
 	Point2D dlt;
 	Point2D drt;
@@ -72,7 +72,7 @@ public class figureTest {
 		Iterator grouptIter = affich.getIterator();
 
 		while (grouptIter.HasNext()) {
-			allfigure nextValue=grouptIter.Next();
+			Allfigure nextValue=grouptIter.Next();
 			System.out.println("The next value with Iterator is: " + nextValue.toString());
 		}
 

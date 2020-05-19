@@ -13,7 +13,7 @@ import fr.uvsq.pglp.Exercice9_9.Allfigure.Iterator;
 import fr.uvsq.pglp.Exercice9_9.Allfigure.ItteratorFigure;
 import fr.uvsq.pglp.Exercice9_9.Allfigure.RectangleFig;
 import fr.uvsq.pglp.Exercice9_9.Allfigure.Triangle;
-import fr.uvsq.pglp.Exercice9_9.Allfigure.allfigure;
+import fr.uvsq.pglp.Exercice9_9.Allfigure.Allfigure;
 
 public class GroupFigDAO extends DAO<GroupFig> {
 
@@ -57,8 +57,8 @@ public class GroupFigDAO extends DAO<GroupFig> {
 				Iterator grouptIter = affich.getIterator();
 				prepare = connect.prepareStatement("INSERT INTO appartient (nomGrp,nomFig) VALUES (?, ?)");
 				while (grouptIter.HasNext()) {
-					allfigure nextValue = grouptIter.Next();
-
+					Allfigure nextValue = grouptIter.Next();
+					
 					if (obj.getName() != nextValue.getName()) {
 						prepare.setString(1, obj.getName());
 						prepare.setString(2, nextValue.getName());
@@ -68,7 +68,6 @@ public class GroupFigDAO extends DAO<GroupFig> {
 				prepare.executeBatch();
 				return true;
 			} finally {
-				if (prepare != null)
 					prepare.close();
 			}
 
@@ -85,7 +84,7 @@ public class GroupFigDAO extends DAO<GroupFig> {
 	@Override
 	public GroupFig read(String name) {
 		GroupFig grpfig = null;
-		allfigure fig = null;
+		Allfigure fig = null;
 		PreparedStatement prepare = null;
 		ResultSet result = null;
 
@@ -145,9 +144,8 @@ public class GroupFigDAO extends DAO<GroupFig> {
 				Iterator grouptIter = affich.getIterator();
 				prepare = connect.prepareStatement("INSERT INTO appartient (nomGrp,nomFig) VALUES (?, ?)");
 				while (grouptIter.HasNext()) {
-					allfigure nextValue = grouptIter.Next();
-					System.out.println("passer dans update groupe "+nextValue);
-					if (obj.getName() != nextValue.getName()) {
+					Allfigure nextValue = grouptIter.Next();
+					if (obj.getName().contentEquals(nextValue.getName())) {
 						prepare.setString(1, obj.getName());
 						prepare.setString(2, nextValue.getName());
 						prepare.addBatch();
@@ -156,6 +154,7 @@ public class GroupFigDAO extends DAO<GroupFig> {
 				}
 				prepare.setString(6, obj.getName());
 				prepare.executeUpdate();
+				prepare.close();
 				return true;
 			} finally {
 				prepare.close();
@@ -189,7 +188,7 @@ public class GroupFigDAO extends DAO<GroupFig> {
 		return false;
 	}
 
-	private static allfigure find(String name) {
+	private static Allfigure find(String name) {
 
 		TriangleDAO tdao = DaoFactory.getTriangleDAO();
 		Triangle tr = tdao.read(name);
@@ -218,7 +217,7 @@ public class GroupFigDAO extends DAO<GroupFig> {
 		return null;
 	}
 
-	private void updateellementgroup(allfigure nextValue) {
+	private void updateellementgroup(Allfigure nextValue) {
 
 		if (nextValue instanceof Cercle) {
 			System.out.println("je suis un cercle");

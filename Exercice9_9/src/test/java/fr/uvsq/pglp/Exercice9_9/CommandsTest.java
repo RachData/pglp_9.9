@@ -10,7 +10,7 @@ import org.junit.Test;
 
 import fr.uvsq.pglp.Exercice9_9.Allfigure.Cercle;
 import fr.uvsq.pglp.Exercice9_9.Allfigure.Triangle;
-import fr.uvsq.pglp.Exercice9_9.Allfigure.allfigure;
+import fr.uvsq.pglp.Exercice9_9.Allfigure.Allfigure;
 import fr.uvsq.pglp.Exercice9_9.Command.*;
 import fr.uvsq.pglp.Exercice9_9.CreationFigure.ContFig;
 
@@ -26,7 +26,7 @@ public class CommandsTest {
 	Interpreteur interprete;
 	List<String> arg;
 
-	allfigure fig;
+	Allfigure fig;
 
 	@Before
 	public void setUp() throws Exception {

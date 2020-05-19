@@ -7,7 +7,7 @@ import fr.uvsq.pglp.Exercice9_9.exceptions.RectangleException;
  * @author root
  *
  */
-public class Carrer extends allfigure {
+public class Carrer extends Allfigure {
 	
 	private Point2D upLeft;
 	private Point2D downRight;
