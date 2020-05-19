@@ -2,6 +2,7 @@ package fr.uvsq.pglp.Exercice9_9.CreationFigure;
 
 import java.util.List;
 import fr.uvsq.pglp.Exercice9_9.Allfigure.*;
+import fr.uvsq.pglp.Exercice9_9.DaoFig.CarreDAO;
 import fr.uvsq.pglp.Exercice9_9.DaoFig.CerlcleDAO;
 import fr.uvsq.pglp.Exercice9_9.DaoFig.DaoFactory;
 import fr.uvsq.pglp.Exercice9_9.DaoFig.GroupFigDAO;
@@ -40,7 +41,7 @@ public class FigFactory {
 			centre = new Point2D(Double.parseDouble(args.get(2)), Double.parseDouble(args.get(3)));//anglehautdroit
 			Point2D anglebasgauche = new Point2D(Double.parseDouble(args.get(4)), Double.parseDouble(args.get(5)));
 			try {
-				fig = new RectCarre(args.get(0), centre, anglebasgauche);
+				fig = new RectangleFig(args.get(0), centre, anglebasgauche);
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
@@ -50,10 +51,11 @@ public class FigFactory {
 			centre = new Point2D(Double.parseDouble(args.get(2)), Double.parseDouble(args.get(3)));//anglehautdroit
 			anglebasgauche = new Point2D(Double.parseDouble(args.get(4)), Double.parseDouble(args.get(5)));
 			try {
-				fig = new RectCarre(args.get(0), centre, anglebasgauche);
+				fig = new Carrer(args.get(0), centre, anglebasgauche);
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
+			System.out.println("figFactory");
 			break;
 
 		case TRIANGLE:
@@ -139,9 +141,15 @@ public class FigFactory {
 		}
 
 		RectangleDAO rdao = DaoFactory.getRectangleDAO();
-		RectCarre rect = rdao.read(name);
+		RectangleFig rect = rdao.read(name);
 		if (rect != null) {
 			return rect;
+		}
+		
+		CarreDAO cadao = DaoFactory.getCarreDAO();
+		Carrer carerre = cadao.read(name);
+		if (carerre != null) {
+			return carerre;
 		}
 		
 		/*GroupFigDAO gdao = DaoFactory.getGroupeDAO();

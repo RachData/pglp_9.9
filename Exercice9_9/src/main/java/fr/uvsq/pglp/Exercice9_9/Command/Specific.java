@@ -37,17 +37,36 @@ public class Specific {
 
 	public void getRectangle(List<String> arg) {
 		RectangleDAO rdao = DaoFactory.getRectangleDAO();
-		RectCarre rect = rdao.read(arg.get(0));
+		RectangleFig rect = rdao.read(arg.get(0));
 		if(rect == null) {
 			allfigure fig = FigFactory.getFigure(arg);
 			ContFig.add(arg.get(0), fig);
 			if(fig != null ) {
-				rect = (RectCarre) fig;
+				rect = (RectangleFig) fig;
 				rdao = DaoFactory.getRectangleDAO();
 				if(rdao.create(rect)==false)
 					System.out.println("Ecpetions a gerer dans specific getRectangle");
 			}else
 				System.out.println("Ecpetions a gerer dans specific getRectangle figure existant");
+		}
+
+
+	}
+	
+	public void getCarre(List<String> arg) {
+		CarreDAO cadao = DaoFactory.getCarreDAO();
+		Carrer care = cadao.read(arg.get(0));
+		if(care == null) {
+			allfigure fig = FigFactory.getFigure(arg);
+			ContFig.add(arg.get(0), fig);
+			if(fig != null ) {
+				care = (Carrer) fig;
+				
+				cadao = DaoFactory.getCarreDAO();
+				if(cadao.create(care)==false)
+					System.out.println("Ecpetions a gerer dans specific getcarrer");
+			}else
+				System.out.println("Ecpetions a gerer dans specific getcarrer figure existant");
 		}
 
 
@@ -76,7 +95,7 @@ public class Specific {
 		GroupFigDAO gdao = DaoFactory.getGroupeDAO();
 		GroupFig gr = gdao.read(arg.get(0));
 		//if(gr == null) {
-			System.out.println("Passer dans get group");
+			//System.out.println("Passer dans get group");
 			allfigure fig = FigFactory.getFigure(arg);
 			ContFig.add(arg.get(0), fig);
 			if(fig != null ) {
@@ -144,10 +163,17 @@ public class Specific {
 		}
 
 		RectangleDAO rdao = DaoFactory.getRectangleDAO();
-		RectCarre rect = rdao.read(name);
+		RectangleFig rect = rdao.read(name);
 		if (rect != null) {
 			this.figFind = "RectCarre";
 			return rect;
+		}
+		
+		CarreDAO cadao = DaoFactory.getCarreDAO();
+		Carrer carerre = cadao.read(name);
+		if (carerre != null) {
+			this.figFind = "Carrer";
+			return carerre;
 		}
 		
 		GroupFigDAO gdao = DaoFactory.getGroupeDAO();
@@ -156,7 +182,6 @@ public class Specific {
 			this.figFind = "GroupFig";
 			return grp;
 		}
-
 		return null;
 	}
 
@@ -173,7 +198,7 @@ public class Specific {
 			cdao.update(cercl);
 			break;
 		case "RectCarre":
-			RectCarre rect = (RectCarre) fig;
+			RectangleFig rect = (RectangleFig) fig;
 			RectangleDAO rdao = DaoFactory.getRectangleDAO();
 			rdao.update(rect);
 			break;
@@ -181,6 +206,12 @@ public class Specific {
 			GroupFig grp = (GroupFig) fig;
 			GroupFigDAO gdao = DaoFactory.getGroupeDAO();
 			gdao.update(grp);
+			break;
+		case "Carrer":
+			Carrer care = (Carrer) fig;
+			CarreDAO cadao = DaoFactory.getCarreDAO();
+			cadao.update(care);
+			System.out.println("passer");
 			break;
 		default:
 			break;

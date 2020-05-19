@@ -45,7 +45,12 @@ public class DrawingTUI {
 				&& args.get(0).toLowerCase().contentEquals("quit") == false) {
 			this.args = this.args.subList(0, 1);
 			this.args.add(this.args.get(0));
-			AfficheFig.affich(ContFig.get());
+			try {
+				AfficheFig.affich(ContFig.get());
+			} catch (Exception e) {
+				System.out.println("exception a gerer dans affich");
+			}
+			
 		}
 	}
 

@@ -26,6 +26,14 @@ public class DaoFactory {
 	public static RectangleDAO getRectangleDAO(){
 		return new RectangleDAO(conn);
 	}
+	
+	/**
+	 * Retourne le DAO des Carre
+	 * @return DAORectangle
+	 */
+	public static CarreDAO getCarreDAO(){
+		return new CarreDAO(conn);
+	}
 
 	/**
 	 * Retourne le DAO des Triangles

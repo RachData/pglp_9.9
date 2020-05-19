@@ -11,6 +11,7 @@ public class Initcommande {
 	private static CommandRectangle createRectangle;
 	private static CommandTriangle createTriangle;
 	private static CommandGroupe createGroupe;	
+	private static CommandCarre createCarrer;
 	private static Specific receiver;
 	private static CommandMove move;
 	private static CommandAffichage affich;
@@ -33,6 +34,8 @@ public class Initcommande {
 		createTriangle = new CommandTriangle(receiver);
 		
 		createGroupe = new CommandGroupe(receiver);
+		
+		createCarrer = new CommandCarre(receiver);
 
 		move = new CommandMove(receiver);
 
@@ -41,7 +44,7 @@ public class Initcommande {
 		inter.register("quit", quitprog);
 		inter.register("cercle", createCercle);
 		inter.register("rectangle", createRectangle);
-		//inter.register("carre", createFig);
+		inter.register("carre", createCarrer);
 		inter.register("triangle", createTriangle);
 		inter.register("groupe", createGroupe);
 		inter.register("move", move);

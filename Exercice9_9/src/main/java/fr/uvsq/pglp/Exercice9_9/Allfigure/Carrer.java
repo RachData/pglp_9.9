@@ -1,25 +1,26 @@
 package fr.uvsq.pglp.Exercice9_9.Allfigure;
-import fr.uvsq.pglp.Exercice9_9.exceptions.*;
+
+import fr.uvsq.pglp.Exercice9_9.exceptions.RectangleException;
 
 /**
- * Un rectangle 
+ * Un carre
  * @author root
  *
  */
-public class RectCarre extends allfigure{
-
+public class Carrer extends allfigure {
+	
 	private Point2D upLeft;
 	private Point2D downRight;
 
 	/**
-	 * Initilise un rectangle.
-	 * @param name le nom du rectangle
-	 * @param upLeft Angle gauche du rectangle
-	 * @param downRight Angle droite du rectangle
+	 * Initilise un carre.
+	 * @param name le nom du carre
+	 * @param upLeft Angle gauche du carre
+	 * @param downRight Angle droite du carre
 	 */
-	public RectCarre(String name, Point2D upLeft, Point2D downRight) throws  RectangleException
+	public Carrer(String name, Point2D upLeft, Point2D downRight) throws  RectangleException
 	{  
-		boolean test = upLeft.getX() <= downRight.getX() && upLeft.getY() >= downRight.getY();
+		boolean test = upLeft.getX() == downRight.getY() && upLeft.getY() == downRight.getX();
 		if(test==false ) {
 			throw new RectangleException();
 		}else {
@@ -34,7 +35,7 @@ public class RectCarre extends allfigure{
 
 
 	/**
-	 * deplace le rectangle.
+	 * deplace le carre.
 	 * 
 	 * @param dx deplacer a x
 	 * @param dy deplacer en y
@@ -46,14 +47,14 @@ public class RectCarre extends allfigure{
 	}
 
 	/**
-	 *donne la description d'un rectangle.
+	 *donne la description d'un carre.
 	 * @return en chaine de caractere la description
 	 */
 	@Override
 	public String toString() {
 		StringBuilder str = new StringBuilder();
 		str.append(name);
-		str.append("(rectangle=");
+		str.append("(Carre=");
 		str.append(upLeft.toString());
 		str.append(", ");
 		str.append(downRight.toString());
@@ -62,7 +63,7 @@ public class RectCarre extends allfigure{
 	}
 
 	/***
-	 * Rerourne le nom du rectangle
+	 * Rerourne le nom du carre
 	 * @return nom
 	 */
 	public String getName() {
@@ -70,7 +71,7 @@ public class RectCarre extends allfigure{
 	}
 
 	/**
-	 * retourne le point a l'angle haut gauche du rectangle
+	 * retourne le point a l'angle haut gauche du carre
 	 * @return Point
 	 */
 	public Point2D getUpLeft() {
@@ -78,11 +79,12 @@ public class RectCarre extends allfigure{
 	}
 
 	/**
-	 * retourne le point a l'angle bas droite du rectangle
+	 * retourne le point a l'angle bas droite du carre
 	 * @return
 	 */
 	public Point2D getDownRight() {
 		return downRight;
 	}
+
 
 }

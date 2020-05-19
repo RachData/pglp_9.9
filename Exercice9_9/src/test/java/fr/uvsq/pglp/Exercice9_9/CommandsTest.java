@@ -80,8 +80,8 @@ public class CommandsTest {
 		arg.add("C2");
 		arg.add("5");
 		arg.add("5");
-		interprete.execute(arg.get(0),arg);
-		fig = ContFig.get("C2");
+		interprete.execute(arg.get(0));
+		fig = ContFig.get();
 		System.out.println(fig);
 
 	}
@@ -92,7 +92,7 @@ public class CommandsTest {
 		arg.removeAll(arg);
 		arg.add("affiche");
 		arg.add("C1");
-		interprete.execute(arg.get(0),arg);
+		interprete.execute(arg.get(0));
 		System.out.println("fin affiche");
 
 	}

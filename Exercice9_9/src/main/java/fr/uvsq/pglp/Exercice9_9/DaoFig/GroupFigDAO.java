@@ -6,11 +6,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import fr.uvsq.pglp.Exercice9_9.Allfigure.Carrer;
 import fr.uvsq.pglp.Exercice9_9.Allfigure.Cercle;
 import fr.uvsq.pglp.Exercice9_9.Allfigure.GroupFig;
 import fr.uvsq.pglp.Exercice9_9.Allfigure.Iterator;
 import fr.uvsq.pglp.Exercice9_9.Allfigure.ItteratorFigure;
-import fr.uvsq.pglp.Exercice9_9.Allfigure.RectCarre;
+import fr.uvsq.pglp.Exercice9_9.Allfigure.RectangleFig;
 import fr.uvsq.pglp.Exercice9_9.Allfigure.Triangle;
 import fr.uvsq.pglp.Exercice9_9.Allfigure.allfigure;
 
@@ -147,9 +148,9 @@ public class GroupFigDAO extends DAO<GroupFig> {
 					if (nextValue instanceof Cercle) {
 						nextValue = (Cercle) nextValue;
 						name = ((Cercle) nextValue).getName();
-					} else if (nextValue instanceof RectCarre) {
-						nextValue = (RectCarre) nextValue;
-						name = ((RectCarre) nextValue).getName();
+					} else if (nextValue instanceof RectangleFig) {
+						nextValue = (RectangleFig) nextValue;
+						name = ((RectangleFig) nextValue).getName();
 					} else if (nextValue instanceof Triangle) {
 						nextValue = (Triangle) nextValue;
 						name = ((Triangle) nextValue).getName();
@@ -205,8 +206,14 @@ public class GroupFigDAO extends DAO<GroupFig> {
 		}
 
 		RectangleDAO rdao = DaoFactory.getRectangleDAO();
-		RectCarre rect = rdao.read(name);
+		RectangleFig rect = rdao.read(name);
 		if (rect != null) {
+			return rect;
+		}
+		
+		CarreDAO cadao = DaoFactory.getCarreDAO();
+		Carrer carer = cadao.read(name);
+		if (carer != null) {
 			return rect;
 		}
 

@@ -4,24 +4,19 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
-import fr.uvsq.pglp.Exercice9_9.Allfigure.RectangleFig;
-import fr.uvsq.pglp.Exercice9_9.exceptions.RectangleException;
+import fr.uvsq.pglp.Exercice9_9.Allfigure.Carrer;
 import fr.uvsq.pglp.Exercice9_9.Allfigure.Point2D;
+import fr.uvsq.pglp.Exercice9_9.exceptions.RectangleException;
 
-/**
- * DAO pour les Ractangles
- * @author root
- *
- */
-public class RectangleDAO extends DAO<RectangleFig>{
+public class CarreDAO extends DAO<Carrer> {
+	
 
 	/**
 	 * initilise la connection avec la base de donnée
 	 * @param conn la connection
 	 */
-	public RectangleDAO(Connection conn) {
+	public CarreDAO(Connection conn) {
 		super(conn);
 	}
 
@@ -29,7 +24,7 @@ public class RectangleDAO extends DAO<RectangleFig>{
 	 * Insere un cercle dans la base de données
 	 */
 	@Override
-	public boolean create(RectangleFig obj) {
+	public boolean create(Carrer obj) {
 
 
 		try {
@@ -38,7 +33,7 @@ public class RectangleDAO extends DAO<RectangleFig>{
 			Statement s;
 			s = connect.createStatement();
 			try {
-				s.execute("create table Rectangle(Id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,name varchar(40) NOT NULL UNIQUE, CordUX double, CordUY double, CordDX double, CordDY double)");
+				s.execute("create table Carre(Id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,name varchar(40) NOT NULL UNIQUE, CordUX double, CordUY double, CordDX double, CordDY double)");
 				System.out.println("Created table derby");
 			} catch (Exception e) {
 
@@ -49,7 +44,7 @@ public class RectangleDAO extends DAO<RectangleFig>{
 
 			PreparedStatement prepare = null;
 			try {
-				prepare = connect.prepareStatement("INSERT INTO rectangle (name, CordUX, CordUy,CordDX, CordDy) VALUES (?,?,?,?,?) ");
+				prepare = connect.prepareStatement("INSERT INTO Carre (name, CordUX, CordUy,CordDX, CordDy) VALUES (?,?,?,?,?) ");
 				prepare.setString(1, obj.getName());
 				prepare.setDouble(2, obj.getUpLeft().getX());
 				prepare.setDouble(3, obj.getUpLeft().getY());
@@ -71,8 +66,8 @@ public class RectangleDAO extends DAO<RectangleFig>{
 	 * Retourne le cercle dont le nom est "name" dans la base de données
 	 */
 	@Override
-	public RectangleFig read(String name) {
-		RectangleFig fig=null;
+	public Carrer read(String name) {
+		Carrer fig=null;
 
 		PreparedStatement prepare = null;
 		ResultSet result= null;
@@ -80,14 +75,14 @@ public class RectangleDAO extends DAO<RectangleFig>{
 		try {
 
 			try {
-				prepare = this.connect.prepareStatement("SELECT * FROM rectangle WHERE NAME = ?");
+				prepare = this.connect.prepareStatement("SELECT * FROM Carre WHERE NAME = ?");
 				prepare.setString(1, name);
 
 				try {
 					result= prepare.executeQuery();
 					if(result.next()==true) {
 
-						fig = new RectangleFig(result.getString("NAME"), new Point2D(result.getDouble("CORDUX"), result.getDouble("CORDUY")), new Point2D(result.getDouble("CORDDX"), result.getDouble("CORDDY")));
+						fig = new Carrer(result.getString("NAME"), new Point2D(result.getDouble("CORDUX"), result.getDouble("CORDUY")), new Point2D(result.getDouble("CORDDX"), result.getDouble("CORDDY")));
 
 					}
 				} catch (RectangleException e) {
@@ -113,13 +108,13 @@ public class RectangleDAO extends DAO<RectangleFig>{
 	 * Effectue la mise a jour d'un cercle dans la base de données
 	 */
 	@Override
-	public boolean update(RectangleFig obj) {
+	public boolean update(Carrer obj) {
 
 		PreparedStatement prepare = null;
 		try
 		{
 			try {
-				prepare =this.connect.prepareStatement("update rectangle set name=?,CordUX=?,CordUY=?,CordDX=?,CordDY=? where name=?");
+				prepare =this.connect.prepareStatement("update Carre set name=?,CordUX=?,CordUY=?,CordDX=?,CordDY=? where name=?");
 				prepare.setString(1, obj.getName());
 				prepare.setDouble(2, obj.getUpLeft().getX());
 				prepare.setDouble(3, obj.getUpLeft().getY());
@@ -150,7 +145,7 @@ public class RectangleDAO extends DAO<RectangleFig>{
 		try
 		{
 			try {
-				prepare =this.connect.prepareStatement("delete from rectangle where NAME=?");
+				prepare =this.connect.prepareStatement("delete from Carre where NAME=?");
 				prepare.setString(1, name);
 				prepare.executeUpdate();
 				return true;

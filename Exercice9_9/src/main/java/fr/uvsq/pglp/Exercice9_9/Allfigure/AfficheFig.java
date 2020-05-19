@@ -16,7 +16,12 @@ public class AfficheFig {
 		Iterator grouptIter = affich.getIterator();
 		while (grouptIter.HasNext()) {
 			allfigure nextValue=grouptIter.Next();
-			System.out.println(nextValue.toString());
+			//try {
+				System.out.println(nextValue.toString());
+			//} catch (Exception e) {
+				// TODO: handle exception
+			//}
+			
 		}
 
 	}

@@ -16,7 +16,7 @@ public class FactoryCreateFigTest {
 
 	Cercle c1;
 	Point2D centre;
-	RectCarre r1;
+	RectangleFig r1;
 	Point2D ul;
 	Point2D dr;
 	Triangle t1;
@@ -31,7 +31,7 @@ public class FactoryCreateFigTest {
 		c1 = new Cercle("C1",centre, 5);
 		ul = new Point2D(3, 2);
 		dr = new Point2D(5, 1);
-		r1 = new RectCarre("R1", ul, dr);
+		r1 = new RectangleFig("R1", ul, dr);
 		som = new Point2D(4, 3);
 		dlt = new Point2D(3, 1);
 		drt = new Point2D(5, 2);
