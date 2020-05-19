@@ -14,13 +14,13 @@ import fr.uvsq.pglp.Exercice9_9.Allfigure.*;
 
 public class figureTest {
 
-	Cercle c1;
+	allfigure c1;
 	Point2D centre;
-	RectangleFig r1;
-	RectangleFig Care;
+	allfigure r1;
+	allfigure Care;
 	Point2D ul;
 	Point2D dr;
-	Triangle t1;
+	allfigure t1;
 	Point2D som;
 	Point2D dlt;
 	Point2D drt;

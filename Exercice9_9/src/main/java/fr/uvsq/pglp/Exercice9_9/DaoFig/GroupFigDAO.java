@@ -85,7 +85,7 @@ public class GroupFigDAO extends DAO<GroupFig> {
 	@Override
 	public GroupFig read(String name) {
 		GroupFig grpfig = null;
-		allfigure fig = null ;
+		allfigure fig = null;
 		PreparedStatement prepare = null;
 		ResultSet result = null;
 
@@ -101,7 +101,7 @@ public class GroupFigDAO extends DAO<GroupFig> {
 						try {
 
 							fig = find(result.getString("nomFig"));
-							if(fig != null)
+							if (fig != null)
 								grpfig.add(fig);
 
 						} catch (Exception e) {
@@ -135,19 +135,18 @@ public class GroupFigDAO extends DAO<GroupFig> {
 	public boolean update(GroupFig obj) {
 
 		PreparedStatement prepare = null;
-		String name = "";
 		ItteratorFigure affich = new ItteratorFigure(obj);
 		try {
 			try {
 				prepare = this.connect
 						.prepareStatement("update Cercle set name=?,CordUX=?,CordUY=?,CordDX=?,CordDY=? where name=?");
 				prepare.setString(1, obj.getName());
-				
+
 				Iterator grouptIter = affich.getIterator();
 				prepare = connect.prepareStatement("INSERT INTO appartient (nomGrp,nomFig) VALUES (?, ?)");
 				while (grouptIter.HasNext()) {
 					allfigure nextValue = grouptIter.Next();
-
+					System.out.println("passer dans update groupe "+nextValue);
 					if (obj.getName() != nextValue.getName()) {
 						prepare.setString(1, obj.getName());
 						prepare.setString(2, nextValue.getName());
@@ -209,40 +208,36 @@ public class GroupFigDAO extends DAO<GroupFig> {
 		if (rect != null) {
 			return rect;
 		}
-		
+
 		CarreDAO cadao = DaoFactory.getCarreDAO();
 		Carrer carer = cadao.read(name);
 		if (carer != null) {
 			return rect;
 		}
 
-
 		return null;
 	}
-	
-	
-	private void updateellementgroup(allfigure nextValue) {
-		
-		if(nextValue instanceof Cercle) {
-			CerlcleDAO cdao = DaoFactory.getCerlcleDAO();
-			cdao.update((Cercle)nextValue);
-		}
-		else
-			if(nextValue instanceof RectangleFig){
-				RectangleDAO rdao = DaoFactory.getRectangleDAO();
-				rdao.update((RectangleFig)nextValue);
-			}
-			else
-				if(nextValue instanceof Triangle){
-					TriangleDAO tdao = DaoFactory.getTriangleDAO();
-					tdao.update((Triangle)nextValue);
-				}else
-					if(nextValue instanceof Carrer) {
-						CarreDAO tdao = DaoFactory.getCarreDAO();
-						tdao.update((Carrer)nextValue);
-					}
 
-		
+	private void updateellementgroup(allfigure nextValue) {
+
+		if (nextValue instanceof Cercle) {
+			System.out.println("je suis un cercle");
+			CerlcleDAO cdao = DaoFactory.getCerlcleDAO();
+			cdao.update((Cercle) nextValue);
+		} else if (nextValue instanceof RectangleFig) {
+			System.out.println("je suis un RectangleFig");
+			RectangleDAO rdao = DaoFactory.getRectangleDAO();
+			rdao.update((RectangleFig) nextValue);
+		} else if (nextValue instanceof Triangle) {
+			System.out.println("je suis un Triangle");
+			TriangleDAO tdao = DaoFactory.getTriangleDAO();
+			tdao.update((Triangle) nextValue);
+		} else if (nextValue instanceof Carrer) {
+			System.out.println("je suis un Carrer");
+			CarreDAO cadao = DaoFactory.getCarreDAO();
+			cadao.update((Carrer) nextValue);
+		}
+
 	}
 
 }
