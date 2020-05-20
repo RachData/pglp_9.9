@@ -93,21 +93,25 @@ public class GroupFigDAO extends DAO<GroupFig> {
 			try {
 				prepare = this.connect.prepareStatement("SELECT * FROM appartient WHERE nomGrp = ?");
 				prepare.setString(1, name);
-				grpfig = new GroupFig(name);
+				
 				try {
 					result = prepare.executeQuery();
-					while (result.next() == true) {
-						try {
+					if(result.next() == true) {
+						grpfig= new GroupFig(name);
+						do{
+							try {
 
-							fig = find(result.getString("nomFig"));
-							if (fig != null)
-								grpfig.add(fig);
+								fig = find(result.getString("nomFig"));
+								if (fig != null)
+									grpfig.add(fig);
 
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
+							} catch (Exception e) {
+								e.printStackTrace();
+							}
 
+						}while(result.next() == true);
 					}
+					
 				} finally {
 					if (result != null)
 						result.close();

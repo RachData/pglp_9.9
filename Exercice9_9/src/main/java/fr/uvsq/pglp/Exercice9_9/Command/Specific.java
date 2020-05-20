@@ -111,7 +111,6 @@ public class Specific {
 		GroupFigDAO gdao = DaoFactory.getGroupeDAO();
 		GroupFig gr = gdao.read(arg.get(0));
 		if(gr == null) {
-			//System.out.println("Passer dans get group");
 			Allfigure fig = FigFactory.getFigure(arg);
 			ContFig.add(arg.get(0), fig);
 			if(fig != null ) {
@@ -226,6 +225,10 @@ public class Specific {
 		return null;
 	}
 
+	/**
+	 * Effectue la Mise a jour d'une figure
+	 * @param fig
+	 */
 	private void update(Allfigure fig) {
 		switch (this.figFind) {
 		case "Triangle":
