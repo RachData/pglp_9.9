@@ -11,7 +11,8 @@ public enum DrawingApp {
 	ENVIRONNEMENT;
 
 	public void run( String[] args){
-		Scanner rep = new Scanner(System.in);
+		//Scanner rep = new Scanner(System.in);
+		Scanner rep = new Scanner(System.in, "UTF-8");
 		DrawingTUI saisie = new DrawingTUI();
 		String text;
 		Commands command ;

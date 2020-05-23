@@ -53,19 +53,22 @@ public class GroupFigDAO extends DAO<GroupFig> {
 				prepare = connect.prepareStatement("INSERT INTO Groupe (name) VALUES (?) ");
 				prepare.setString(1, obj.getName());
 				prepare.executeUpdate();
+				prepare.close();
 				ItteratorFigure affich = new ItteratorFigure(obj);
 				Iterator grouptIter = affich.getIterator();
 				prepare = connect.prepareStatement("INSERT INTO appartient (nomGrp,nomFig) VALUES (?, ?)");
 				while (grouptIter.HasNext()) {
 					Allfigure nextValue = grouptIter.Next();
 					
-					if (obj.getName() != nextValue.getName()) {
+					//if (obj.getName() != nextValue.getName()) {
+					if (obj.getName().contentEquals(nextValue.getName()) == false) {
 						prepare.setString(1, obj.getName());
 						prepare.setString(2, nextValue.getName());
 						prepare.addBatch();
 					}
 				}
 				prepare.executeBatch();
+
 				return true;
 			} finally {
 					prepare.close();
@@ -144,7 +147,7 @@ public class GroupFigDAO extends DAO<GroupFig> {
 				prepare = this.connect
 						.prepareStatement("update Cercle set name=?,CordUX=?,CordUY=?,CordDX=?,CordDY=? where name=?");
 				prepare.setString(1, obj.getName());
-
+				prepare.close();
 				Iterator grouptIter = affich.getIterator();
 				prepare = connect.prepareStatement("INSERT INTO appartient (nomGrp,nomFig) VALUES (?, ?)");
 				while (grouptIter.HasNext()) {
@@ -158,7 +161,7 @@ public class GroupFigDAO extends DAO<GroupFig> {
 				}
 				prepare.setString(6, obj.getName());
 				prepare.executeUpdate();
-				prepare.close();
+				
 				return true;
 			} finally {
 				prepare.close();

@@ -18,7 +18,8 @@ public class GetConnection {
 
 	public static void dropCreateTables() {
 		Statement state;
-		try (Connection connect = getInstanceConnexion()) {
+		//try (Connection connect = getInstanceConnexion()) {
+		try (Connection connect = DriverManager.getConnection(JDBC_URL)) {
 			state = connect.createStatement();
 			state.addBatch("DROP TABLE Cercle");
 			state.addBatch("DROP TABLE Rectangle");

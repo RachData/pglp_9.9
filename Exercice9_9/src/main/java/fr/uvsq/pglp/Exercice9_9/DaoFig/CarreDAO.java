@@ -97,7 +97,7 @@ public class CarreDAO extends DAO<Carrer> {
 			}
 
 		} catch (SQLException e) {
-			System.out.println("Exception a gerer dans CercleDAO");
+			
 		}
 
 
@@ -130,7 +130,7 @@ public class CarreDAO extends DAO<Carrer> {
 		} 
 		catch (SQLException e) 
 		{
-			e.printStackTrace();
+			//e.printStackTrace();
 		}	
 		return false;
 	}
