@@ -2,6 +2,8 @@ package fr.uvsq.pglp.Exercice9_9.Command;
 
 import java.util.List;
 
+import fr.uvsq.pglp.Exercice9_9.exceptions.ArgumentsException;
+
 /**
  * Commande concrete pour la creation d'une figure
  * @author root
@@ -28,8 +30,6 @@ public class CommandeCercle implements SpecificCommands{
 		try {
 			inst.getCercle(arg);
 		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("exception a gerer dans commandeCreateFig");
 		}
 
 	}

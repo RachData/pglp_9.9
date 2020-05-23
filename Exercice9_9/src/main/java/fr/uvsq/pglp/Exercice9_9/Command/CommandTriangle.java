@@ -24,8 +24,7 @@ public class CommandTriangle implements Commands{
 		try {
 			inst.getTriangle(arg);
 		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("exception a gerer dans commandeTriangle " + e);
+			
 		}
 
 	}

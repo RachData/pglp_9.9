@@ -6,6 +6,10 @@ import java.util.List;
 import fr.uvsq.pglp.Exercice9_9.Allfigure.*;
 import fr.uvsq.pglp.Exercice9_9.CreationFigure.*;
 import fr.uvsq.pglp.Exercice9_9.DaoFig.*;
+import fr.uvsq.pglp.Exercice9_9.exceptions.ArgumentsException;
+import fr.uvsq.pglp.Exercice9_9.exceptions.DaoException;
+import fr.uvsq.pglp.Exercice9_9.exceptions.FigureExsitanteException;
+import fr.uvsq.pglp.Exercice9_9.exceptions.FigureNonExsitanteException;
 
 /**
  * Les commandes Specific
@@ -17,8 +21,13 @@ public class Specific {
 	/**
 	 * creer une instance de Cercle 
 	 * @param arg la liste d'arguments pour l'instanciation
+	 * @throws ArgumentsException 
+	 * @throws FigureExsitanteException 
+	 * @throws DaoException 
 	 */
-	public void getCercle(List<String> arg) {
+	public void getCercle(List<String> arg) throws ArgumentsException, FigureExsitanteException, DaoException {
+		if(arg.size()!=5)
+			throw new ArgumentsException(arg.get(0));
 		CerlcleDAO cdao = DaoFactory.getCerlcleDAO();
 		Cercle cercl = cdao.read(arg.get(0));
 		if(cercl == null) {
@@ -28,18 +37,23 @@ public class Specific {
 				cercl = (Cercle) fig;
 				cdao = DaoFactory.getCerlcleDAO();
 				if(cdao.create(cercl)==false)
-					System.out.println("Ecpetions a gerer dans specific getcercle");
+					throw new DaoException("Objet crée n'a pas pu etre enregistré dans la base de donnée");
 			}
 		}else
-			System.out.println("Ecpetions a gerer dans specific getcercle figure existant " + arg.toString());
+			throw new FigureExsitanteException(cercl.getName());
 
 	}
 
 	/**
 	 * creer une instance de Rectangle 
 	 * @param arg la liste d'arguments pour l'instanciation
+	 * @throws ArgumentsException 
+	 * @throws DaoException 
+	 * @throws FigureExsitanteException 
 	 */
-	public void getRectangle(List<String> arg) {
+	public void getRectangle(List<String> arg) throws ArgumentsException, DaoException, FigureExsitanteException {
+		if(arg.size()!=6)
+			throw new ArgumentsException(arg.get(0));
 		RectangleDAO rdao = DaoFactory.getRectangleDAO();
 		RectangleFig rect = rdao.read(arg.get(0));
 		if(rect == null) {
@@ -49,10 +63,10 @@ public class Specific {
 				rect = (RectangleFig) fig;
 				rdao = DaoFactory.getRectangleDAO();
 				if(rdao.create(rect)==false)
-					System.out.println("Ecpetions a gerer dans specific getRectangle");
-			}else
-				System.out.println("Ecpetions a gerer dans specific getRectangle figure existant");
-		}
+					throw new DaoException("Objet crée n'a pas pu etre enregistré dans la base de donnée");
+			}
+		}else
+			throw new FigureExsitanteException(rect.getName());
 
 
 	}
@@ -60,8 +74,13 @@ public class Specific {
 	/**
 	 * creer une instance de Carre 
 	 * @param arg la liste d'arguments pour l'instanciation
+	 * @throws ArgumentsException 
+	 * @throws FigureExsitanteException 
+	 * @throws DaoException 
 	 */
-	public void getCarre(List<String> arg) {
+	public void getCarre(List<String> arg) throws ArgumentsException, FigureExsitanteException, DaoException {
+		if(arg.size()!=6)
+			throw new ArgumentsException(arg.get(0));
 		CarreDAO cadao = DaoFactory.getCarreDAO();
 		Carrer care = cadao.read(arg.get(0));
 		if(care == null) {
@@ -72,19 +91,23 @@ public class Specific {
 
 				cadao = DaoFactory.getCarreDAO();
 				if(cadao.create(care)==false)
-					System.out.println("Ecpetions a gerer dans specific getcarrer");
-			}else
-				System.out.println("Ecpetions a gerer dans specific getcarrer figure existant");
-		}
-
+					throw new DaoException("Objet crée n'a pas pu etre enregistré dans la base de donnée");
+			}
+		}else
+			throw new FigureExsitanteException(care.getName());
 
 	}
 
 	/**
 	 * creer une instance de Triangle 
 	 * @param arg la liste d'arguments pour l'instanciation
+	 * @throws ArgumentsException 
+	 * @throws DaoException 
+	 * @throws FigureExsitanteException 
 	 */
-	public void getTriangle(List<String> arg) {
+	public void getTriangle(List<String> arg) throws ArgumentsException, DaoException, FigureExsitanteException {
+		if(arg.size()!=8)
+			throw new ArgumentsException(arg.get(0));
 		TriangleDAO tdao = DaoFactory.getTriangleDAO();
 		Triangle tr = tdao.read(arg.get(0));
 		if(tr == null) {
@@ -96,18 +119,20 @@ public class Specific {
 				tr = (Triangle) fig;
 				tdao = DaoFactory.getTriangleDAO();
 				if(tdao.create(tr)==false)
-					System.out.println("Ecpetions a gerer dans specific getTriangle");
-			}else
-				System.out.println("Ecpetions a gerer dans specific getTriangle figure existant");
-		}
+					throw new DaoException("Objet crée n'a pas pu etre enregistré dans la base de donnée");
+			}
+		}else
+			throw new FigureExsitanteException(tr.getName());
 
 	}
 
 	/**
 	 * creer une instance de Groupe 
 	 * @param arg la liste d'arguments pour l'instanciation
+	 * @throws DaoException 
+	 * @throws FigureExsitanteException 
 	 */
-	public void getGroupe(List<String> arg) {
+	public void getGroupe(List<String> arg) throws DaoException, FigureExsitanteException {
 		GroupFigDAO gdao = DaoFactory.getGroupeDAO();
 		GroupFig gr = gdao.read(arg.get(0));
 		if(gr == null) {
@@ -118,20 +143,22 @@ public class Specific {
 				gr = (GroupFig) fig;
 				gdao = DaoFactory.getGroupeDAO();
 				if(gdao.create(gr)==false)
-					System.out.println("Ecpetions a gerer dans specific getGroupe");
-			}else
-				System.out.println("Ecpetions a gerer dans specific getGroupe figure existant");
-		}else
-			System.out.println("Ecpetions a gerer dans specific getGroupe figure existant");
+					throw new DaoException("Objet crée n'a pas pu etre enregistré dans la base de donnée");
+			}
+		}else{
+			gdao.update(gr);
+		}
 
 	}
 
 	/**
 	 * Deplace une figure ou un groupe de figure
 	 * @param arg
+	 * @throws FigureNonExsitanteException 
 	 */
-	public void move(List<String> arg) {
-
+	public void move(List<String> arg) throws FigureNonExsitanteException ,ArgumentsException {
+		if(arg.size()<=1)
+			throw new ArgumentsException(arg.get(0));
 		Allfigure fig = this.find(arg.get(1));
 		if(fig != null) {
 			fig.move(Double.parseDouble(arg.get(2)), Double.parseDouble(arg.get(3)));
@@ -153,32 +180,41 @@ public class Specific {
 						else if(nextValue instanceof Triangle) {
 							this.figFind="Triangle";
 						}
-						this.update(nextValue);
+						try {
+							this.update(nextValue);
+						} catch (DaoException e) {
+							// TODO Auto-generated catch block
+							//e.printStackTrace();
+						}
 					}
 
 				}
 			}else {
-				this.update(fig);
+				try {
+					this.update(fig);
+				} catch (DaoException e) {
+					// TODO Auto-generated catch block
+					//e.printStackTrace();
+				}
 			}
 			ContFig.add(arg.get(1), fig);
 		}
 		else
-			System.out.println("Exception a gerrer MOve");
+			throw new FigureNonExsitanteException(arg.get(1));
 	}
 
 	/**
 	 * Afiche la description d'une figure ou en groupe de figure
 	 * @param fig
+	 * @throws FigureNonExsitanteException 
 	 */
-	public void affiche(String fig) {
+	public void affiche(String fig) throws FigureNonExsitanteException {
 
 		Allfigure allfig = this.find(fig);
 		if(allfig != null) {
 			AfficheFig.affich(allfig);
-		}
-		else {
-			System.out.println("Exeception a gerer figure non exixtant");
-		}
+		}else
+			throw new FigureNonExsitanteException(fig);
 	}
 
 	/**
@@ -228,33 +264,39 @@ public class Specific {
 	/**
 	 * Effectue la Mise a jour d'une figure
 	 * @param fig
+	 * @throws DaoException 
 	 */
-	private void update(Allfigure fig) {
+	private void update(Allfigure fig) throws DaoException {
 		switch (this.figFind) {
 		case "Triangle":
 			Triangle tr = (Triangle) fig;
 			TriangleDAO tdao = DaoFactory.getTriangleDAO();
-			tdao.update(tr);
+			if(tdao.update(tr)==false)
+				throw new DaoException("Mise a jour de l'Objet non effectuer dans la base de donnée");
 			break;
 		case "Cercle":
 			Cercle cercl = (Cercle) fig;
 			CerlcleDAO cdao = DaoFactory.getCerlcleDAO();
-			cdao.update(cercl);
+			if(cdao.update(cercl)==false)
+				throw new DaoException("Mise a jour de l'Objet non effectuer dans la base de donnée");
 			break;
 		case "RectangleFig":
 			RectangleFig rect = (RectangleFig) fig;
 			RectangleDAO rdao = DaoFactory.getRectangleDAO();
-			rdao.update(rect);
+			if(rdao.update(rect)==false)
+				throw new DaoException("Mise a jour de l'Objet non effectuer dans la base de donnée");
 			break;
 		case "GroupFig":
 			GroupFig grp = (GroupFig) fig;
 			GroupFigDAO gdao = DaoFactory.getGroupeDAO();
-			gdao.update(grp);
+			if(gdao.update(grp)==false)
+				throw new DaoException("Mise a jour de l'Objet non effectuer dans la base de donnée");
 			break;
 		case "Carrer":
 			Carrer care = (Carrer) fig;
 			CarreDAO cadao = DaoFactory.getCarreDAO();
-			cadao.update(care);
+			if(cadao.update(care)==false)
+				throw new DaoException("Mise a jour de l'Objet non effectuer dans la base de donnée");
 			break;
 		default:
 			break;

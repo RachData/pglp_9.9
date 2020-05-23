@@ -5,6 +5,7 @@ import java.util.List;
 import fr.uvsq.pglp.Exercice9_9.Allfigure.AfficheFig;
 import fr.uvsq.pglp.Exercice9_9.Command.*;
 import fr.uvsq.pglp.Exercice9_9.CreationFigure.ContFig;
+import fr.uvsq.pglp.Exercice9_9.exceptions.SaisieException;
 
 /**
  * l'interaction avec l’utilisateur
@@ -22,19 +23,19 @@ public class DrawingTUI {
 	 * la syntaxe est bonne
 	 * 
 	 * @param text la saisie de l'utilisateur
+	 * @throws SaisieException 
 	 */
-	public Commands nextCommand(String text) {
+	public Commands nextCommand(String text) throws SaisieException {
 
 		String Commandename = "";
 		if (Dico.isMatching(text)) {
 			this.args = Dico.stringsplit(text);
 			Commandename = this.args.get(Dico.gettypeString());
 			return interprete.execute(Commandename.toLowerCase());
-
-		} else {
-			System.out.println("Exceptions a gerer erreur de syntaxe");
+		}else {
+			throw new SaisieException();
 		}
-		return null;
+		
 	}
 
 	/**
@@ -48,7 +49,7 @@ public class DrawingTUI {
 			try {
 				AfficheFig.affich(ContFig.get());
 			} catch (Exception e) {
-				System.out.println("exception a gerer dans affich");
+				
 			}
 			
 		}

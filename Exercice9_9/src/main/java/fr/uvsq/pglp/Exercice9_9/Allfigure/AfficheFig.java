@@ -14,12 +14,14 @@ public class AfficheFig {
 	 * @param allfig la ou les grouprs a afficher
 	 */
 	public static void affich(Allfigure allfig) {
-		ItteratorFigure affich = new ItteratorFigure(allfig);
-		Iterator grouptIter = affich.getIterator();
-		while (grouptIter.HasNext()) {
-			Allfigure nextValue = grouptIter.Next();
-			System.out.println(nextValue.toString());
+		if (allfig != null) {
+			ItteratorFigure affich = new ItteratorFigure(allfig);
+			Iterator grouptIter = affich.getIterator();
+			while (grouptIter.HasNext()) {
+				Allfigure nextValue = grouptIter.Next();
+				System.out.println(nextValue.toString());
 
+			}
 		}
 
 	}

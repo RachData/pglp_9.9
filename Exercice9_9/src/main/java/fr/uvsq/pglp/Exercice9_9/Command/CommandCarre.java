@@ -23,8 +23,7 @@ public class CommandCarre implements Commands {
 		try {
 			inst.getCarre(arg);
 		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("exception a gerer dans commandeCreateFig");
+			
 		}
 
 	}

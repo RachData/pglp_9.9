@@ -23,8 +23,7 @@ public class CommandRectangle implements Commands {
 		try {
 			inst.getRectangle(arg);
 		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("exception a gerer dans commandeCreateFig");
+		
 		}
 
 	}

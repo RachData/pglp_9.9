@@ -57,7 +57,7 @@ public class CarreDAO extends DAO<Carrer> {
 			}
 
 		} catch (SQLException e) {
-			System.out.println("Exception a gerer dans CercleDAO");
+			
 		}
 		return false;
 	}
@@ -87,7 +87,7 @@ public class CarreDAO extends DAO<Carrer> {
 					}
 				} catch (RectangleException e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					//e.printStackTrace();
 				}finally {
 					if(result != null)
 						result.close();

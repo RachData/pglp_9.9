@@ -15,15 +15,9 @@ import fr.uvsq.pglp.Exercice9_9.Command.*;
 import fr.uvsq.pglp.Exercice9_9.CreationFigure.ContFig;
 
 public class CommandsTest {
-	Generic genericProg;
-	GenericCommands quitprog;
-
-	SpecificCommands createCercle;
-	Specific receiver;
-	CommandMove move;
-	CommandAffichage affich;
 
 	Interpreteur interprete;
+	Commands command;
 	List<String> arg;
 
 	Allfigure fig;
@@ -32,47 +26,27 @@ public class CommandsTest {
 	public void setUp() throws Exception {
 		arg = new ArrayList<String>();
 		interprete = Initcommande.init();
-
-		genericProg=new Generic();
-		quitprog = new CommandQuit(genericProg);
-
-		receiver = new Specific();
-
-		createCercle = new CommandeCercle(receiver);
-
-		move = new CommandMove(receiver);
-
-		affich = new CommandAffichage(receiver);
-		/*
-		interprete.register("quit", quitprog);
-		interprete.register("cercle", createCercle);
-		interprete.register("move", move);
-		interprete.register("affiche", affich)*/;
 	}
-	/*
+	
 	@Test
 	public void quitTest() {
 		arg.add("quit");
-		interprete.execute("quit",arg);
-
-	}*/
-	/*
-	@Test
-	public void createCercleTest() {
-		arg.add("tri");
-		arg.add("triangle");
-		arg.add("3.2");
-		arg.add("5.0");
-		arg.add("6");
-		arg.add("3.2");
-		arg.add("5.0");
-		arg.add("6");
-		interprete.execute(arg.get(1),arg);
-		System.out.println(ContAllFig.get("tri"));
-		assertTrue(ContAllFig.get("tri") instanceof Triangle);
+		interprete.execute("quit");
 
 	}
-	 */
+	
+	@Test
+	public void createCercleTest() {
+		arg.add("Ctest");
+		arg.add("cercle");
+		arg.add("3.2");
+		arg.add("5.0");
+		arg.add("6");
+		interprete.execute(arg.get(1));
+		assertTrue(ContFig.get() instanceof Triangle);
+
+	}
+	 
 	@Test
 	public void moveFigAndGroupTest() {
 		arg.removeAll(arg);

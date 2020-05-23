@@ -22,8 +22,7 @@ public class CommandGroupe implements Commands{
 		try {
 			inst.getGroupe(arg);;
 		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("exception a gerer dans commandeCreateFig");
+			
 		}
 
 	}

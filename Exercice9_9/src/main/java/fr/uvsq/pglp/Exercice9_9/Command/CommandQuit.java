@@ -24,6 +24,7 @@ public class CommandQuit implements GenericCommands {
 	 */
 	@Override
 	public void apply(List<String> arg) {
+		
 		quit.quit();
 
 	}

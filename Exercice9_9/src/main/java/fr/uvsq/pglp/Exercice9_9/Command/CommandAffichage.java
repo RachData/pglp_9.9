@@ -28,7 +28,7 @@ public class CommandAffichage implements SpecificCommands {
 		try {
 			fig.affiche(arg.get(1));
 		} catch (Exception e) {
-			System.out.println("exception dans commande affiche a gerer");
+			
 		}
 	}
 
