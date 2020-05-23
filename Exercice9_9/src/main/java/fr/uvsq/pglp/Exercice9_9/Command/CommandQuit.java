@@ -2,6 +2,8 @@ package fr.uvsq.pglp.Exercice9_9.Command;
 
 import java.util.List;
 
+import fr.uvsq.pglp.Exercice9_9.exceptions.ArgumentsException;
+
 /**
  * La commande concrete quit
  * @author root
@@ -24,8 +26,12 @@ public class CommandQuit implements GenericCommands {
 	 */
 	@Override
 	public void apply(List<String> arg) {
-		
-		quit.quit();
+		try {
+			quit.quit(arg);
+		} catch (ArgumentsException e) {
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
+		}
 
 	}
 

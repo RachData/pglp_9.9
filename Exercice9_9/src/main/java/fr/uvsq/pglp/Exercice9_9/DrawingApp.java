@@ -17,6 +17,7 @@ public enum DrawingApp {
 		String text;
 		Commands command ;
 		while(Continue.isOn()) {
+			System.out.print("DwAp> ");
 			try {
 				text = rep.nextLine();
 				command = saisie.nextCommand(text);
@@ -30,13 +31,14 @@ public enum DrawingApp {
 			}catch (CommandException e) {
 				// TODO: handle exception
 			}
+
 		}
 
 		rep.close();
 	}
 
 	public static void main( String[] args ) {
-		
+
 		ENVIRONNEMENT.run(args);
 
 

@@ -153,7 +153,7 @@ public class Specific {
 
 	/**
 	 * Deplace une figure ou un groupe de figure
-	 * @param arg
+	 * @param arg contient le nom de la figure a deplacer et les coordonnées 
 	 * @throws FigureNonExsitanteException 
 	 */
 	public void move(List<String> arg) throws FigureNonExsitanteException ,ArgumentsException {
