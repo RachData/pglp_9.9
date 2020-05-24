@@ -17,7 +17,7 @@ public enum DrawingApp {
 		String text;
 		Commands command ;
 		while(Continue.isOn()) {
-			System.out.print("DwAp> ");
+			System.out.print("DwApp> ");
 			try {
 				text = rep.nextLine();
 				command = saisie.nextCommand(text);
