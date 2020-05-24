@@ -27,14 +27,12 @@ Syntaxes des commandes:
     Pour déplacer une figure : move(NomFigure, (Point1, Point2))
     Pour quitter le programme: quit()
 
-Les exemples de commandes valides:
+Les exemples de commandes:
 
-    Pour créer un cercle: c1 =Cercle((0, 0), 50)
-    Pour afficher le triangle t1: affiche(c1)
-    Pour déplacer le cercle c1 : move(c1, (10, 20))
-    Pour déplacer toutes les figures crées: move(all, (10, 20))
-    Pour afficher toutes les figures crées crées: view all
-    Pour quitter le programme: quit
+    Pour créer un cercle: cer1 =Cercle((0, 0), 50)
+    Pour afficher le triangle tri1: affiche(t1)
+    Pour déplacer le cercle c1 : move(cer1, (10, 20))
+    Pour quitter le programme: quit()
     
 # Manuel Technique
 
