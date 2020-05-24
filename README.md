@@ -43,9 +43,3 @@ Compilation et execution du projet
 
     Pour cloner le projet : (https://github.com/RachData/pglp_9.9.git)
     Pour le compiler et l'exécuter:
-
-`   mvn clean`
-
-   `mvn package`
-
-`   java -jar target/pglp_9.9-1.0-SNAPSHOT.jar `
